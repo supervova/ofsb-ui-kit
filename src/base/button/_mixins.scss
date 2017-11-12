@@ -1,0 +1,26 @@
+@import 'global/functions';
+@import 'global/variables';
+
+/**
+Базовые стили
+  Переменные
+    $btn-border-width
+    $btn-font-weigh
+
+    Используемые в миксинах
+    $btn-font-size
+
+  Миксины модификаторов
+    Размер: кегль,  паддинги
+ */
+
+@mixin button($style: 'flat') {
+  background: ;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+}
+
+

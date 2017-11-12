@@ -1,0 +1,50 @@
+# Build System
+.tmp
+dist
+node_modules
+npm-debug.log
+
+# Development, Editors / IDE Files
+*.code-workspace
+*.sass-cache*
+*.sublime-project
+*.sublime-projectcompletions
+*.sublime-workspace
+.editorconfig
+_assets
+_tmp*
+backup
+
+# Media Files
+*.avi
+*.doc
+*.docx
+*.gif
+*.jpeg
+*.jpg
+*.mov
+*.mp3
+*.mp4
+*.mpeg
+*.pdf
+*.png
+*.svg
+*.wmv
+*.xls
+
+# Logs, backups, sitemap
+*.bak
+*.log
+*.swp
+backup
+
+# OS generated files
+._*
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+*~
+ehthumbs.db
+Icon?
+Thumbs.db

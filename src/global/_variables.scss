@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// COLORS
+// -----------------------------------------------------------------------------
+
+// COLORS NAMES
+
+// Greys
+$grey-50:     rgb(248, 249, 250);
+$grey-100:    rgb(242, 245, 249);
+$grey-200:    rgb(235, 238, 242);
+$grey-300:    rgb(221, 224, 228);
+$grey-400:    rgb(186, 189, 193);
+$grey-500:    rgb(155, 158, 162);
+$grey-600:    rgb(114, 117, 121);
+$grey-700:    rgb(94, 97, 101);
+$grey-800:    rgb(63, 66, 70);
+$grey-900:    rgb(33, 37, 41);
+
+// TODO. Create a function for generating the list based on the user-entered
+// primary color.
+$teal-blue:   rgb(92, 203, 255);
+$blue:        rgb(0, 122, 255);
+$purple:      rgb(80, 78, 217);
+$pink:        rgb(80, 78, 217);
+$red:         rgb(255, 59, 48);
+$orange:      rgb(255, 149, 0);
+$yellow:      rgb(255, 204, 0);
+$green:       rgb(78, 217, 101);
+
+// COLORS ROLES
+
+// TODO. Create a function for generating the array based on user input.
+// It can be from 1 to 3 colors: primary, secondary, background.
+// TODO. Create a function to create light and dark variations for all UI
+// colors.
+// TODO. Make quick settings for primary/secondary/background in a separate file
+$theme-colors: (
+  primary:    $blue,
+  secondary:  $grey-600,
+  background: $grey-100,
+  success:    $green,
+  info:       $teal-blue,
+  warning:    $yellow,
+  danger:     $red
+);
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 7%;
+
+// TODO. Add to color-yiq() parameter for color opacity: primary, secondary etc
+
+$theme-foreground-colors: (
+  light: (
+    normal:       rgba(black, .87), // primary text
+    muted:        rgba(black, .54), // secondary text, active icon
+    muted-more:   rgba(black, .38), // hint, disabled, default icon
+    muted-most:   rgba(black, .12) // dividers
+  ),
+  dark: (
+    normal:       white, // primary text, active icon
+    muted:        rgba(white, .7), // secondary text
+    muted-more:   rgba(white, .5), // hint, disabled, default icon
+    muted-most:   rgba(white, .12)
+  )
+);
+
+// Primary color filled areas and elements
+$emphasis-color:                theme-color('primary');
+$header-bg:                     theme-color('primary');
+$hero-bg:                       theme-color('primary');
+$primary-promo-bg:              theme-color('primary');
+$progress-bar-fill:             theme-color('primary');
+$selected-section-icon-fill:    theme-color('primary');
+$selected-tab-underline-color:  theme-color('primary');
+
+// Secondary color filled areas and elements
+$drawer-header-bg:              theme-color('secondary');
+$featurette-bg:                 theme-color('secondary');
+$link-color:                    theme-color('secondary');
+$primary-button-bg:             theme-color('secondary');
+$secondary-promo-bg:            theme-color('secondary');
+
+
+// -----------------------------------------------------------------------------
+// SPACING
+// -----------------------------------------------------------------------------
+
+// Setup space scale for standard 8-point grid
+$spacer: 8px;
+$spacers: (
+  0:    0,
+  1x:   $spacer,
+  2x:   ($spacer * 2), // 16
+  3x:   ($spacer * 3), // 24
+  4x:   ($spacer * 4), // 32
+  5x:   ($spacer * 5), // 40
+  6x:   ($spacer * 6), // 48
+  7x:   ($spacer * 7), // 56
+  8x:   ($spacer * 8), // 64
+  9x:   ($spacer * 9), // 72
+  12x:  ($spacer * 12), // 96
+);
+

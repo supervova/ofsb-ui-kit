@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb-base",
+    "google",
+    "eslint-config-prettier"
+  ],
+  "globals": {
+    "wp": true
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "amd": true,
+    "browser": true,
+    "jquery": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false,
+      "experimentalObjectRestSpread": true
+    },
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "eslint-plugin-prettier",
+    "import"
+  ],
+  "settings": {
+    "import/core-modules": [],
+    "import/ignore": [
+      "node_modules",
+      "\\.(coffee|scss|css|less|hbs|svg|json)$"
+    ]
+  },
+  "rules" : {
+    "func-names": ["error", "as-needed"],
+    "import/no-extraneous-dependencies": "off",
+    "max-len": [
+      "error",
+      {
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+    "quotes": ["error", "single"]
+  }
+}

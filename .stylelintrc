@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "stylelint-config-sass-guidelines"
+  ],
+  "ignoreFiles": [
+    "./web/sites/all/themes/polylog2017/src/css/main.css"
+  ],
+  "rules": {
+    "function-parentheses-space-inside": "never-single-line",
+    "max-nesting-depth": 2,
+    "number-leading-zero": "never",
+    "order/properties-alphabetical-order": null,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "ignore": ["after-comment", "inside-block"]
+      }
+    ],
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/dollar-variable-colon-space-after": null,
+
+    "selector-no-qualifying-type": null
+  }
+}
+

@@ -1,0 +1,76 @@
+// -----------------------------------------------------------------------------
+// COLOR FUNCTIONS
+// -----------------------------------------------------------------------------
+
+// MAP HELPERS
+
+// Retreive color Sass maps
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+@function theme-fg-color($theme: 'light', $key: 'text-primary') {
+  @return map-get(map-get($theme-foreground-colors, $theme), $key);
+}
+
+// ACCESSIBLE COLOR CONTRAST
+
+// The W3C recommends the following contrast ratios for body text and image text
+
+// - Small text should have a contrast ratio of at least 4.5:1 against its
+// background
+// - Large text (at 14 pt bold/18 pt regular and up) should have a contrast
+// ratio of at least 3:1 against its background
+
+// The following  Bootstrap function calculates if text needs to be light
+// or dark depending on the background color passed. Color brightness
+// is determined by the formula for converting RGB values to YIQ values.
+
+// @see http://www.w3.org/TR/AERT#color-contrast
+
+// MDC functions for accessible color combinations
+// mdc-theme-luminance, mdc-theme-contrast, mdc-theme-light-or-dark,
+// mdc-theme-clamp-percentage
+
+@function color-yiq($color, $opacity) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+
+  @if ($yiq >= 150) {
+    // Dark on light
+    @return theme-fg-color('light', $opacity);
+  } @else {
+    // Light on dark
+    @return theme-fg-color('dark', $opacity);
+  }
+}
+
+// MONOCHROME PALETTE
+
+// Create tints and shadows using darken() and lighten() methods
+@function theme-color-level($color-name: 'primary', $level: 0) {
+  $color: theme-color($color-name);
+
+  @if ($level > 0) {
+    @return lighten($color, $level * $theme-color-interval);
+  } @else {
+    $level: abs($level);
+    @return darken($color, $level * $theme-color-interval);
+  }
+}
+
+// Bootstrap gets result mixing given color with black or white
+// @function theme-color-level($color-name: 'primary', $level: 0) {
+//   $color: theme-color($color-name);
+//   $color-base: if($level > 0, #000, #fff);
+//   $level: abs($level);
+
+//   @return mix($color-base, $color, $level * $theme-color-interval);
+// }
+
+// MDC functions for creation light and dark variants of the given color
+// mdc-theme-tonal-variants, mdc-theme-dark-variant, mdc-theme-light-variant
