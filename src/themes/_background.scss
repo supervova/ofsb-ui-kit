@@ -1,0 +1,32 @@
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color;
+  }
+}
+
+// TODO. Create a loop using theme-color-level function to create bg- helper
+// classes
+// MB, create empty map and function to fill it w/ generated dark and light
+// variants, then use loop for class creation
+// bg-primary
+// bg-primary-light
+// bg-primary-dark
+// bg-secondary
+// bg-secondary-light
+// bg-secondary-dark
+
+// @each $color, $value in $theme-colors {
+//   @include bg-variant('.bg-#{$color}', $value);
+// }
+
+.bg-default {
+  background-color: theme-color('background');
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}

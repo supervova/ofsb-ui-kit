@@ -49,7 +49,7 @@
   }
 }
 
-// MONOCHROME PALETTE
+// TONAL PALETTE
 
 // Create tints and shadows using darken() and lighten() methods
 @function theme-color-level($color-name: 'primary', $level: 0) {
@@ -74,3 +74,7 @@
 
 // MDC functions for creation light and dark variants of the given color
 // mdc-theme-tonal-variants, mdc-theme-dark-variant, mdc-theme-light-variant
+
+// If the color is already very dark, mdc-theme-dark-variant function will be
+// lightened instead of darkened. Also, mdc-theme-light-variant function will be
+// darkened instead of lightened, if the color is already very light.

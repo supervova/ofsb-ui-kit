@@ -1,0 +1,28 @@
+// TODO. Create dark theme overrides
+// <section class="theme--dark">
+//   <button class="btn btn--primary">
+//     Still dark
+//   </button>
+
+//   <button class="btn">
+//     Me too!
+//   </button>
+// </section>
+
+
+// Button Sizes
+
+.btn-lg {
+  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $input-btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $input-btn-line-height-sm, $btn-border-radius-sm);
+}
+
+// Block button
+
+.btn-block {
+  display: block;
+  width: 100%;
+}

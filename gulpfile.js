@@ -10,10 +10,7 @@ const config = {
   browserSync: {
     'localhost': {
       'server': {
-        'baseDir': './',
-        // 'routes': {
-        //   '/node_modules': './web/node_modules'
-        // }
+        'baseDir': './'
       },
       'port': 9000,
       'notify': false
@@ -60,7 +57,7 @@ gulp.task('sass', () => {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.css.dest))
     // Minify styles
-    // .pipe(cleanCss({
+    // .pipe(cleanCSS ({
     //   // aggressiveMerging: false,
     //   keepSpecialComments: 0
     // }))

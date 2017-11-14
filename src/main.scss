@@ -1,12 +1,13 @@
 // @import './node_modules/bootstrap/scss/functions';
 // @import './node_modules/bootstrap/scss/variables';
 // @import './node_modules/bootstrap/scss/mixins';
-// @import './node_modules/bootstrap/scss/type';
-// @import './node_modules/@material/theme/mdc-theme';
 // @import './node_modules/@material/button/mdc-button';
 
 @import 'global/functions';
 @import 'global/variables';
+// Not sure: define colors in themes or variables.
+// @import 'themes/background';
+
 
 body {
   background: theme-color('background');
@@ -14,10 +15,12 @@ body {
 }
 
 .tint {
-  background-color: theme-color-level('danger', $level: 2);
+  background-color: theme-color-level('danger', 2);
 }
 
 .shadow {
-  background-color: theme-color-level('warning', $level: -2);
+  background-color: theme-color-level('warning', -2);
 }
+
+
 

@@ -1,26 +1,108 @@
-@import 'global/functions';
-@import 'global/variables';
+// Set up base properties
+$button-bg:                   theme-color('primary');
+$button-font-size:            $font-size-base;
+$button-font-weight:          400;
+$button-border-width:         1px;
 
-/**
-Базовые стили
-  Переменные
-    $btn-border-width
-    $btn-font-weigh
+$button-height:               36px;
+$button-height-lg:            40px;
+$button-min-width:            48px;
+$button-tap-target:           48px;
 
-    Используемые в миксинах
-    $btn-font-size
+// Functions will set up all others
+// $button-color: color-yiq();
 
-  Миксины модификаторов
-    Размер: кегль,  паддинги
- */
+// $button-border-color: ;
 
-@mixin button($style: 'flat') {
-  background: ;
+$button-font-size-lg:         round($font-size-base * 1.5);
+$button-hover-border-color:   theme-color-level($button-bg, -1);
+
+
+// $button-hover-color: ;
+// $button-hover-border-color: ;
+
+// $button-active-color: ;
+// $button-active-border-color: ;
+
+
+// -----------------------------------------
+
+
+@mixin button-base() {
+  // If reboot or core.scss has not imported
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+
+  appearance: none;
+
+  // Expand touchable target to recommend by the Google w/ transparent border
+  border: (($button-tap-target - $button-height) / 2) solid transparent;
   display: inline-block;
+  font-weight: $button-font-weight;
+  line-height: 1;
   text-align: center;
+  text-transform: uppercase;
   white-space: nowrap;
+  padding: 0 ($spacer * 2);
+  outline: none;
+  overflow: hidden;
+  position: relative;
   user-select: none;
   vertical-align: middle;
+  height: $button-height;
+  min-width: $button-min-width;
+
+  &:active {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 2px solid;
+  }
+
+  // If reboot or core.scss has not imported
+  &::-moz-focus-inner {
+    padding: 0;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: .64;
+    pointer-events: none;
+  }
 }
 
+@mixin button-default() {
+  @if $flat-style {
+    @include button-outline-variant($value, $gray-900);
+  } @else {
+    @include button-outline-variant($value, $white);
+  }
 
+  &:focus {
+    outline-color: $button-hover-border-color;
+  }
+}
+
+// @mixin button-primary($style: 'flat') {
+// }
+
+@mixin button-sm {
+  height: $button-height-sm;
+}
+
+@mixin button-lg {
+  font-size: $button-font-size-lg;
+  height: $button-height-lg;
+}

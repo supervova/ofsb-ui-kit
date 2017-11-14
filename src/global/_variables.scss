@@ -48,7 +48,7 @@ $theme-colors: (
 $theme-color-interval: 7%;
 
 // TODO. Add to color-yiq() parameter for color opacity: primary, secondary etc
-
+// stylelint-disable indentation
 $theme-foreground-colors: (
   light: (
     normal:       rgba(black, .87), // primary text
@@ -63,8 +63,10 @@ $theme-foreground-colors: (
     muted-most:   rgba(white, .12)
   )
 );
+// stylelint-enable indentation
 
 // Primary color filled areas and elements
+$betslip-bg:                    theme-color('primary');
 $emphasis-color:                theme-color('primary');
 $header-bg:                     theme-color('primary');
 $hero-bg:                       theme-color('primary');
@@ -79,6 +81,20 @@ $featurette-bg:                 theme-color('secondary');
 $link-color:                    theme-color('secondary');
 $primary-button-bg:             theme-color('secondary');
 $secondary-promo-bg:            theme-color('secondary');
+
+
+// -----------------------------------------------------------------------------
+// TYPOGRAPHY
+// -----------------------------------------------------------------------------
+
+$font-size-base:                14px;
+
+
+// -----------------------------------------------------------------------------
+// OPTIONS
+// -----------------------------------------------------------------------------
+
+$flat-style:                    false;
 
 
 // -----------------------------------------------------------------------------

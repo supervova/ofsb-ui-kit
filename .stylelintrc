@@ -2,9 +2,6 @@
   "extends": [
     "stylelint-config-sass-guidelines"
   ],
-  "ignoreFiles": [
-    "./web/sites/all/themes/polylog2017/src/css/main.css"
-  ],
   "rules": {
     "function-parentheses-space-inside": "never-single-line",
     "max-nesting-depth": 2,

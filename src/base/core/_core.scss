@@ -1,0 +1,19 @@
+// <html> and <body> styles, resets
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-size-adjust: 100%;
+}
+
+body {
+  // Anti-alising. Autoprefixer doesn’t support font-smoothing
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

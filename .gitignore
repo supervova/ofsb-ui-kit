@@ -13,7 +13,6 @@ npm-debug.log
 .editorconfig
 _assets
 _tmp*
-backup
 
 # Media Files
 *.avi
@@ -31,12 +30,6 @@ backup
 *.svg
 *.wmv
 *.xls
-
-# Logs, backups, sitemap
-*.bak
-*.log
-*.swp
-backup
 
 # OS generated files
 ._*
