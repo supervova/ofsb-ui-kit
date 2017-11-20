@@ -280,6 +280,10 @@ foundation-sites@^6.4.4-rc1:
   version "6.0.1"
   resolved "https://codeload.github.com/h5bp/html5-boilerplate/tar.gz/6180cd90fca68568353c20cc7f91f5d653583e7f"
 
+ibm-design-colors@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/ibm-design-colors/-/ibm-design-colors-2.0.4.tgz#932ea859872310083b521cd6eba86d82e4f002c2"
+
 jquery@>=3.0.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"

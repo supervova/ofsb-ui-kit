@@ -1,7 +1,26 @@
 // <html> and <body> styles, resets
 
+// Change from box-sizing: content-box so that width is not affected by padding
+// or border.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
+  // Change the default tap highlight to be transparent in iOS
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  // Fix rendering body background color on macOS WebKit browsers
+  background: theme-colors('background');
+
+  // Base font-size has set up to of 62.5% (10px) to have the convenience
+  // of sizing rems in a way that is similar to using px.
+  // .my-class { margin-bottom: 2.4rem; }
+  font-size: 62.5%;
+
+  // Prevent adjustments of font size after orientation changes in iOS
   text-size-adjust: 100%;
 }
 
@@ -10,10 +29,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   margin: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  font-size: ;
 }

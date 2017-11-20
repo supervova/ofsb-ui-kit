@@ -1,33 +1,47 @@
 // Set up base properties
-$button-bg:                   theme-color('primary');
+$button-bg:                   color-tone('primary', 2);
 $button-font-size:            $font-size-base;
 $button-font-weight:          400;
 $button-border-width:         1px;
 
+$button-transition:           all .24s ease-out;
+$button-disabled-opacity:     .64;
+
+// Buttons sizes
+$button-height-sm:            32px;
 $button-height:               36px;
-$button-height-lg:            40px;
-$button-min-width:            48px;
+$button-height-lg:            48px;
 $button-tap-target:           48px;
-
-// Functions will set up all others
-// $button-color: color-yiq();
-
-// $button-border-color: ;
-
-$button-font-size-lg:         round($font-size-base * 1.5);
-$button-hover-border-color:   theme-color-level($button-bg, -1);
+$button-min-width:            48px;
+$button-font-size-lg:         round($button-font-size * 1.309);
 
 
-// $button-hover-color: ;
-// $button-hover-border-color: ;
+// Functions and native will set up all others
+// $button-color: foreground-color();
+// $button{-hover, -focus, -active, -disabled}?-{color, bg, border-color, box-shadow}
+// ?
+// ?
 
-// $button-active-color: ;
-// $button-active-border-color: ;
+// Programmed values — coloring classes.
+// $button-color set it in mixin using color-fg();
+
+$button-hover-border-color:   color-tone('primary', 3);
+$button-hover-background:     scale-color($button-background, $lightness: +15%);
+
+/// Hard-coded
+/// $button-font-family
+/// $button-padding
+/// $button-margin
+/// $button-height{-sm, -lg}
+/// $button-font-size{-sm, -lg}
+/// $button-radius
+/// $button-border-width
+/// $button-sizes: ()
+/// $button-disabled-opacity
+/// $button-background-hover-lightness
 
 
-// -----------------------------------------
-
-
+/// BASE BUTTON STYLES: UNDECORATED BOX
 @mixin button-base() {
   // If reboot or core.scss has not imported
   -moz-osx-font-smoothing: grayscale;
@@ -62,8 +76,8 @@ $button-hover-border-color:   theme-color-level($button-bg, -1);
     cursor: pointer;
   }
 
-  &:hover,
-  &:focus {
+  &:focus,
+  &:hover {
     text-decoration: none;
   }
 
@@ -83,10 +97,13 @@ $button-hover-border-color:   theme-color-level($button-bg, -1);
   }
 }
 
+/// SET BUTTON COLORS AND LIGHTING
 @mixin button-default() {
+
   @if $flat-style {
     @include button-outline-variant($value, $gray-900);
-  } @else {
+  }
+  @else {
     @include button-outline-variant($value, $white);
   }
 
@@ -95,14 +112,14 @@ $button-hover-border-color:   theme-color-level($button-bg, -1);
   }
 }
 
-// @mixin button-primary($style: 'flat') {
-// }
-
-@mixin button-sm {
-  height: $button-height-sm;
-}
-
-@mixin button-lg {
-  font-size: $button-font-size-lg;
-  height: $button-height-lg;
+/// SET BUTTON HEIGHT AND FONT SIZE
+/// @param {Number} $height [$button-height] - Button height
+/// @param {Null | Number} $font-size [null] - Button font size
+/// @output {Color} - Sufficiently contrasting foreground the color of a certain
+///   level of the visual hierarchy.
+@mixin button-size($height: $button-height, $font-size: null) {
+  @if ($font-size) {
+    font-size: $font-size;
+  }
+  height: $height;
 }

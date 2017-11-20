@@ -2,6 +2,9 @@
   "extends": [
     "stylelint-config-sass-guidelines"
   ],
+  "ignoreFiles": [
+    "./node_modules/**/*"
+  ],
   "rules": {
     "function-parentheses-space-inside": "never-single-line",
     "max-nesting-depth": 2,

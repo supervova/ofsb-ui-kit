@@ -5,22 +5,29 @@
 
 @import 'global/functions';
 @import 'global/variables';
+@import 'base/button/button';
 // Not sure: define colors in themes or variables.
 // @import 'themes/background';
 
 
 body {
-  background: theme-color('background');
-  color: color-yiq(theme-color('background'), 'muted');
+  background: color('background');
+  color: color-fg(color('background'), 'muted');
 }
 
 .tint {
-  background-color: theme-color-level('danger', 2);
+  background-color: color-tone('danger', 2);
 }
 
 .shadow {
-  background-color: theme-color-level('warning', -2);
+  background-color: color-tone('warning', -2);
 }
 
+.foo {
+  background-color: $green;
+  background-color: $button-bg;
+  background-color: color-tone(#f00, 2);
+  background-color: $button-hover-border-color;
+}
 
 

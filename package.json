@@ -15,6 +15,7 @@
     "bulma": "^0.6.0",
     "foundation-sites": "^6.4.4-rc1",
     "html5-boilerplate": "github:h5bp/html5-boilerplate",
+    "ibm-design-colors": "^2.0.4",
     "jquery": ">=3.0.0",
     "material-components-web": "^0.24.0",
     "popper.js": "^1.11.0",
