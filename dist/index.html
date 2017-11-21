@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offsidebet UI Kit Playground</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    :root {
+      /* Color names */
+      --grey-100:                 rgb(242, 245, 249);
+      --grey-900:                 rgb(33, 37, 41);
+
+      --black-normal:             rgba(black, .87);
+      --black-muted:              rgba(black, .54);
+      --black-muted-more:         rgba(black, .38);
+      --black-muted-most:         rgba(black, .12);
+
+      --white-normal:             white;
+      --white-muted:              rgba(white, .7);
+      --white-muted-more:         rgba(white, .5);
+      --white-muted-most:         rgba(white, .12);
+
+      /* Color roles */
+      --background-main:          white;
+      --background-widget:        var(--grey-100);
+      --ink-color-main:           var(--grey-900);
+      --ink-color-main-negative:  var(--white-normal);
+
+      /* Typography */
+      --spacer:                   8px;
+      --font-family-sans-serif:   -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      --font-family-monospace:    'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    }
+
+    html {
+      text-align: center;
+      /**
+       * Base font-size has set up to of 62.5% (10px) to have the convenience
+       * of sizing rems in a way that is similar to using px.
+       */
+      font-size: 62.5%;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      background-color: var(--background-main);
+      color: var(--ink-color-main);
+      font-family: var(--font-family-sans-serif);
+      font-size: 1.4rem;
+      line-height: 2rem;
+      margin: 0 auto;
+      padding-top: 120px;
+      text-align: left;
+      max-width: 560px;
+    }
+
+    h2:not([class]) {
+      font-size: 3.7rem;
+      line-height: 4rem;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  BUTTONS
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<h2>Buttons</h2>
+<button class="btn btn--primary" type="button">Primary</button>
+<button class="btn btn--secondary" type="button">Secondary</button>
+
+
+</body>
+</html>
+

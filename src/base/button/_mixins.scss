@@ -1,32 +1,25 @@
 // Set up base properties
-$button-bg:                   color-tone('primary', 2);
+$button-bg-base:              color('primary');
 $button-font-size:            $font-size-base;
-$button-font-weight:          400;
+$button-font-weight:          normal;
 $button-border-width:         1px;
 
-$button-transition:           all .24s ease-out;
+$button-transition:           box-shadow .2s ease-out, background-color .2s ease-out;
 $button-disabled-opacity:     .64;
+$button-label-uppercase:      null; // set to uppercase
+$button-radius:               $border-radius;
 
 // Buttons sizes
 $button-height-sm:            32px;
 $button-height:               36px;
 $button-height-lg:            48px;
-$button-tap-target:           48px;
-$button-min-width:            48px;
+$button-min-width:            36px;
 $button-font-size-lg:         round($button-font-size * 1.309);
 
-
-// Functions and native will set up all others
-// $button-color: foreground-color();
+// Calculated values — coloring classes.
 // $button{-hover, -focus, -active, -disabled}?-{color, bg, border-color, box-shadow}
-// ?
-// ?
-
-// Programmed values — coloring classes.
 // $button-color set it in mixin using color-fg();
 
-$button-hover-border-color:   color-tone('primary', 3);
-$button-hover-background:     scale-color($button-background, $lightness: +15%);
 
 /// Hard-coded
 /// $button-font-family
@@ -34,12 +27,10 @@ $button-hover-background:     scale-color($button-background, $lightness: +15%);
 /// $button-margin
 /// $button-height{-sm, -lg}
 /// $button-font-size{-sm, -lg}
-/// $button-radius
 /// $button-border-width
 /// $button-sizes: ()
 /// $button-disabled-opacity
 /// $button-background-hover-lightness
-
 
 /// BASE BUTTON STYLES: UNDECORATED BOX
 @mixin button-base() {
@@ -50,39 +41,31 @@ $button-hover-background:     scale-color($button-background, $lightness: +15%);
   box-sizing: border-box;
 
   appearance: none;
-
-  // Expand touchable target to recommend by the Google w/ transparent border
-  border: (($button-tap-target - $button-height) / 2) solid transparent;
+  border: 0;
   display: inline-block;
-  font-weight: $button-font-weight;
   line-height: 1;
   text-align: center;
-  text-transform: uppercase;
   white-space: nowrap;
-  padding: 0 ($spacer * 2);
-  outline: none;
+  margin: 0;
+  outline: 0;
   overflow: hidden;
   position: relative;
   user-select: none;
   vertical-align: middle;
-  height: $button-height;
-  min-width: $button-min-width;
+  transition: $button-transition;
 
-  &:active {
-    outline: none;
+  &:active,
+  &:focus {
+    outline: 0;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     cursor: pointer;
   }
 
   &:focus,
   &:hover {
     text-decoration: none;
-  }
-
-  &:focus {
-    outline: 2px solid;
   }
 
   // If reboot or core.scss has not imported
@@ -97,29 +80,72 @@ $button-hover-background:     scale-color($button-background, $lightness: +15%);
   }
 }
 
-/// SET BUTTON COLORS AND LIGHTING
-@mixin button-default() {
 
-  @if $flat-style {
-    @include button-outline-variant($value, $gray-900);
+/// BUTTON FONT SETTINGS
+@mixin button-font($size: $button-font-size, $weight: $button-font-weight) {
+  @if $button-label-uppercase {
+    text-transform: uppercase;
   }
-  @else {
-    @include button-outline-variant($value, $white);
+
+  font-family: inherit;
+  font-size: $size;
+  font-weight: $weight;
+
+}
+
+/// BUTTON COLORS AND LIGHTING
+
+/// Gradient button styles. It used in class .btn--primary for more prominent actions
+/// @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
+@mixin button-gradient($background-base: $button-bg-base) {
+  background-color: $background-base;
+  background-image: linear-gradient(scale-color($background-base, $lightness: +10%), scale-color($background-base, $lightness: -10%));
+  border-radius: $button-radius;
+  box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12);
+  color: color-fg($background-base);
+
+  &:active {
+    //
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12), $shadow-z2;
   }
 
   &:focus {
-    outline-color: $button-hover-border-color;
+    box-shadow: 0 0 0 2px color-tone($background-base, -1);
   }
 }
 
-/// SET BUTTON HEIGHT AND FONT SIZE
-/// @param {Number} $height [$button-height] - Button height
-/// @param {Null | Number} $font-size [null] - Button font size
-/// @output {Color} - Sufficiently contrasting foreground the color of a certain
-///   level of the visual hierarchy.
-@mixin button-size($height: $button-height, $font-size: null) {
-  @if ($font-size) {
-    font-size: $font-size;
+/// Flat button. Default
+/// @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
+@mixin button-flat($background-base: $button-bg-base) {
+  background-color: color-tone($background-base, 5);
+  border: 0;
+  border-radius: $button-radius;
+  color: color-fg(color-tone($background-base, 5), 'muted');
+
+  &:active {
+    box-shadow: inset 0 2px 4px rgba(#000, .12);
+    background-color: color-tone($background-base, 4);
   }
+
+  &:hover {
+    box-shadow: $shadow-z2;
+  }
+
+  &:focus:not(:active) {
+    box-shadow: 0 0 0 2px color-tone($background-base, 4);
+  }
+}
+
+/// BUTTON SIZE AND SPACING
+/// Margins should be set by utility classes, i.e. .ml-1, .mb-2.
+/// @param {Number} $height [$button-height] - Button height
+/// @param {Number} $hpadding [$spacer * 2] - Right and left paddings
+/// @param {Number} $min-width [$button-min-width] - Button minimum width
+@mixin button-size($height: $button-height, $hpadding: ($spacer * 2), $min-width: $button-min-width) {
+  padding: 0 $hpadding;
   height: $height;
+  min-width: $min-width;
 }

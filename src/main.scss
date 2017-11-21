@@ -11,8 +11,8 @@
 
 
 body {
-  background: color('background');
-  color: color-fg(color('background'), 'muted');
+  background: color('background-main');
+  color: color-fg(color('background-main'), 'muted');
 }
 
 .tint {
@@ -25,9 +25,8 @@ body {
 
 .foo {
   background-color: $green;
-  background-color: $button-bg;
+  background-color: $button-bg-base;
   background-color: color-tone(#f00, 2);
-  background-color: $button-hover-border-color;
 }
 
 

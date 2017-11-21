@@ -11,17 +11,24 @@
 
 @import 'mixins';
 
-.btn--default {
-  background-color: $button-bg;
+.btn {
+  @include button-base();
+  @include button-flat();
+  @include button-font();
+  @include button-size();
+}
+
+.btn--primary {
+  @include button-gradient();
 }
 
 /// Button Sizes
 .btn--sm {
-  @include button-size($button-height-sm);
+  @include button-size($button-height-sm, $spacer, 32px);
 }
 
 .btn--lg {
-  @include button-size($button-height-lg, $button-font-size-lg);
+  @include button-size($button-height-lg, ($spacer * 3), 48px);
 }
 
 /// Block button

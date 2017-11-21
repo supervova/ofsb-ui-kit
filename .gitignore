@@ -1,6 +1,5 @@
 # Build System
 .tmp
-dist
 node_modules
 npm-debug.log
 
