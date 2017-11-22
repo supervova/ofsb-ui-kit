@@ -2,7 +2,7 @@
 $button-bg-base:              color('primary');
 $button-font-size:            $font-size-base;
 $button-font-weight:          normal;
-$button-border-width:         1px;
+$shadow-hover:                true;
 
 $button-transition:           box-shadow .2s ease-out, background-color .2s ease-out;
 $button-disabled-opacity:     .64;
@@ -14,23 +14,19 @@ $button-height-sm:            32px;
 $button-height:               36px;
 $button-height-lg:            48px;
 $button-min-width:            36px;
-$button-font-size-lg:         round($button-font-size * 1.309);
-
-// Calculated values — coloring classes.
-// $button{-hover, -focus, -active, -disabled}?-{color, bg, border-color, box-shadow}
-// $button-color set it in mixin using color-fg();
-
+$button-font-size-lg:         round($button-font-size / 3 * 4);
 
 /// Hard-coded
 /// $button-font-family
 /// $button-padding
-/// $button-margin
-/// $button-height{-sm, -lg}
-/// $button-font-size{-sm, -lg}
 /// $button-border-width
 /// $button-sizes: ()
 /// $button-disabled-opacity
 /// $button-background-hover-lightness
+/// $button-border-width
+
+// Calculated values
+// Button colors, borders, shadows for hover, focus, active, disabled states
 
 /// BASE BUTTON STYLES: UNDECORATED BOX
 @mixin button-base() {
@@ -74,8 +70,9 @@ $button-font-size-lg:         round($button-font-size * 1.309);
   }
 
   &:disabled {
+    // cursor: not-allowed isn't showing w/ pointer-events:none
     cursor: default;
-    opacity: .64;
+    opacity: .44;
     pointer-events: none;
   }
 }
@@ -88,54 +85,141 @@ $button-font-size-lg:         round($button-font-size * 1.309);
   }
 
   font-family: inherit;
-  font-size: $size;
   font-weight: $weight;
-
 }
 
-/// BUTTON COLORS AND LIGHTING
+/// BUTTON FILLS
 
 /// Gradient button styles. It used in class .btn--primary for more prominent actions
 /// @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
 @mixin button-gradient($background-base: $button-bg-base) {
   background-color: $background-base;
-  background-image: linear-gradient(scale-color($background-base, $lightness: +10%), scale-color($background-base, $lightness: -10%));
+  background-image: linear-gradient(scale-color($background-base, $lightness: +16%), scale-color($background-base, $lightness: -16%));
   border-radius: $button-radius;
   box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12);
   color: color-fg($background-base);
+  z-index: 1;
 
-  &:active {
-    //
+  // Animated :hover state
+  &::before {
+    background-color: color-tone($background-base, 2);
+    background-image: linear-gradient(scale-color($background-base, $lightness: +32%), $background-base);
+    border-radius: $button-radius;
+    box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+    z-index: -1;
   }
 
-  &:hover:not(:disabled) {
-    box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12), $shadow-z2;
+  &:hover {
+    @if $shadow-hover {
+      box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12), $shadow-z2;
+    }
+
+    &::before { opacity: 1; }
   }
 
   &:focus {
     box-shadow: 0 0 0 2px color-tone($background-base, -1);
   }
+
+  &:active {
+    background-color: color-tone($background-base, -1);
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(#000, .12);
+
+    &::before { opacity: 0; }
+  }
 }
 
 /// Flat button. Default
-/// @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
-@mixin button-flat($background-base: $button-bg-base) {
+/// @param {Color} $background-base [$button-bg-base] - Background color in default state
+/// @param {Color | Boolean} $background-hover [false] - Custom background color onhover
+@mixin button-flat($background-base: $button-bg-base, $background-hover: false) {
   background-color: color-tone($background-base, 5);
   border: 0;
   border-radius: $button-radius;
   color: color-fg(color-tone($background-base, 5), 'muted');
 
+  &:hover {
+    @if $shadow-hover {
+      box-shadow: $shadow-z2;
+    } @else if $background-hover {
+      background-color: $background-hover;
+    } @else {
+      background-color: color-tone($background-base, 4);
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px color-tone($background-base, 4);
+  }
+
   &:active {
     box-shadow: inset 0 2px 4px rgba(#000, .12);
     background-color: color-tone($background-base, 4);
   }
+}
+
+/// Ghost (outline) button. It's used for tertiary actions
+/// @param {Color} $border-color [$button-bg-base] - Border color
+/// @param {Color} $color [color-fg(color(background-main), 'muted')] - Button label color
+@mixin button-ghost($border-color: $button-bg-base, $color: color-fg(color(background-main), 'muted')) {
+  background-color: transparent;
+  border: 1px solid $border-color;
+  border-radius: $button-radius;
+  color: $color;
 
   &:hover {
-    box-shadow: $shadow-z2;
+    @if $shadow-hover {
+      box-shadow: $shadow-z2;
+    } @else {
+      background-color: color-tone($border-color, 5);
+    }
   }
 
-  &:focus:not(:active) {
-    box-shadow: 0 0 0 2px color-tone($background-base, 4);
+  &:focus {
+    box-shadow: 0 0 0 1px $border-color;
+  }
+
+  &:active {
+    box-shadow: inset 0 2px 4px rgba(#000, .12);
+    background-color: color-tone($border-color, 4);
+  }
+}
+
+/// 2.5D
+/// @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
+@mixin button-2-point-5d($background-base: $button-bg-base) {
+  background-color: $background-base;
+  background-image: linear-gradient(scale-color($background-base, $lightness: +16%), scale-color($background-base, $lightness: -16%));
+  border-radius: $button-radius;
+  box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2;
+  color: color-fg($background-base);
+  padding-bottom: 4px;
+  transition: padding-bottom .2s;
+
+  &:hover {
+    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px color-tone($background-base, -1);
+  }
+
+  &:active {
+    background-color: color-tone($background-base, -1);
+    background-image: none;
+    box-shadow: inset 0 1px 0 rgba(#fff, .16);
+    padding-bottom: 0;
+
+    &::before { opacity: 0; }
   }
 }
 
@@ -144,8 +228,25 @@ $button-font-size-lg:         round($button-font-size * 1.309);
 /// @param {Number} $height [$button-height] - Button height
 /// @param {Number} $hpadding [$spacer * 2] - Right and left paddings
 /// @param {Number} $min-width [$button-min-width] - Button minimum width
-@mixin button-size($height: $button-height, $hpadding: ($spacer * 2), $min-width: $button-min-width) {
-  padding: 0 $hpadding;
+@mixin button-size($font-size: $button-font-size, $padding: 0 ($spacer * 2), $height: $button-height, $min-width: $button-min-width) {
+  font-size: $font-size;
+  padding: $padding;
   height: $height;
   min-width: $min-width;
 }
+
+
+.two-dot-five-d {
+
+
+
+  padding-top: 6px;
+  position: relative;
+
+}
+
+.two-dot-five-d:active {
+  top: 3px;
+  box-shadow: inset 0 1px 0 #2ab7ec, 0 2px 0 0 #07526e, 0 5px 3px #999;
+}
+

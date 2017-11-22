@@ -106,3 +106,20 @@ If the color is already very dark, mdc-theme-dark-variant function will be light
 
 TODO. Research Foundation color functions
 node_modules/foundation-sites/scss/util/_color.scss
+
+--------------------------------------------------------------------------------
+
+### src/base/button/themes
+
+TODO. Create dark theme overrides
+```html
+<section class="theme--dark">
+  <button class="btn btn--primary">
+    Still dark
+  </button>
+
+  <button class="btn" type="button">
+    Me too!
+  </button>
+</section>
+```

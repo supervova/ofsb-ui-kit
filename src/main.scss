@@ -1,32 +1,12 @@
-// @import './node_modules/bootstrap/scss/functions';
-// @import './node_modules/bootstrap/scss/variables';
-// @import './node_modules/bootstrap/scss/mixins';
-// @import './node_modules/@material/button/mdc-button';
-
+// Global tools
 @import 'global/functions';
 @import 'global/variables';
+
+// Content and base UI
 @import 'base/button/button';
-// Not sure: define colors in themes or variables.
-// @import 'themes/background';
 
+// Components
 
-body {
-  background: color('background-main');
-  color: color-fg(color('background-main'), 'muted');
-}
+// Sections
 
-.tint {
-  background-color: color-tone('danger', 2);
-}
-
-.shadow {
-  background-color: color-tone('warning', -2);
-}
-
-.foo {
-  background-color: $green;
-  background-color: $button-bg-base;
-  background-color: color-tone(#f00, 2);
-}
-
-
+// Templates
