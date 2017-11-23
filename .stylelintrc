@@ -3,7 +3,9 @@
     "stylelint-config-sass-guidelines"
   ],
   "ignoreFiles": [
-    "./node_modules/**/*"
+    "./node_modules/**/*",
+    "./dist/css/main.css",
+    "./src/base/core/_reboot.scss"
   ],
   "rules": {
     "function-parentheses-space-inside": "never-single-line",
@@ -19,7 +21,13 @@
     "scss/at-extend-no-missing-placeholder": null,
     "scss/dollar-variable-colon-space-after": null,
 
+    "selector-class-pattern": "^[a-z0-9_-]*$",
     "selector-no-qualifying-type": null
+
   }
 }
+
+
+
+
 

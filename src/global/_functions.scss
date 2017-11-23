@@ -2,37 +2,40 @@
 // COLOR FUNCTIONS
 // -----------------------------------------------------------------------------
 
-/// COLORS FROM THE MAPS
+// COLORS FROM THE MAPS
 
-/// Get color from color roles Sass map
-/// @param {String} $key ['primary'] - Key for color map.
-/// @output {Color}
+// Get color from color roles Sass map
+// @param {String} $key ['primary'] - Key for color map.
+// @output {Color}
+
 @function color($key: 'primary') {
   @return map-get($colors, $key);
 }
 
-/// Get color from foreground colors Sass map
-/// @param {String} $theme ['light'] - Dark or light themes array.
-/// @param {String} $key ['text-primary'] - Key for color map.
-/// @output {Color}
-@function color-foreground($theme: 'light', $key: 'text-primary') {
-  @return map-get(map-get($colors-foreground, $theme), $key);
+// Get color from foreground colors Sass map
+// @param {String} $theme ['light'] - Dark or light themes array.
+// @param {String} $key ['text-primary'] - Key for color map.
+// @output {Color}
+
+@function color-ink-option($theme: 'light', $key: 'normal') {
+  @return map-get(map-get($ink-colors, $theme), $key);
 }
 
 
-/// CONTRASTING FOREGROUND COLOR
+// CONTRASTING FOREGROUND COLOR
 
-/// The following  Bootstrap function calculates if text needs to be light
-/// or dark depending on the background color passed. Color brightness
-/// is determined by the formula for converting RGB values to YIQ values.
+// The following  Bootstrap function calculates if text needs to be light
+// or dark depending on the background color passed. Color brightness
+// is determined by the formula for converting RGB values to YIQ values.
 
-/// @param {Color} $color - Background color of component.
-/// @param {String} $opacity ['text-primary'] - Key for foreground colors map.
-/// @output {Color} - Sufficiently contrasting foreground the color of a certain
-///   level of the visual hierarchy.
-/// @example
-///   color: color-fg(color('background'), 'muted');
-@function color-fg($color, $opacity: 'normal') {
+// @param {Color} $color - Background color of component.
+// @param {String} $opacity ['text-primary'] - Key for foreground colors map.
+// @output {Color} - Sufficiently contrasting foreground the color of a certain
+//   level of the visual hierarchy.
+// @example
+//   color: color-ink(color('background-main'), 'muted');
+
+@function color-ink($color, $opacity: 'normal') {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
@@ -41,21 +44,21 @@
 
   @if ($yiq >= 150) {
     // Dark on light
-    @return color-foreground('light', $opacity);
+    @return color-ink-option('light', $opacity);
   } @else {
     // Light on dark
-    @return color-foreground('dark', $opacity);
+    @return color-ink-option('dark', $opacity);
   }
 }
 
 
-/// TONAL PALETTE
+// TONAL PALETTE
+// Create tints and shadows using darken() and lighten() methods
+// @param {String | Color} $color - Key for color roles map or color value.
+// @param {Number} $level [0] - Degree of lightening or darkening of given
+//   color, a multiple of $color-interval.
+// @output {Color} — Shade or tint of given color
 
-/// Create tints and shadows using darken() and lighten() methods
-/// @param {String | Color} $color - Key for color roles map or color value.
-/// @param {Number} $level [0] - Degree of lightening or darkening of given
-///   color, a multiple of $color-interval.
-/// @output {Color} — Shade or tint of given color
 @function color-tone($color, $level: 0) {
   $color: color($color) or $color;
 
@@ -66,3 +69,53 @@
     @return darken($color, $level * $color-interval);
   }
 }
+
+
+// -----------------------------------------------------------------------------
+// COLOR FUNCTIONS
+// -----------------------------------------------------------------------------
+
+// ROUND A DECIMAL TO SPECIFIED DIGITS
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @param  {String} [$mode:round] (round|ceil|floor) How to round a number
+// @return {Number} A rounded number
+// @example
+//     decimal-round(0.333)    => 0
+//     decimal-round(0.333, 1) => 0.3
+//     decimal-round(0.333, 2) => 0.33
+//     decimal-round(0.666)    => 1
+//     decimal-round(0.666, 1) => 0.7
+//     decimal-round(0.666, 2) => 0.67
+
+@function decimal-round ($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+

@@ -1,0 +1,51 @@
+$input-bg:                              #fff;
+$input-disabled-bg:                     $grey-200;
+$input-padding:                         $spacer;
+$input-transition:                      border-color ease-in-out .16s, box-shadow ease-in-out .16s;
+
+// Global variables set for border-color, border-radius, color, font-family,
+// font-size, line-height
+
+// Input, label and hints container
+
+.form__group {
+  display: flex;
+  align-items: stretch;
+  vertical-align: middle;
+
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  position: relative;
+  width: 100%;
+
+  > label {
+    order: 0;
+    padding-right: $spacer;
+    text-align: left;
+  }
+}
+
+// Text fields
+
+.form__control {
+  background-color: $input-bg;
+  border-radius: $border-radius-sm;
+  border: 1px solid $border-color;
+  color: color('ink-color-main');
+  display: inline-block;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  padding: .375rem .75rem;
+  transition: $input-transition;
+  width: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// INLINE FORM
+// -----------------------------------------------------------------------------
+
+.form--inline .form__group {
+  display: inline-flex;
+  width: auto;
+}
+

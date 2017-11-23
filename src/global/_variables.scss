@@ -1,10 +1,10 @@
-/// ----------------------------------------------------------------------------
-/// COLORS
-/// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// COLORS
+// ----------------------------------------------------------------------------
 
-/// COLORS NAMES
+// COLORS NAMES
 
-/// Greys
+// Greys
 $grey-50:     rgb(248, 249, 250);
 $grey-100:    rgb(242, 245, 249);
 $grey-200:    rgb(235, 238, 242);
@@ -16,7 +16,7 @@ $grey-700:    rgb(94, 97, 101);
 $grey-800:    rgb(63, 66, 70);
 $grey-900:    rgb(33, 37, 41);
 
-/// Spectrum
+// Spectrum
 $teal-blue:   rgb(92, 203, 255);
 $blue:        rgb(0, 122, 255);
 $purple:      rgb(80, 78, 217);
@@ -27,43 +27,44 @@ $yellow:      rgb(255, 204, 0);
 $green:       rgb(78, 217, 101);
 
 
-/// COLORS ROLES
+// COLORS ROLES
 
-/// The primary color refers to a color that appears most frequently
-/// in the site. Large UI areas and elements such as header, widget headers and
-/// promotional boxes should be colored with primary color.
+// The primary color refers to a color that appears most frequently
+// in the site. Large UI areas and elements such as header, widget headers and
+// promotional boxes should be colored with primary color.
 
-/// The secondary color can be used to accent smaller areas, especially for
-/// interactive elements, such as Call-to-Action buttons. If you don’t have a
-/// secondary color, you can use the primary color instead for these areas.
+// The secondary color can be used to accent smaller areas, especially for
+// interactive elements, such as Call-to-Action buttons. If you don’t have a
+// secondary color, you can use the primary color instead for these areas.
 
-/// The background color for your application, aka the color on top of which
-/// the UI is drawn.
+// The background color for your application, aka the color on top of which
+// the UI is drawn.
 
-/// The success, info, warning and danger colors are used primarily
-/// for the color-coded system feedback.
+// The success, info, warning and danger colors are used primarily
+// for the color-coded system feedback.
 
 $colors: (
   primary:            $blue,
   secondary:          $grey-600,
   background-main:    $grey-100,
   background-widget:  white,
+  ink-color-main:     $grey-900,
   success:            $green,
   info:               $teal-blue,
   warning:            $yellow,
   danger:             $red
 );
 
-/// Foreground colors
-/// Normal: used for most text
-/// Muted: used for active icons and text which is lower in the visual hierarchy
-/// Muted-more: used for deafault state of icons, text hints, such as those
-/// in text fields and labels, and text in disabled components and content
-/// Muted-most: used for dividers, i.e. horizontal and vertical rules separated
-/// UI elements
+// Foreground colors
+// Normal: used for most text
+// Muted: used for active icons and text which is lower in the visual hierarchy
+// Muted-more: used for deafault state of icons, text hints, such as those
+// in text fields and labels, and text in disabled components and content
+// Muted-most: used for dividers, i.e. horizontal and vertical rules separated
+// UI elements
 
 // stylelint-disable indentation
-$colors-foreground: (
+$ink-colors: (
   light: (
     normal:       rgba(black, .87), // primary text
     muted:        rgba(black, .54), // secondary text, active icons
@@ -79,10 +80,10 @@ $colors-foreground: (
 );
 // stylelint-enable indentation
 
-/// Color tone interval
+// Color tone interval
 $color-interval: 8%;
 
-/// Primary color filled areas and elements
+// Primary color filled areas and elements
 // TODO. Add primary color tones filled areas
 $betslip-bg:                    color('primary');
 $emphasis-color:                color('primary');
@@ -93,7 +94,7 @@ $progress-bar-fill:             color('primary');
 $selected-section-icon-fill:    color('primary');
 $selected-tab-underline-color:  color('primary');
 
-/// Secondary color tones filled areas and elements
+// Secondary color tones filled areas and elements
 // TODO. Add primary color tones filled areas
 $drawer-header-bg:              color('secondary');
 $featurette-bg:                 color('secondary');
@@ -101,21 +102,22 @@ $link-color:                    color('secondary');
 $primary-button-bg:             color('secondary');
 $secondary-promo-bg:            color('secondary');
 
-/// Background color tones filled areas and elements
+// Background color tones filled areas and elements
 
 
 // -----------------------------------------------------------------------------
-/// TYPOGRAPHY
+// TYPOGRAPHY
 // -----------------------------------------------------------------------------
 
+$font-family-sans-serif:        Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 $font-size-base:                14px;
-
+$line-height-base:              decimal-round((20 / 14), 3);
 
 // -----------------------------------------------------------------------------
-/// SPACING
+// SPACING
 // -----------------------------------------------------------------------------
 
-/// Space scale for standard 8-point grid
+// Space scale for standard 8-point grid
 $spacer: 8px;
 $spacers: (
   0:    0,
@@ -133,13 +135,15 @@ $spacers: (
 
 
 // -----------------------------------------------------------------------------
-/// SHAPES
+// SHAPES
 // -----------------------------------------------------------------------------
 
 $border-radius-sm:              3px;
 $border-radius:                 5px;
 $border-radius-lg:              8px;
 $border-radius-xl:              13px;
+
+$border-color:                  $grey-200;
 
 $shadow-z1:                     0 1px 5px 0 rgba(0, 0, 0, .06), 0 2px 2px 0 rgba(0, 0, 0, .06), 0 1px 1px 0 rgba(0, 0, 0, .08);
 $shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);

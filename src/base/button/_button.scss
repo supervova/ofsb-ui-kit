@@ -3,11 +3,11 @@
 // Variables values assigned in mixins because the first time they are used
 // there
 
-/// Button Styles
+// Button Styles
 
-/// Default flat button
-/// The class combines styles of undecorated button object and styles of flat
-/// buttons used for outcomes and others secondary actions
+// Default flat button
+// The class combines styles of undecorated button object and styles of flat
+// buttons used for outcomes and others secondary actions
 .btn {
   @include button-base();
   @include button-flat();
@@ -15,23 +15,23 @@
   @include button-size();
 }
 
-/// Call to Action button. It is for primary, final step actions mostly related
-/// to money decisions and sign up.
+// Call to Action button. It is for primary, final step actions mostly related
+// to money decisions and sign up.
 .btn--primary {
   @include button-gradient();
 }
 
-/// 2.5D (or 3/4 perspective and pseudo-3D) button.
+// 2.5D (or 3/4 perspective and pseudo-3D) button.
 .btn--2-point-5d {
   @include button-2-point-5d();
 }
 
-/// Outlined button for tertiary actions
+// Outlined button for tertiary actions
 .btn--ghost {
   @include button-ghost($color: $button-bg-base);
 }
 
-/// Button Sizes
+// Button Sizes
 // They can be set w/ mixin, but pure CSS seems more clear solution
 .btn--sm {
   padding: 0 $spacer;
@@ -46,7 +46,7 @@
   min-width: $button-height-lg;
 }
 
-/// Block button
+// Block button
 .btn--block {
   display: block;
   width: 100%;
