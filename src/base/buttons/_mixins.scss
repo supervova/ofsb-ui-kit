@@ -10,10 +10,10 @@
 $button-style: 'flat';
 
 // Assign the tones of $colors to $button-bg-base using color() function.
-// Or assign the shades or tints of $colors to it using both color()
-// and color-tone() functions. You can also use color in standard web formats
+// Or assign the shades or tints of $colors to it using color(), lighten()
+// and darken() functions. You can also use color in standard web formats
 // @example
-//  $button-bg-base:          color-tone(color('primary'), -4);
+//  $button-bg-base:          darken(color('primary'), ($tone * 4));
 //  $button-bg-base:          rgba(255, 102, 0, .8);
 //  $button-bg-base:          #ccf;
 $button-bg-base: color('primary');
@@ -154,7 +154,7 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
 @mixin button-flat($background-base: $button-bg-base, $background-hover: false) {
   background-color: $background-base;
   border: 0;
-  color: color-ink(color-tone($background-base), 'muted');
+  color: color-ink($background-base, 'muted');
 
   &:hover {
     @if $button-hover-shadow {
@@ -164,17 +164,17 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
       background-color: $background-hover;
     }
     @else {
-      background-color: color-tone($background-base, 1);
+      background-color: lighten($background-base, $tone);
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px color-tone($background-base, -1);
+    box-shadow: 0 0 0 2px darken($background-base, $tone);
   }
 
   &:active {
-    box-shadow: inset 0 2px 4px rgba(#000, .12), 0 0 0 2px color-tone($background-base, -2);
-    background-color: color-tone($background-base, -1);
+    box-shadow: inset 0 2px 4px rgba(#000, .12), 0 0 0 2px darken($background-base, ($tone * 2));
+    background-color: darken($background-base, $tone);
   }
 }
 
@@ -190,7 +190,7 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
 
   // Animated :hover state
   &::before {
-    background-color: color-tone($background-base, 2);
+    background-color: lighten($background-base, $tone);
     background-image: linear-gradient(scale-color($background-base, $lightness: +32%), $background-base);
     border-radius: $button-radius;
     box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12);
@@ -216,14 +216,14 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px color-tone($background-base, -1);
+    box-shadow: 0 0 0 2px darken($background-base, $tone);
   }
 
   &:active,
   &:active:focus {
-    background-color: color-tone($background-base, -1);
+    background-color: darken($background-base, $tone);
     background-image: none;
-    box-shadow: 0 0 0 2px color-tone($background-base, -2), inset 0 2px 4px rgba(#000, .12);
+    box-shadow: 0 0 0 2px darken($background-base, ($tone * 2)), inset 0 2px 4px rgba(#000, .12);
 
     &::before {
       opacity: 0;
@@ -246,16 +246,16 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
   }
 
   &:focus {
-    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px color-tone($background-base, -1);
+    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px darken($background-base, $tone);
   }
 
   &:focus:hover {
-    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px color-tone($background-base, -1), inset 0 36px 36px rgba(#fff, .24);
+    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px darken($background-base, $tone), inset 0 36px 36px rgba(#fff, .24);
   }
 
   &:active,
   &:active:focus {
-    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -1px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px color-tone($background-base, -1), inset 0 36px 36px rgba(#fff, .16);
+    box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -1px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px darken($background-base, $tone), inset 0 36px 36px rgba(#fff, .16);
     padding-top: 3px;
     padding-bottom: 1px;
   }
@@ -275,7 +275,7 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
       box-shadow: $shadow-z2;
     }
     @else {
-      background-color: color-tone($border-color, 5);
+      background-color: lighten($border-color, ($tone * 5));
     }
   }
 
@@ -285,7 +285,7 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
 
   &:active {
     box-shadow: inset 0 2px 4px rgba(#000, .12);
-    background-color: color-tone($border-color, 4);
+    background-color: lighten($border-color, ($tone * 4));
   }
 }
 

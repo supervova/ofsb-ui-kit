@@ -52,27 +52,8 @@
 }
 
 
-// TONAL PALETTE
-// Create tints and shadows using darken() and lighten() methods
-// @param {String | Color} $color - Key for color roles map or color value.
-// @param {Number} $level [0] - Degree of lightening or darkening of given
-//   color, a multiple of $color-interval.
-// @output {Color} — Shade or tint of given color
-
-@function color-tone($color, $level: 0) {
-  $color: color($color) or $color;
-
-  @if ($level > 0) {
-    @return lighten($color, $level * $color-interval);
-  } @else {
-    $level: abs($level);
-    @return darken($color, $level * $color-interval);
-  }
-}
-
-
 // -----------------------------------------------------------------------------
-// COLOR FUNCTIONS
+// MATH FUNCTIONS
 // -----------------------------------------------------------------------------
 
 // ROUND A DECIMAL TO SPECIFIED DIGITS

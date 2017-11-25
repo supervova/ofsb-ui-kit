@@ -9,7 +9,7 @@
 
 // Use color argument to change background of default flat button
 .btn {
-  @include button($bg: color-tone(color('primary'), 4));
+  @include button($bg: lighten(color('primary'), ($tone * 4)));
 }
 
 // Use argument 'gradient' for primary action button

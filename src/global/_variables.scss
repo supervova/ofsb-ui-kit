@@ -55,6 +55,10 @@ $colors: (
   danger:             $red
 );
 
+// Color tone interval to create consistent colors tints and shadows using
+// lighten() and darken() functions
+$tone: 8%;
+
 // Foreground colors
 // Normal: used for most text
 // Muted: used for active icons and text which is lower in the visual hierarchy
@@ -79,9 +83,6 @@ $ink-colors: (
   )
 );
 // stylelint-enable indentation
-
-// Color tone interval
-$color-interval: 8%;
 
 // Primary color filled areas and elements
 // TODO. Add primary color tones filled areas
