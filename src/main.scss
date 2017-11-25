@@ -3,12 +3,13 @@
 @import 'global/variables';
 
 // Core
-@import 'base/core/reboot';
+@import 'vendor/reboot';
 @import 'base/core/page';
 
 // Content and base UI
-@import 'base/button/button';
+
 @import 'base/form-controls/form-controls';
+@import 'base/buttons/buttons';
 
 // Components
 

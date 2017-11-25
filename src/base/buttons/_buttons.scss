@@ -1,0 +1,37 @@
+@import 'mixins';
+
+// Variables values assigned in mixins because the first time they are used
+// there
+
+#some-really > .custom-selector {
+  @include button();
+}
+
+// Use color argument to change background of default flat button
+.btn {
+  @include button($bg: color-tone(color('primary'), 4));
+}
+
+// Use argument 'gradient' for primary action button
+.btn--primary {
+  @include button($style: 'gradient');
+}
+
+// The specialized mixins nested in button() can be used separately
+.btn--lg {
+  @include button-size('large');
+}
+
+// 2.5D (or 3/4 perspective and pseudo-3D) style
+.btn--2-point-5d {
+  // The same effect can be achieved by using @include button-2-point-5d();
+  @include button($style: 'pseudo-3d');
+}
+
+// Outlined button style
+.btn--ghost {
+  // The same effect can be achieved by using @include button-ghost($bg: $button-bg-base);
+  @include button($style: 'ghost');
+}
+
+

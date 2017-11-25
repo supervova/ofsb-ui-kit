@@ -5,13 +5,20 @@
   "ignoreFiles": [
     "./node_modules/**/*",
     "./dist/css/main.css",
-    "./src/base/core/_reboot.scss"
+    "./src/vendor/_reboot.scss",
+    "./src/_tmp.scss"
   ],
   "rules": {
     "function-parentheses-space-inside": "never-single-line",
     "max-nesting-depth": 2,
     "number-leading-zero": "never",
     "order/properties-alphabetical-order": null,
+    "property-no-unknown": [
+      true,
+      {
+        ignoreProperties: ["appearance"]
+      }
+    ],
     "rule-empty-line-before": [
       "always",
       {

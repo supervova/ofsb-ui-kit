@@ -1,6 +1,6 @@
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // COLORS
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // COLORS NAMES
 
@@ -109,8 +109,8 @@ $secondary-promo-bg:            color('secondary');
 // TYPOGRAPHY
 // -----------------------------------------------------------------------------
 
-$font-family-sans-serif:        Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-$font-size-base:                14px;
+$font-family-sans-serif:        'Roboto', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-size-base:                1.4rem;
 $line-height-base:              decimal-round((20 / 14), 3);
 
 // -----------------------------------------------------------------------------

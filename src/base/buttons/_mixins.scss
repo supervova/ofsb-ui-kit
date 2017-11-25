@@ -1,20 +1,30 @@
 // Set up base properties
-$button-bg-base:              color('primary');
-$button-font-size:            $font-size-base;
-$button-font-weight:          normal;
-$shadow-hover:                true;
 
-$button-transition:           box-shadow .2s ease-out, background-color .2s ease-out;
-$button-disabled-opacity:     .64;
-$button-label-uppercase:      null; // set to uppercase
-$button-radius:               $border-radius;
+// Block button
+// .btn--block {
+//   display: block;
+//   width: 100%;
+// }
 
-// Buttons sizes
-$button-height-sm:            32px;
-$button-height:               36px;
-$button-height-lg:            48px;
-$button-min-width:            36px;
-$button-font-size-lg:         round($button-font-size / 3 * 4);
+// Valid options are 'ghost', 'flat', 'gradient', 'pseudo-3d'
+$button-style: 'flat';
+
+// Assign the tones of $colors to $button-bg-base using color() function.
+// Or assign the shades or tints of $colors to it using both color()
+// and color-tone() functions. You can also use color in standard web formats
+// @example
+//  $button-bg-base:          color-tone(color('primary'), -4);
+//  $button-bg-base:          rgba(255, 102, 0, .8);
+//  $button-bg-base:          #ccf;
+$button-bg-base: color('primary');
+$button-radius: $border-radius;
+$button-hover-shadow: false;
+$button-font-weight: normal;
+$button-label-uppercase: false;
+$button-disabled-opacity: .64;
+$button-transition: box-shadow .2s ease-out, background-color .2s ease-out;
+
+$button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 'height': 32px ), 'default': ( 'font-size': $font-size-base, 'padding': 0 ($spacer * 2), 'height': 36px ), 'large': ( 'font-size': $font-size-base / 3 * 4, 'padding': 0 ($spacer * 3), 'height': 48px ) );
 
 // Hard-coded
 // $button-font-family
@@ -29,22 +39,65 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
 // Button colors, borders, shadows for hover, focus, active, disabled states
 
 // -----------------------------------------------------------------------------
-// BASE BUTTON STYLES: UNDECORATED BOX
-// ----------------------------------------------------------------------------
+// UNIVERSAL BUTTON FUNCTION
+// -----------------------------------------------------------------------------
 
-@mixin button-base() {
+// Creates buttons of different styles, colors and sizes
+// @param {Color} $color [$button-bg-base] - Color of button body. In gradient
+// buttons it's used for calculation of gradient stops
+// @param {String} $size ['default'] - Key for $button-sizes map
+// @param {String} $style [$button-style] - The style of the button, depending
+// @param {Boolean | Color} $color [false] - Override label color
+//    on which one of the fill mixin is used. Valid options are 'ghost', 'flat',
+//    'gradient', 'pseudo-3d'
+@mixin button($bg: $button-bg-base, $size: 'default', $style: $button-style, $color: false) {
+  @extend %button-base;
+
+  @include button-font();
+  @if ($style == 'gradient') {
+    @include button-gradient($background-base: $bg);
+  }
+  @else if ($style == 'pseudo-3d') {
+    @include button-2-point-5d($background-base: $bg);
+  }
+  @else if ($style == 'ghost') {
+    @include button-ghost($border-color: $bg);
+  }
+  @else {
+    @include button-flat($background-base: $bg);
+  }
+
+  @if $color {
+    color: $color;
+  }
+
+  @include button-size($size);
+}
+
+// -----------------------------------------------------------------------------
+// BASE BUTTON STYLES: UNDECORATED BOX
+// -----------------------------------------------------------------------------
+
+%button-base {
   // If reboot is not used, add font-smoothing, tap-highlight-color and
   // box-sizing: border-box
 
   appearance: none;
+  border-radius: $button-radius;
   border: 0;
+
   display: inline-block;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+
+  font-family: inherit;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
+
   margin: 0;
   outline: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   user-select: none;
   vertical-align: middle;
@@ -77,13 +130,11 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
   }
 }
 
-
 // -----------------------------------------------------------------------------
 // BUTTON FONT SETTINGS
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-// @param {Color} $weight [$button-font-weight] - Default font weight
-
+// @param {String | Number} $weight [$button-font-weight] - Default font weight
 @mixin button-font($weight: $button-font-weight) {
   @if $button-label-uppercase {
     text-transform: uppercase;
@@ -95,46 +146,44 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
 
 // -----------------------------------------------------------------------------
 // BUTTON FILLS
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // FLAT BUTTON. DEFAULT
 // @param {Color} $background-base [$button-bg-base] - Background color in default state
 // @param {Color | Boolean} $background-hover [false] - Custom background color onhover
-
 @mixin button-flat($background-base: $button-bg-base, $background-hover: false) {
-  background-color: color-tone($background-base, 5);
+  background-color: $background-base;
   border: 0;
-  border-radius: $button-radius;
-  color: color-ink(color-tone($background-base, 5), 'muted');
+  color: color-ink(color-tone($background-base), 'muted');
 
   &:hover {
-    @if $shadow-hover {
+    @if $button-hover-shadow {
       box-shadow: $shadow-z2;
-    } @else if $background-hover {
+    }
+    @else if $background-hover {
       background-color: $background-hover;
-    } @else {
-      background-color: color-tone($background-base, 4);
+    }
+    @else {
+      background-color: color-tone($background-base, 1);
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px color-tone($background-base, 4);
+    box-shadow: 0 0 0 2px color-tone($background-base, -1);
   }
 
   &:active {
-    box-shadow: inset 0 2px 4px rgba(#000, .12), 0 0 0 2px color-tone($background-base, 3);
-    background-color: color-tone($background-base, 4);
+    box-shadow: inset 0 2px 4px rgba(#000, .12), 0 0 0 2px color-tone($background-base, -2);
+    background-color: color-tone($background-base, -1);
   }
 }
 
-// GRADIENT BUTTON STYLES
-// It's used in class .btn--primary for more prominent actions
+// GRADIENT BUTTON
+// It's used for more prominent actions
 // @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
-
 @mixin button-gradient($background-base: $button-bg-base) {
   background-color: $background-base;
   background-image: linear-gradient(scale-color($background-base, $lightness: +16%), scale-color($background-base, $lightness: -16%));
-  border-radius: $button-radius;
   box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12);
   color: color-ink($background-base);
   z-index: 1;
@@ -157,11 +206,13 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
   }
 
   &:hover {
-    @if $shadow-hover {
+    @if $button-hover-shadow {
       box-shadow: inset 0 2px 0 rgba(#fff, .16), inset 0 0 0 1px rgba(#000, .12), $shadow-z2;
     }
 
-    &::before { opacity: 1; }
+    &::before {
+      opacity: 1;
+    }
   }
 
   &:focus {
@@ -174,21 +225,21 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
     background-image: none;
     box-shadow: 0 0 0 2px color-tone($background-base, -2), inset 0 2px 4px rgba(#000, .12);
 
-    &::before { opacity: 0; }
+    &::before {
+      opacity: 0;
+    }
   }
 }
 
 // 2.5D
 // @param {Color} $background-base [$button-bg-base] - Background color which tones used in gradients
-
 @mixin button-2-point-5d($background-base: $button-bg-base) {
   background-color: $background-base;
   background-image: linear-gradient(scale-color($background-base, $lightness: +16%), scale-color($background-base, $lightness: -16%));
-  border-radius: $button-radius;
   box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2;
   color: color-ink($background-base);
   padding-bottom: 4px;
-  transition: box-shadow .2s ease-out;
+  transition: box-shadow .1s ease-out;
 
   &:hover {
     box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -4px 0 0 rgba(#000, .16), $shadow-z2, inset 0 36px 36px rgba(#fff, .24);
@@ -205,6 +256,7 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
   &:active,
   &:active:focus {
     box-shadow: inset 0 1px 0 rgba(#fff, .16), inset 0 -1px 0 0 rgba(#000, .16), $shadow-z2, 0 0 0 2px color-tone($background-base, -1), inset 0 36px 36px rgba(#fff, .16);
+    padding-top: 3px;
     padding-bottom: 1px;
   }
 }
@@ -213,17 +265,16 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
 // It's used for tertiary actions
 // @param {Color} $border-color [$button-bg-base] - Border color
 // @param {Color} $color [color-ink(color(background-main), 'muted')] - Button label color
-
 @mixin button-ghost($border-color: $button-bg-base, $color: color-ink(color(background-main), 'muted')) {
   background-color: transparent;
   border: 1px solid $border-color;
-  border-radius: $button-radius;
   color: $color;
 
   &:hover {
-    @if $shadow-hover {
+    @if $button-hover-shadow {
       box-shadow: $shadow-z2;
-    } @else {
+    }
+    @else {
       background-color: color-tone($border-color, 5);
     }
   }
@@ -238,20 +289,18 @@ $button-font-size-lg:         round($button-font-size / 3 * 4);
   }
 }
 
-
 // -----------------------------------------------------------------------------
 // BUTTON SIZE AND SPACING
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // Margins should be set by utility classes, i.e. .ml-1, .mb-2.
-// @param {Number} $font-size [$button-font-size] - Font size
-// @param {Number} $padding [0 ($spacer * 2)] - Button paddings
-// @param {Number} $height [$button-height] - Button height
-// @param {Number} $min-width [$button-min-width] - Button minimum width
+// @param {String} $size ['default'] - Key for nesting map in $button-sizes map
+@mixin button-size($size: 'default') {
+  $settings: map-get($button-sizes, $size);
 
-@mixin button-size($font-size: $button-font-size, $padding: 0 ($spacer * 2), $height: $button-height, $min-width: $button-min-width) {
-  font-size: $font-size;
-  padding: $padding;
-  height: $height;
-  min-width: $min-width;
+  font-size: map-get($settings, 'font-size');
+  line-height: 1;
+  padding: map-get($settings, 'padding');
+  height: map-get($settings, 'height');
+  min-width: map-get($settings, 'height');
 }
