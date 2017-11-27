@@ -1,11 +1,5 @@
 // Set up base properties
 
-// Block button
-// .btn--block {
-//   display: block;
-//   width: 100%;
-// }
-
 // Valid options are 'ghost', 'flat', 'gradient', 'pseudo-3d'
 $button-style: 'flat';
 
@@ -18,7 +12,7 @@ $button-style: 'flat';
 //  $button-bg-base:          #ccf;
 $button-bg-base: color('primary');
 $button-radius: $border-radius;
-$button-hover-shadow: false;
+$button-hover-shadow: true;
 $button-font-weight: normal;
 $button-label-uppercase: false;
 $button-disabled-opacity: .64;
@@ -46,11 +40,11 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
 // @param {Color} $color [$button-bg-base] - Color of button body. In gradient
 // buttons it's used for calculation of gradient stops
 // @param {String} $size ['default'] - Key for $button-sizes map
-// @param {String} $style [$button-style] - The style of the button, depending
+// @param {String} $style [$button-style] (ghost|flat|gradient|pseudo-3d) - The style of the button, depending on which one of the fill mixin is used.
 // @param {Boolean | Color} $color [false] - Override label color
-//    on which one of the fill mixin is used. Valid options are 'ghost', 'flat',
-//    'gradient', 'pseudo-3d'
-@mixin button($bg: $button-bg-base, $size: 'default', $style: $button-style, $color: false) {
+// @param {Boolean} $block [false] - Turn on full width behavior
+
+@mixin button($bg: $button-bg-base, $size: 'default', $style: $button-style, $color: false, $block: false) {
   @extend %button-base;
 
   @include button-font();
@@ -72,6 +66,10 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
   }
 
   @include button-size($size);
+
+  @if $block {
+    @include button-block();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -303,4 +301,12 @@ $button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 
   padding: map-get($settings, 'padding');
   height: map-get($settings, 'height');
   min-width: map-get($settings, 'height');
+}
+
+// Full width button
+
+@mixin button-block() {
+  display: block;
+  display: flex;
+  width: 100%;
 }

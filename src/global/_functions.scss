@@ -57,10 +57,10 @@
 // -----------------------------------------------------------------------------
 
 // ROUND A DECIMAL TO SPECIFIED DIGITS
-//
+
 // @param  {Number} $number A number to round
-// @param  {Number} [$digits:0] Digits to output
-// @param  {String} [$mode:round] (round|ceil|floor) How to round a number
+// @param  {Number} [0] Digits to output
+// @param  {String} [round] (round|ceil|floor) How to round a number
 // @return {Number} A rounded number
 // @example
 //     decimal-round(0.333)    => 0
