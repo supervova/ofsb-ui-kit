@@ -18,7 +18,20 @@ $button-label-uppercase: false;
 $button-disabled-opacity: .64;
 $button-transition: box-shadow .2s ease-out, background-color .2s ease-out;
 
-$button-sizes: ( 'small': ( 'font-size': $font-size-base, 'padding': 0 $spacer, 'height': 32px ), 'default': ( 'font-size': $font-size-base, 'padding': 0 ($spacer * 2), 'height': 36px ), 'large': ( 'font-size': $font-size-base / 3 * 4, 'padding': 0 ($spacer * 3), 'height': 48px ) );
+$button-sizes: (
+  'small': (
+    'font-size': $font-size-base,
+    'padding': 0 $spacer,
+    'height': 32px ),
+  'default': (
+    'font-size': $font-size-base,
+    'padding': 0 ($spacer * 2),
+    'height': 36px ),
+  'large': (
+    'font-size': $font-size-base / 3 * 4,
+    'padding': 0 ($spacer * 3),
+    'height': 48px )
+  );
 
 // Hard-coded
 // $button-font-family
