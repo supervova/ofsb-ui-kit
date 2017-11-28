@@ -15,31 +15,29 @@ $button-radius: $border-radius;
 $button-hover-shadow: true;
 $button-font-weight: normal;
 $button-label-uppercase: false;
-$button-disabled-opacity: .64;
+$button-disabled-opacity: .44;
 $button-transition: box-shadow .2s ease-out, background-color .2s ease-out;
 
+// stylelint-disable indentation
 $button-sizes: (
   'small': (
     'font-size': $font-size-base,
     'padding': 0 $spacer,
-    'height': 32px ),
+    'height': 32px),
   'default': (
     'font-size': $font-size-base,
     'padding': 0 ($spacer * 2),
-    'height': 36px ),
+    'height': 36px),
   'large': (
-    'font-size': $font-size-base / 3 * 4,
+    'font-size': ($font-size-base / 3 * 4),
     'padding': 0 ($spacer * 3),
-    'height': 48px )
+    'height': 48px)
   );
+// stylelint-enable indentation
 
 // Hard-coded
 // $button-font-family
 // $button-padding
-// $button-border-width
-// $button-sizes: ()
-// $button-disabled-opacity
-// $button-background-hover-lightness
 // $button-border-width
 
 // Calculated values
@@ -61,6 +59,9 @@ $button-sizes: (
   @extend %button-base;
 
   @include button-font();
+
+  @include button-size($size);
+
   @if ($style == 'gradient') {
     @include button-gradient($background-base: $bg);
   }
@@ -78,8 +79,6 @@ $button-sizes: (
     color: $color;
   }
 
-  @include button-size($size);
-
   @if $block {
     @include button-block();
   }
@@ -90,10 +89,9 @@ $button-sizes: (
 // -----------------------------------------------------------------------------
 
 %button-base {
-  // If reboot is not used, add font-smoothing, tap-highlight-color and
-  // box-sizing: border-box
+  // If reboot is not used, add font-smoothing, tap-highlight-color,
+  // box-sizing: border-box, and -webkit-appearance: none | button
 
-  appearance: none;
   border-radius: $button-radius;
   border: 0;
 
@@ -136,7 +134,7 @@ $button-sizes: (
   &:disabled {
     // cursor: not-allowed isn't showing w/ pointer-events:none
     cursor: default;
-    opacity: .44;
+    opacity: $button-disabled-opacity;
     pointer-events: none;
   }
 }

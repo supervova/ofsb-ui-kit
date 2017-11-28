@@ -1,37 +1,11 @@
 $input-bg:                              #fff;
 $input-disabled-bg:                     $grey-200;
-$input-padding:                         $spacer;
-$input-transition:                      border-color ease-in-out .16s, box-shadow ease-in-out .16s;
+$input-border-color:                    $border-color;
+$input-btn-padding-x:                   ($spacer * 2 - 1px);
+$input-btn-padding-y:                   9px; // In fact, it should be ($line-height-base / 2 - .1rem
+$input-transition:                      border-color .16s cubic-bezier(.4, 0, .2, 1), box-shadow .16s cubic-bezier(.4, 0, .2, 1);
+$form-labels-col:                       217px;
 
-// $input-color:                           $grey-700;
-// $input-border-color:                    $grey-400;
-// $input-btn-border-width:                $border-width; // For form controls and buttons
-// $input-box-shadow:                      inset 0 1px 1px rgba(#000, .075);
-
-// $input-border-radius:                   $border-radius;
-// $input-border-radius-lg:                $border-radius-lg;
-// $input-border-radius-sm:                $border-radius-sm;
-
-// $input-focus-bg:                        $input-bg;
-// $input-focus-border-color:              lighten(color('primary'), 25%);
-// $input-focus-color:                     $input-color;
-
-// $input-placeholder-color:               $grey-600;
-
-// $input-height-border:                   $input-btn-border-width * 2;
-
-// $input-height-inner:                    ($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2);
-// $input-height:                          calc(#{$input-height-inner} + #{$input-height-border});
-
-// $input-height-inner-sm:                 ($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2);
-// $input-height-sm:                       calc(#{$input-height-inner-sm} + #{$input-height-border});
-
-// $input-height-inner-lg:                 ($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2);
-// $input-height-lg:                       calc(#{$input-height-inner-lg} + #{$input-height-border});
-
-// $input-transition:                      border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
-// $form-text-margin-top:                  .25rem;
 
 // Global variables set for border-color, border-radius, color, font-family,
 // font-size, line-height
@@ -39,43 +13,98 @@ $input-transition:                      border-color ease-in-out .16s, box-shado
 // Input, label and hints container
 
 .form__group {
-  display: flex;
+  display: flex; // @if 'inline': inline-flex;
   align-items: stretch;
-  vertical-align: middle;
+  flex-wrap: wrap;
 
-  font-family: $font-family-sans-serif;
-  font-size: $font-size-base;
+  margin-bottom: 20px;
   position: relative;
-  width: 100%;
+  width: 100%; // @if 'inline': auto;
+}
 
-  > label {
-    order: 0;
-    padding-right: $spacer;
-    text-align: left;
-  }
+.form__label {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // touch-action: manipulation and box-sizing: border-box
+
+  display: inline-block;
+  color: color-ink(color('background-main'), 'muted');
+  cursor: pointer;
+  text-align: end;
+
+  // Add border-width of input to top padding in order to align w/ input text
+  padding-top: ($input-btn-padding-y + 1px);
+  padding-right: $spacer;
+  padding-left: $spacer * 4; // @if 'inline': $spacer * 2
+  width: $form-labels-col; // @if != 'inline'
 }
 
 // Text fields
 
 .form__control {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // tap-highlight-color, box-sizing: border-box.
+  // And speical for textarea add overflow: auto and resize: vertical
+
+  align-self: flex-end;
+  flex: 1;
+
+  // Reboot does not reset appearance
+  appearance: none;
   background-color: $input-bg;
   border-radius: $border-radius-sm;
-  border: 1px solid $border-color;
+  border: 1px solid $input-border-color;
   color: color('ink-color-main');
+  cursor: auto;
   display: inline-block;
+  font-family: inherit;
   font-size: $font-size-base;
   line-height: $line-height-base;
-  padding: .375rem .75rem;
+  margin: 0;
+  padding: $input-btn-padding-y $input-btn-padding-x;
+  outline: 0;
   transition: $input-transition;
+  width: 100%;
+  // height: 32px; // @if type != 'text-area'
+
+  // add focus
+}
+
+// if type == 'select'
+select.form__control {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 10px 6px;
+  cursor: pointer;
+  padding-right: 24px;
+}
+
+.form__hint {
+  color: color-ink(color('background-main'), 'muted');
+  margin-left: $form-labels-col;
   width: 100%;
 }
 
-// -----------------------------------------------------------------------------
-// INLINE FORM
-// -----------------------------------------------------------------------------
-
-.form--inline .form__group {
-  display: inline-flex;
-  width: auto;
+.form__check-group {
+  padding-left: $form-labels-col;
 }
 
+.form__label--check {
+  text-align: start;
+  cursor: pointer;
+  margin-bottom: $input-btn-padding-y + 1px;
+  overflow: visible;
+  position: relative;
+}
+
+.form__check-input {
+  display: inline-block;
+  padding: 0;
+  position: absolute;
+  top: 4px;
+  left: -24px;
+}
+
+legend {
+  font-weight: bold;
+}

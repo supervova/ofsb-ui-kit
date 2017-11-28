@@ -91,26 +91,20 @@
 <!-- –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   FORM
   –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-<h2>Form</h2>
+<br><br><br><br><br>
 
 <form action="/">
   <fieldset>
-    <legend>Legend</legend>
+    <!-- <legend>Legend</legend> -->
 
     <div class="form__group">
-      <label for="form-email-example">Email</label>
+      <label class="form__label" for="form-email-example">Email</label>
       <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email">
       <div class="form__hint" id="form-hint-email">We'll never share your email with anyone else.</div>
     </div>
 
     <div class="form__group">
-      <label for="form-password-example">Password</label>
-      <input class="form__control" id="form-password-example" type="password">
-    </div>
-
-    <div class="form__group">
-      <label for="form-example-select">Example select</label>
+      <label class="form__label" for="form-example-select">Example select</label>
       <select class="form__control" id="form-example-select">
         <option>1</option>
         <option>2</option>
@@ -121,56 +115,38 @@
     </div>
 
     <div class="form__group">
-      <label for="form-example-textarea">Example textarea</label>
+      <label class="form__label" for="form-example-textarea">Example textarea</label>
       <textarea class="form__control" id="form-example-textarea" rows="4"></textarea>
     </div>
 
-    <fieldset class="form__group">
+    <fieldset class="form__group form__check-group">
       <legend>Radio buttons</legend>
 
-      <label class="form__check">
+      <label class="form__label--check">
         <input class="form__check-input" id="form-radio-examples1" name="form-radio-examples" type="radio" value="option1" checked="">
         Option one is this and that—be sure to include why it's great
       </label>
 
-      <label class="form__check">
+      <label class="form__label--check">
         <input type="radio" class="form__check-input" id="form-radio-examples2" name="form-radio-examples" value="option2">
         Option two can be something else and selecting it will deselect option one
       </label>
 
-      <label class="form__check form__check--disabled">
+      <label class="form__label--check form__label--disabled">
         <input type="radio" class="form__check-input" id="form-radio-examples3" name="form-radio-examples" value="option3" disabled>
         Option three is disabled
       </label>
     </fieldset>
 
-    <div class="form__check">
-      <label class="form__check">
+    <div class="form__label--check form__check-group">
+      <label class="form__label--check">
         <input class="form__check-input" type="checkbox" >
         Check me out
       </label>
     </div>
-
   </fieldset>
-
-  <div class="form__group form__group--disabled">
-    <label class="form__label" for="form-disabled-input-example">Disabled input</label>
-    <input class="form__control" id="form-disabled-input-example" type="text" disabled>
-  </div>
-
-  <div class="form__group form__group--success">
-    <label class="form__label" for="form-valid-input-example">Valid input</label>
-    <input class="form__control" id="form-valid-input-example" type="text">
-    <div class="form__hint">Success! You've done it.</div>
-  </div>
-
-  <div class="form__group form__group--error">
-    <label class="form__label" for="form-invalid-input-example">Invalid input</label>
-    <input class="form__control" id="form-invalid-input-example" type="text">
-    <div class="form__hint">Sorry, that username's taken. Try another?</div>
-  </div>
-
 </form>
+
 </body>
 </html>
 

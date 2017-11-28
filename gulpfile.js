@@ -19,7 +19,10 @@ const config = {
   css: {
     src: './src/**/*.scss',
     dest: './dist/css'
-  }
+  },
+  html: {
+    src: './dist/**/*.html'
+  },
 }
 
 /* --------------------------------------------------------------------------
@@ -30,6 +33,7 @@ const reload = browserSync.reload;
 
 const browserSyncTask = () => {
   gulp.watch(config.css.src, ['sass', reload]);
+  gulp.watch(config.html.src, reload);
 };
 
 gulp.task('s', () => {
