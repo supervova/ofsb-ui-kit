@@ -70,6 +70,31 @@ TODO. Add primary color tones filled areas
 
 TODO. Add primary color tones filled areas
 
+#### Typography
+
+TODO. Try more suitable ratio for typographic scale. Golden ratio is too reduce size of small texts. I think ratio can be major second, minor third or magor third with only even values for headers.
+
+15:16 — малая секунда (minor second)
+8:9 — большая секунда (major second)
+5:6 — малая терция (minor third)
+4:5 — большая терция (magor third)
+3:4 — чистая кварта (perfect fourth)
+1:√2 — увеличенная четверть (A4) и уменьшенная пятая часть (d5)
+(augmented fourth and diminished fifth)
+2:3 — чистая квинта (perfect fifth)
+5:8 — малая секста (minor six)
+1:1.618 — золотое сечение (golden ratio)
+3:5 — большая секста (magor six)
+9:16 — малая септима (minor seventh)
+8:15 — большая септима (magor seventh)
+1:2 — октава (octave)
+2:5 — большая децима (magor tenth)
+3:8 — большая ундецима (magor eleventh)
+1:3 — большая дуодецима (magor twelfth)
+1:4 — двойная октава (double octave)
+
+
+
 --------------------------------------------------------------------------------
 
 ### src/global/functions
@@ -109,7 +134,7 @@ node_modules/foundation-sites/scss/util/_color.scss
 
 --------------------------------------------------------------------------------
 
-### src/base/button/themes
+### src/base/button/mixins
 
 TODO. Create dark theme overrides
 ```html
@@ -123,3 +148,31 @@ TODO. Create dark theme overrides
   </button>
 </section>
 ```
+--------------------------------------------------------------------------------
+
+### src/base/form-controls/mixins
+
+It was replaced w/ tooltip component
+
+```scss
+.form__hint {
+  color: color-ink(color('background-main'), 'muted');
+  flex: 1;
+  margin-left: $form-label-width;
+  padding-right: ($spacer * 3);
+  width: 100%;
+}
+```
+
+TODO. Create function to color success and error icon right in URL encoded background-image property. I think to use sass interpolation
+'data:image/svg+xml;charset=UTF-8,%3Csvg%20 … ${fill} … %3C%2Fsvg%3E';
+
+--------------------------------------------------------------------------------
+
+### dist/index.html
+
+TODO. Add vanilla JS and .form__control--touched:[valid|invalid] classes
+
+$(':required').one('blur keydown', function() {
+  $(this).addClass('form__control--touched');
+});

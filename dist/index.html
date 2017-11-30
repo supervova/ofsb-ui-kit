@@ -13,19 +13,22 @@
       --grey-100:                 rgb(242, 245, 249);
       --grey-900:                 rgb(33, 37, 41);
 
-      --black-normal:             rgba(black, .87);
-      --black-muted:              rgba(black, .54);
-      --black-muted-more:         rgba(black, .38);
-      --black-muted-most:         rgba(black, .12);
+      --black-normal:             rgba(0, 0, 0, .87);
+      --black-muted:              rgba(0, 0, 0, .54);
+      --black-muted-more:         rgba(0, 0, 0, .38);
+      --black-muted-most:         rgba(0, 0, 0, .12);
 
       --white-normal:             white;
-      --white-muted:              rgba(white, .7);
-      --white-muted-more:         rgba(white, .5);
-      --white-muted-most:         rgba(white, .12);
+      --white-muted:              rgba(255, 255, 255, .7);
+      --white-muted-more:         rgba(255, 255, 255, .5);
+      --white-muted-most:         rgba(255, 255, 255, .12);
+
+      --blue:                     rgb(0, 122, 255);
 
       /* Color roles */
       --background-main:          white;
       --background-widget:        var(--grey-100);
+      --primary:                  var(--blue);
       --ink-color-main:           var(--grey-900);
       --ink-color-main-negative:  var(--white-normal);
 
@@ -66,9 +69,10 @@
       margin-bottom: 2rem;
     }
 
-    .btn {
+    .btn:not([type='submit']) {
       margin: .4rem;
     }
+
   </style>
 </head>
 <body>
@@ -76,6 +80,11 @@
 <!-- –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   BUTTONS
   –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-3"></div>
+</div>
 
 <h2>Buttons</h2>
 <button class="btn btn--primary btn--lg" type="button">Large</button>
@@ -95,16 +104,37 @@
 
 <form action="/">
   <fieldset>
-    <!-- <legend>Legend</legend> -->
 
-    <div class="form__group">
-      <label class="form__label" for="form-email-example">Email</label>
-      <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email">
-      <div class="form__hint" id="form-hint-email">We'll never share your email with anyone else.</div>
+    <legend class="form__item--offset">Legend</legend>
+
+    <div class="form__block">
+      <label class="form__label" for="form-email-example">Email:*</label>
+      <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email" required placeholder=" ">
+      <div class="tooltip" id="form-hint-email">We'll never share your email with anyone else.</div>
     </div>
 
-    <div class="form__group">
-      <label class="form__label" for="form-example-select">Example select</label>
+    <div class="form__block">
+      <label class="form__label" for="form-password-example">Password:*</label>
+      <input class="form__control" id="form-password-example" type="password" required placeholder=" ">
+    </div>
+
+    <div class="form__block form__block--success">
+      <label class="form__label" for="form-valid-input-example">Valid input:</label>
+      <input class="form__control" id="form-valid-input-example" type="text">
+    </div>
+
+    <div class="form__block form__block--error">
+      <label class="form__label" for="form-invalid-input-example">Invalid input:</label>
+      <input class="form__control" id="form-invalid-input-example" type="text">
+    </div>
+
+    <div class="form__block form__block--disabled">
+      <label class="form__label" for="form-disabled-input-example">Disabled input:</label>
+      <input class="form__control" id="form-disabled-input-example" type="text" disabled>
+    </div>
+
+    <div class="form__block">
+      <label class="form__label" for="form-example-select">Example select:</label>
       <select class="form__control" id="form-example-select">
         <option>1</option>
         <option>2</option>
@@ -114,38 +144,40 @@
       </select>
     </div>
 
-    <div class="form__group">
-      <label class="form__label" for="form-example-textarea">Example textarea</label>
-      <textarea class="form__control" id="form-example-textarea" rows="4"></textarea>
+    <div class="form__block">
+      <label class="form__label" for="form-example-textarea">Example textarea:</label>
+      <textarea class="form__control" id="form-example-textarea" rows="4" required placeholder=" "></textarea>
     </div>
 
-    <fieldset class="form__group form__check-group">
+    <fieldset class="form__block form__item--offset">
       <legend>Radio buttons</legend>
 
-      <label class="form__label--check">
-        <input class="form__check-input" id="form-radio-examples1" name="form-radio-examples" type="radio" value="option1" checked="">
+      <label class="form__label--radio">
+        <input class="form__option" id="form-radio-examples1" name="form-radio-examples" type="radio" value="option1" checked="">
         Option one is this and that—be sure to include why it's great
       </label>
 
-      <label class="form__label--check">
-        <input type="radio" class="form__check-input" id="form-radio-examples2" name="form-radio-examples" value="option2">
+      <label class="form__label--radio">
+        <input type="radio" class="form__option" id="form-radio-examples2" name="form-radio-examples" value="option2">
         Option two can be something else and selecting it will deselect option one
       </label>
 
-      <label class="form__label--check form__label--disabled">
-        <input type="radio" class="form__check-input" id="form-radio-examples3" name="form-radio-examples" value="option3" disabled>
+      <label class="form__label--radio form__label--disabled">
+        <input type="radio" class="form__option" id="form-radio-examples3" name="form-radio-examples" value="option3" disabled>
         Option three is disabled
       </label>
     </fieldset>
 
-    <div class="form__label--check form__check-group">
-      <label class="form__label--check">
-        <input class="form__check-input" type="checkbox" >
-        Check me out
-      </label>
-    </div>
+    <label class="form__label--check form__item--offset">
+      <input class="form__option" type="checkbox" >
+      Check me out
+    </label>
+
   </fieldset>
+
+  <button class="btn btn--primary form__item--offset" type="submit">Submit</button>
 </form>
+
 
 </body>
 </html>
