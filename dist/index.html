@@ -102,54 +102,80 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <br><br><br><br><br>
 
-<form action="/">
+<form action="/" id="registerForm" novalidate>
   <fieldset>
 
     <legend class="form__item--offset">Legend</legend>
 
-    <div class="form__block">
-      <label class="form__label" for="form-email-example">Email:*</label>
-      <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email" required placeholder=" ">
+    <div class="form__item">
+      <label class="form__label" for="form-email-example">* Email:</label>
+      <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email" required>
       <div class="tooltip" id="form-hint-email">We'll never share your email with anyone else.</div>
+      <div class="form__feedback--error">Please provide a valid email.</div>
     </div>
 
-    <div class="form__block">
-      <label class="form__label" for="form-password-example">Password:*</label>
-      <input class="form__control" id="form-password-example" type="password" required placeholder=" ">
+    <div class="form__item">
+      <label class="form__label" for="form-password-example">* Password:</label>
+      <input class="form__control" id="form-password-example" type="password" required>
     </div>
 
-    <div class="form__block form__block--success">
+    <div class="form__item form__item--success">
       <label class="form__label" for="form-valid-input-example">Valid input:</label>
       <input class="form__control" id="form-valid-input-example" type="text">
     </div>
 
-    <div class="form__block form__block--error">
+    <div class="form__item form__item--error">
       <label class="form__label" for="form-invalid-input-example">Invalid input:</label>
       <input class="form__control" id="form-invalid-input-example" type="text">
     </div>
 
-    <div class="form__block form__block--disabled">
+    <div class="form__item form__item--success-marginalia">
+      <label class="form__label" for="form-stand-alone-example">Stand-alone icon:</label>
+      <input class="form__control" id="form-stand-alone-example" type="text">
+      <span class="form__validation-icon--success" aria-label="All right"></span>
+    </div>
+
+    <div class="form__item form__item--disabled">
       <label class="form__label" for="form-disabled-input-example">Disabled input:</label>
       <input class="form__control" id="form-disabled-input-example" type="text" disabled>
     </div>
 
-    <div class="form__block">
+    <div class="form__item">
       <label class="form__label" for="form-example-select">Example select:</label>
-      <select class="form__control" id="form-example-select">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+
+      <div class="form__item--unlabeled">
+        <select class="form__control form__control--compact" id="form-example-select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+
+        <select class="form__control form__control--compact" id="form-example-month">
+          <option>Jan</option>
+          <option>Feb</option>
+          <option>Mar</option>
+          <option>Apr</option>
+          <option>May</option>
+        </select>
+
+        <select class="form__control form__control--compact" id="form-example-year">
+          <option>1980</option>
+          <option>1981</option>
+          <option>1982</option>
+          <option>1983</option>
+          <option>1984</option>
+        </select>
+      </div>
     </div>
 
-    <div class="form__block">
-      <label class="form__label" for="form-example-textarea">Example textarea:</label>
-      <textarea class="form__control" id="form-example-textarea" rows="4" required placeholder=" "></textarea>
+    <div class="form__item">
+      <label class="form__label" for="form-example-textarea">* Example textarea:</label>
+      <textarea class="form__control" id="form-example-textarea" rows="4" required></textarea>
     </div>
 
-    <fieldset class="form__block form__item--offset">
+    <fieldset class="form__item form__item--offset">
       <legend>Radio buttons</legend>
 
       <label class="form__label--radio">
@@ -178,7 +204,8 @@
   <button class="btn btn--primary form__item--offset" type="submit">Submit</button>
 </form>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/src/base/form-controls/form-controls.js"></script>
 </body>
 </html>
 

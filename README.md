@@ -6,8 +6,6 @@
 
 3. Все завязано на переменных, но переменных должно быть как можно меньше.  Значения рассчитывать из одной переменной. Из одного цвета создавать гамму. Из одного отступа — систему отступов 
 
-👉 Evernote ➜ A framework for creating a predictable…
-
 4. box-header. Заголовков может быть несколько видов
   - виджеты меню слева
   - заголовки купонов  
@@ -62,36 +60,33 @@ TODO. Create a function to create light and dark variations for all UI colors.
 
 TODO. Make quick settings for primary/secondary/background in a separate file
 
-#### Primary color filled areas and elements
+// COLOR RECOMMENDATIONS
 
 TODO. Add primary color tones filled areas
 
-#### Secondary color tones filled areas and elements
-
-TODO. Add primary color tones filled areas
+TODO. Add secondary color tones filled areas
 
 #### Typography
 
 TODO. Try more suitable ratio for typographic scale. Golden ratio is too reduce size of small texts. I think ratio can be major second, minor third or magor third with only even values for headers.
 
-15:16 — малая секунда (minor second)
-8:9 — большая секунда (major second)
-5:6 — малая терция (minor third)
-4:5 — большая терция (magor third)
-3:4 — чистая кварта (perfect fourth)
-1:√2 — увеличенная четверть (A4) и уменьшенная пятая часть (d5)
-(augmented fourth and diminished fifth)
-2:3 — чистая квинта (perfect fifth)
-5:8 — малая секста (minor six)
-1:1.618 — золотое сечение (golden ratio)
-3:5 — большая секста (magor six)
-9:16 — малая септима (minor seventh)
-8:15 — большая септима (magor seventh)
-1:2 — октава (octave)
-2:5 — большая децима (magor tenth)
-3:8 — большая ундецима (magor eleventh)
-1:3 — большая дуодецима (magor twelfth)
-1:4 — двойная октава (double octave)
+- 15:16 — малая секунда (minor second)
+- 8:9 — большая секунда (major second)
+- 5:6 — малая терция (minor third)
+- 4:5 — большая терция (magor third)
+- 3:4 — чистая кварта (perfect fourth)
+- 1:√2 — увеличенная четверть, a4 и уменьшенная пятая часть, d5 (augmented fourth and diminished fifth)
+- 2:3 — чистая квинта (perfect fifth)
+- 5:8 — малая секста (minor six)
+- 1:1.618 — золотое сечение (golden ratio)
+- 3:5 — большая секста (magor six)
+- 9:16 — малая септима (minor seventh)
+- 8:15 — большая септима (magor seventh)
+- 1:2 — октава (octave)
+- 2:5 — большая децима (magor tenth)
+- 3:8 — большая ундецима (magor eleventh)
+- 1:3 — большая дуодецима (magor twelfth)
+- 1:4 — двойная октава (double octave)
 
 
 
@@ -109,6 +104,8 @@ The W3C recommends the following contrast ratios for body text and image text
 
 TODO. Research and use worthwhile takeaways from MDC functions for accessible color combinations
 mdc-theme-luminance, mdc-theme-contrast, mdc-theme-light-or-dark, mdc-theme-clamp-percentage
+
+TODO. Fix conditionals. If background is white, select colors from light-greys, else select colors from light or dark
 
 #### TONAL PALETTE
 
@@ -148,31 +145,31 @@ TODO. Create dark theme overrides
   </button>
 </section>
 ```
+
+TODO. Add will-change to gradient-button()
+
+```scss
+$button-will-change: box-shadow, background-color;
+```
+
 --------------------------------------------------------------------------------
 
 ### src/base/form-controls/mixins
 
-It was replaced w/ tooltip component
-
-```scss
-.form__hint {
-  color: color-ink(color('background-main'), 'muted');
-  flex: 1;
-  margin-left: $form-label-width;
-  padding-right: ($spacer * 3);
-  width: 100%;
-}
-```
-
 TODO. Create function to color success and error icon right in URL encoded background-image property. I think to use sass interpolation
 'data:image/svg+xml;charset=UTF-8,%3Csvg%20 … ${fill} … %3C%2Fsvg%3E';
 
---------------------------------------------------------------------------------
+and use [this](https://gist.github.com/Rplus/3ca52e2d42c4b922cee5)
 
-### dist/index.html
+or this
 
-TODO. Add vanilla JS and .form__control--touched:[valid|invalid] classes
+// does not work with colors containing alpha
+@function encodecolor($string) {
+  @if type-of($string) == 'color' {
+      $hex: str-slice(ie-hex-str($string), 4);
+      $string:unquote("#{$hex}");
+    }
+    $string: '%23' + $string;
+  @return $string;
+}
 
-$(':required').one('blur keydown', function() {
-  $(this).addClass('form__control--touched');
-});

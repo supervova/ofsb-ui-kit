@@ -42,12 +42,18 @@
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= 150) {
-    // Dark on light
-    @return color-ink-option('light', $opacity);
+  // TODO. Fix check for white color.
+  @if ($color == #fff or $color == rgb(255, 255, 255) or $color == white or $yiq == 255) {
+    // Greys on white
+    @return color-ink-option('light-greys', $opacity);
   } @else {
-    // Light on dark
-    @return color-ink-option('dark', $opacity);
+    @if ($yiq >= 150) {
+      // Dark on light
+      @return color-ink-option('light', $opacity);
+    } @else {
+      // Light on dark
+      @return color-ink-option('dark', $opacity);
+    }
   }
 }
 

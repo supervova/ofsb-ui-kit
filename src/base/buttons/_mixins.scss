@@ -18,22 +18,23 @@ $button-label-uppercase: false;
 $button-disabled-opacity: .44;
 $button-transition: box-shadow .2s ease-out, background-color .2s ease-out;
 
-// stylelint-disable indentation
 $button-sizes: (
   'small': (
     'font-size': $font-size-base,
     'padding': 0 $spacer,
-    'height': 32px),
+    'height': 32px
+  ),
   'default': (
     'font-size': $font-size-base,
     'padding': 0 ($spacer * 2),
-    'height': 36px),
+    'height': 36px
+  ),
   'large': (
     'font-size': ($font-size-base / 3 * 4),
     'padding': 0 ($spacer * 3),
-    'height': 48px)
-  );
-// stylelint-enable indentation
+    'height': 48px
+  )
+);
 
 // Hard-coded
 // $button-font-family
