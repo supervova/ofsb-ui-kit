@@ -1,49 +1,57 @@
-@import 'form-controls-mixins';
+$input-bg:                              #fff;
+$input-disabled-bg:                     $grey-100;
+$input-color:                           color-ink(color('background-main'), 'normal');
+$input-placeholder-color:               $grey-600;
+$input-border-color:                    color-ink(color('background-main'), 'muted-most');
+$input-border-radius:                   $border-radius;
+// $input-box-shadow:                      inset 0 1px 1px rgba(#000, .075);
 
-// Variables values assigned in mixins because the first time they are used
-// there
+$input-focus-border-color:              color('primary');
+$input-valid-border-color:              color('success');
+$input-invalid-border-color:            color('danger');
+$input-invalid-feedback:                color('danger');
 
+$input-width:                           50%;
+$input-height:                          40px;
 
-// Global variables directly set font-family, font-size, line-height. Calculated
+$input-btn-padding-x:                   ($spacer * 2 - 1px);
+$input-btn-padding-y:                   9px; // In fact, it should be ($line-height-base / 2 - .1rem
+$input-transition:                      border-color $transition-base, box-shadow $transition-base;
 
+$form-label-color:                      $input-color;
+$form-label-width:                      33.333%;
+
+$class-form-validated:                  '.form--validated';
+$class-valid-item:                      '.form__item--success';
+$class-invalid-item:                    '.form__item--error';
+$class-valid-item-callout:              '.form__item--success-callout';
+$class-invalid-item-callout:            '.form__item--error-callout';
+
+// Global variables directly set font-family, font-size, line-height.
 
 // -----------------------------------------------------------------------------
-// MINI GRID
+// CONTAINER FOR ONE FIELD COMPONENTS
 // -----------------------------------------------------------------------------
 
-// CONTAINER
+// Styling div or fieldset containing input, label and messages.
+// @param {Boolean} $inline [false] - If set to true, form will be horizontal
+// @param {Boolean} $offset [false] - Set to true, if form layout is block,
+//   labels are left-aligned, but form element has not standard label. It can
+//   be radio buttons group, checkbox label using as container or form headings
 
-%form-item {
-  display: flex; // @if 'inline': inline-flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
+@mixin form-item($inline: false, $offset: false) {
+  @extend %form-item-base;
 
-  margin-bottom: $empty-line;
-  position: relative;
-  width: 100%; // @if 'inline': auto;
-}
+  @if $inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+    width: 100%;
 
-.form__item,
-.form__item--callout {
-  @extend %form-item;
-}
-
-// CELLS
-
-.form__label {
-  flex: 0 0 $form-label-width;
-  width: $form-label-width;
-}
-
-%form-input-cell,
-.form__item--unlabeled {
-  display: flex;
-  flex: 0 0 $input-width;
-  max-width: $input-width;
-}
-
-.form__item--offset {
-  margin-left: $form-label-width;
+    @if $offset {
+      @extend %form-item-offset;
+    }
+  }
 }
 
 
@@ -51,9 +59,21 @@
 // LABEL
 // -----------------------------------------------------------------------------
 
-.form__label {
+// Styling field label.
+// @param {Boolean} $inline [false] - If set to true, label gets width
+//   and smaller paddings
+
+@mixin form-label($inline: false) {
   // If reboot and _page.scss are not used, add font-smoothing,
   // touch-action: manipulation and box-sizing: border-box
+
+  @if $inline {
+    padding-left: $spacer * 2;
+  } @else {
+    flex: 0 0 $form-label-width;
+    padding-left: $spacer * 4;
+    width: $form-label-width;
+  }
 
   display: inline-block;
   color: $form-label-color;
@@ -63,16 +83,100 @@
   // Add border-width of input to top padding in order to align w/ input text
   padding-top: ($input-btn-padding-y + 1px);
   padding-right: $spacer;
-  padding-left: $spacer * 4; // @if 'inline': $spacer * 2
-  width: $form-label-width; // @if != 'inline'
 }
 
 
 // -----------------------------------------------------------------------------
-// TEXT FIELDS
+// INPUT AND TEXTAERA
 // -----------------------------------------------------------------------------
 
+// Creates inputs[type='text'] and textareas of different styles
+// @param {String} $type [text] (text|textarea|select|rb-chk) - Type of input
 
+@mixin input($type: 'text') {
+
+  // Checkbox or radio button
+  @if ($type == 'rb-chk') {
+    @extend %form-rb-chk;
+  }
+
+  // Select
+  @else if ($type == 'select') {
+    @extend %form-control-flex;
+    @extend %form-control-base;
+    @extend %form-validation;
+    @extend %form-select;
+  }
+
+  // Text inputs and textareas
+  @else {
+    @extend %form-control-flex;
+    @extend %form-control-base;
+    @extend %form-placeholder;
+    @extend %form-validation;
+
+    @if ($type == 'text') {
+      height: 40px;
+    }
+  }
+}
+
+
+
+// STAND-ALONE VALIDATION ICONS
+// They can be also created as pseudo elements ::after within form__item
+.form__validation-icon--error,
+.form__validation-icon--success,
+.register-field-status-error,
+.register-field-status-active {
+  display: none;
+  position: absolute;
+  top: (($input-height - 16px) / 2);
+  left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
+  width: 16px;
+  height: 16px;
+}
+
+// Icons SVG background images
+
+.form__validation-icon--success,
+.register-field-status-active {
+  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
+
+  // Icons are visible if container has error class.
+  // But they can be visible if form has validated status class and sibling
+  // input is invalid.
+  // #{$class-form-validated} input:invalid ~ &
+  #{$class-valid-item} > & {
+    display: block;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// PARTIALS
+// -----------------------------------------------------------------------------
+
+// Container base styling
+%form-item-base {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: $empty-line;
+  position: relative;
+}
+
+// Offset for unlabeled item in block form w/ left-aligned labels
+%form-item-offset {
+  margin-left: $form-label-width;
+}
+
+// Flex behaviour for inputs
+%form-control-flex {
+  display: flex;
+  flex: 0 0 $input-width;
+  max-width: $input-width;
+}
+
+// Text fields and selects base styling
 %form-control-base {
   // If reboot and _page.scss are not used, add font-smoothing,
   // tap-highlight-color, box-sizing: border-box.
@@ -143,22 +247,15 @@
 }
 
 // Placeholder
-%placeholder {
+%form-placeholder {
   &::placeholder {
     color: $input-placeholder-color;
     opacity: 1;
   }
 }
 
-.form__text-field {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-  @extend %placeholder;
-
-  // height: 40px; // @if type != 'text-area'
-
-  // VALIDATION
-
+// Text Input Validation
+%form-validation {
   // Common icons styles
   #{$class-form-validated} &:valid,
   #{$class-valid-item} > &,
@@ -183,95 +280,8 @@
   }
 }
 
-.form__text-field--callout {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-  @extend %placeholder;
-  // height: 40px; // @if type != 'text-area'
-}
-
-// STAND-ALONE VALIDATION ICONS
-// They can be also created as pseudo elements ::after within form__item
-.form__validation-icon--error,
-.form__validation-icon--success,
-.register-field-status-error,
-.register-field-status-active {
-  display: none;
-  position: absolute;
-  top: (($input-height - 16px) / 2);
-  left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
-  width: 16px;
-  height: 16px;
-}
-
-// Icons SVG background images
-
-.form__validation-icon--success,
-.register-field-status-active {
-  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
-
-  // Icons are visible if container has error class.
-  // But they can be visible if form has validated status class and sibling
-  // input is invalid.
-  // #{$class-form-validated} input:invalid ~ &
-  #{$class-valid-item} > & {
-    display: block;
-  }
-}
-
-.form__validation-icon--error,
-.register-field-status-error {
-  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
-
-  // Icons are visible if container has error class.
-  // But they can be visible if #{$class-form-validated} and sibling input is invalid.
-  // #{$class-form-validated} input:invalid ~ &
-  #{$class-invalid-item} > & {
-    display: block;
-  }
-}
-
-// CUSTOM VALIDATION FEEDBACK
-
-.form__feedback--error {
-  color: $input-invalid-feedback;
-  display: none;
-  flex: 1;
-  font-size: $font-size-small;
-  margin-left: $form-label-width;
-  padding-right: ($spacer * 3);
-  width: 100%;
-
-  #{$class-form-validated} .form__text-field:invalid ~ & {
-    display: block;
-  }
-}
-
-// MODIFIERS
-
-.form__text-field--compact,
-.form__select--compact, {
-  flex: auto;
-
-  & + & {
-    margin-left: $spacer;
-  }
-}
-
-// Use .form__item--unlabeled as container for compact inputs
-
-
-
-
-// -----------------------------------------------------------------------------
-// SELECT
-// -----------------------------------------------------------------------------
-
-// if type == 'select'
-.form__select {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-
+// Select
+%form-select {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
   background-position: right 8px center;
   background-repeat: no-repeat;
@@ -280,42 +290,11 @@
   padding-right: ($spacer * 3);
 }
 
-
-// -----------------------------------------------------------------------------
-// RADIO BUTTONS & CHECKBOXES
-// -----------------------------------------------------------------------------
-
-.form__label--check,
-.form__label--radio {
-  text-align: start;
-  cursor: pointer;
-  margin-bottom: ($input-btn-padding-y + 1px);
-  padding-right: ($spacer * 3);
-  padding-left: ($spacer * 3);
-  overflow: visible;
-  position: relative;
-}
-
-.form__option {
+// Checkbox or radio button
+%form-rb-chk {
   display: inline-block;
   padding: 0;
   position: absolute;
   top: 4px;
   left: 0;
-}
-
-// -----------------------------------------------------------------------------
-// FIELDSET
-// -----------------------------------------------------------------------------
-
-fieldset {
-  margin-bottom: $empty-line;
-}
-
-legend {
-  font-size: $font-size-base;
-  font-weight: bold;
-
-  // Override reboot margin
-  margin-bottom: 10px;
 }

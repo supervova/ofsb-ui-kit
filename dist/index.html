@@ -8,36 +8,6 @@
   <title>Offsidebet UI Kit Playground</title>
   <link rel="stylesheet" href="css/main.css">
   <style>
-    :root {
-      /* Color names */
-      --grey-100:                 rgb(242, 245, 249);
-      --grey-900:                 rgb(33, 37, 41);
-
-      --black-normal:             rgba(0, 0, 0, .87);
-      --black-muted:              rgba(0, 0, 0, .54);
-      --black-muted-more:         rgba(0, 0, 0, .38);
-      --black-muted-most:         rgba(0, 0, 0, .12);
-
-      --white-normal:             white;
-      --white-muted:              rgba(255, 255, 255, .7);
-      --white-muted-more:         rgba(255, 255, 255, .5);
-      --white-muted-most:         rgba(255, 255, 255, .12);
-
-      --blue:                     rgb(0, 122, 255);
-
-      /* Color roles */
-      --background-main:          white;
-      --background-widget:        var(--grey-100);
-      --primary:                  var(--blue);
-      --ink-color-main:           var(--grey-900);
-      --ink-color-main-negative:  var(--white-normal);
-
-      /* Typography */
-      --spacer:                   8px;
-      --font-family-sans-serif:   -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      --font-family-monospace:    'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    }
-
     html {
       text-align: center;
       /**
@@ -51,9 +21,9 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
 
-      background-color: var(--background-main);
-      color: var(--ink-color-main);
-      font-family: var(--font-family-sans-serif);
+      background-color: #fff;
+      color: rgb(33, 37, 41);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
       font-size: 1.4rem;
       line-height: 2rem;
       margin: 0 auto;
@@ -109,42 +79,53 @@
 
     <div class="form__item">
       <label class="form__label" for="form-email-example">* Email:</label>
-      <input class="form__control" id="form-email-example" type="email" aria-describedby="form-hint-email" required>
+      <input class="form__text-field" id="form-email-example" type="email" aria-describedby="form-hint-email" required>
       <div class="tooltip" id="form-hint-email">We'll never share your email with anyone else.</div>
       <div class="form__feedback--error">Please provide a valid email.</div>
     </div>
 
     <div class="form__item">
       <label class="form__label" for="form-password-example">* Password:</label>
-      <input class="form__control" id="form-password-example" type="password" required>
+      <input class="form__text-field" id="form-password-example" type="password" required>
     </div>
 
     <div class="form__item form__item--success">
       <label class="form__label" for="form-valid-input-example">Valid input:</label>
-      <input class="form__control" id="form-valid-input-example" type="text">
+      <input class="form__text-field" id="form-valid-input-example" type="text">
     </div>
 
     <div class="form__item form__item--error">
       <label class="form__label" for="form-invalid-input-example">Invalid input:</label>
-      <input class="form__control" id="form-invalid-input-example" type="text">
+      <input class="form__text-field" id="form-invalid-input-example" type="text">
     </div>
 
-    <div class="form__item form__item--success-marginalia">
+    <div class="form__item--callout form__item--success">
       <label class="form__label" for="form-stand-alone-example">Stand-alone icon:</label>
-      <input class="form__control" id="form-stand-alone-example" type="text">
+      <input class="form__text-field--callout" id="form-stand-alone-example" type="text">
       <span class="form__validation-icon--success" aria-label="All right"></span>
     </div>
 
     <div class="form__item form__item--disabled">
       <label class="form__label" for="form-disabled-input-example">Disabled input:</label>
-      <input class="form__control" id="form-disabled-input-example" type="text" disabled>
+      <input class="form__text-field" id="form-disabled-input-example" type="text" disabled>
     </div>
 
     <div class="form__item">
       <label class="form__label" for="form-example-select">Example select:</label>
+      <select class="form__select" id="form-example-select">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+    <div class="form__item">
+      <label class="form__label" for="form-example-day">Example select:</label>
 
       <div class="form__item--unlabeled">
-        <select class="form__control form__control--compact" id="form-example-select">
+        <select class="form__select form__select--compact" id="form-example-day">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -152,7 +133,7 @@
           <option>5</option>
         </select>
 
-        <select class="form__control form__control--compact" id="form-example-month">
+        <select class="form__select form__select--compact" id="form-example-month">
           <option>Jan</option>
           <option>Feb</option>
           <option>Mar</option>
@@ -160,7 +141,7 @@
           <option>May</option>
         </select>
 
-        <select class="form__control form__control--compact" id="form-example-year">
+        <select class="form__select form__select--compact" id="form-example-year">
           <option>1980</option>
           <option>1981</option>
           <option>1982</option>
@@ -172,7 +153,7 @@
 
     <div class="form__item">
       <label class="form__label" for="form-example-textarea">* Example textarea:</label>
-      <textarea class="form__control" id="form-example-textarea" rows="4" required></textarea>
+      <textarea class="form__text-field" id="form-example-textarea" rows="4" required></textarea>
     </div>
 
     <fieldset class="form__item form__item--offset">
