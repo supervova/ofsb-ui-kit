@@ -4,258 +4,70 @@
 // there
 
 
-// Global variables directly set font-family, font-size, line-height. Calculated
-
-
 // -----------------------------------------------------------------------------
-// MINI GRID
+// LAYOUT
 // -----------------------------------------------------------------------------
 
-// CONTAINER
-
-%form-item {
-  display: flex; // @if 'inline': inline-flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  margin-bottom: $empty-line;
-  position: relative;
-  width: 100%; // @if 'inline': auto;
-}
-
+// Containers for input, label and messages
 .form__item,
 .form__item--callout {
-  @extend %form-item;
+  @include form-item();
 }
 
-// CELLS
-
-.form__label {
-  flex: 0 0 $form-label-width;
-  width: $form-label-width;
-}
-
-%form-input-cell,
+// Nested container without label. E.g. for day/month/year selects row
 .form__item--unlabeled {
-  display: flex;
-  flex: 0 0 $input-width;
-  max-width: $input-width;
+  @include form-control-flex();
 }
 
+// Modifier for form items without left-align labels. E.g. headlines or submit
+// button
 .form__item--offset {
-  margin-left: $form-label-width;
+  @extend %form-item-offset;
 }
 
 
 // -----------------------------------------------------------------------------
-// LABEL
+// COMPONENTS
 // -----------------------------------------------------------------------------
 
+// Label
 .form__label {
-  // If reboot and _page.scss are not used, add font-smoothing,
-  // touch-action: manipulation and box-sizing: border-box
-
-  display: inline-block;
-  color: $form-label-color;
-  cursor: pointer;
-  text-align: end;
-
-  // Add border-width of input to top padding in order to align w/ input text
-  padding-top: ($input-btn-padding-y + 1px);
-  padding-right: $spacer;
-  padding-left: $spacer * 4; // @if 'inline': $spacer * 2
-  width: $form-label-width; // @if != 'inline'
+  @include form-label();
 }
 
-
-// -----------------------------------------------------------------------------
-// TEXT FIELDS
-// -----------------------------------------------------------------------------
-
-
-%form-control-base {
-  // If reboot and _page.scss are not used, add font-smoothing,
-  // tap-highlight-color, box-sizing: border-box.
-  // And speical for textarea add overflow: auto and resize: vertical
-
-  // Reboot does not reset appearance
-  appearance: none;
-  background-color: $input-bg;
-  border-radius: $border-radius-sm;
-  border: 1px solid $input-border-color;
-  color: $input-color;
-  cursor: auto;
-  display: inline-block;
-  font-family: inherit;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  margin: 0;
-  padding: $input-btn-padding-y $input-btn-padding-x;
-  outline: 0;
-  transition: $input-transition;
-
-
-  &:focus {
-    box-shadow: transparentize($input-focus-border-color, .5) 0 0 0 3px;
-    border-color: $input-focus-border-color;
-  }
-
-  &:disabled {
-    background-color: $input-disabled-bg;
-  }
-
-  // Valid input
-  // 1) The form got validated status class after an failed attempt to submit,
-  // but the input is valid.
-  // 2) Input container got success class.
-  // 3) #{$class-valid-item-callout} is class for stand-alone icon option.
-  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid, // 1
-  #{$class-valid-item} > &:valid, // 2
-  #{$class-valid-item-callout} > &:valid { // 3
-    border-color: $input-valid-border-color;
-  }
-
-  // Add some extra outer glow on focus
-  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid:focus,
-  #{$class-valid-item} > &:valid:focus,
-  #{$class-valid-item-callout} > &:valid:focus {
-    border-color: $input-valid-border-color;
-    box-shadow: transparentize($input-valid-border-color, .5) 0 0 0 3px;
-  }
-
-  // Invalid input
-  // 1) The form got validated status class after an failed attempt to submit,
-  // the input is not valid.
-  // 2) The input container got error class.
-  // 3) It is class for stand-alone icon option.
-  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid, // 1
-  #{$class-invalid-item} > &, // 2
-  #{$class-invalid-item-callout} > & { // 3
-    border-color: $input-invalid-border-color;
-  }
-
-  // Add some extra outer glow on focus
-  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid:focus,
-  #{$class-invalid-item} > &:focus,
-  #{$class-invalid-item-callout} > &:focus {
-    box-shadow: transparentize($input-invalid-border-color, .5) 0 0 0 3px;
-  }
-}
-
-// Placeholder
-%placeholder {
-  &::placeholder {
-    color: $input-placeholder-color;
-    opacity: 1;
-  }
-}
-
+// Input[type='text']
 .form__text-field {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-  @extend %placeholder;
-
-  // height: 40px; // @if type != 'text-area'
-
-  // VALIDATION
-
-  // Common icons styles
-  #{$class-form-validated} &:valid,
-  #{$class-valid-item} > &,
-  #{$class-form-validated} &:invalid,
-  #{$class-invalid-item} > & {
-    background-position: right $spacer top calc((#{$input-height} - 16px) / 2);
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-    padding-right: $spacer * 4;
-  }
-
-  // Success icon
-  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid,
-  #{$class-valid-item} > & {
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E');
-  }
-
-  // Error icon
-  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid,
-  #{$class-invalid-item} > & {
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E');
-  }
+  @include input();
 }
 
-.form__text-field--callout {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-  @extend %placeholder;
-  // height: 40px; // @if type != 'text-area'
+// Textarea
+.form__text-area {
+  @include input($type: 'textarea');
 }
 
-// STAND-ALONE VALIDATION ICONS
-// They can be also created as pseudo elements ::after within form__item
-.form__validation-icon--error,
-.form__validation-icon--success,
-.register-field-status-error,
-.register-field-status-active {
-  display: none;
-  position: absolute;
-  top: (($input-height - 16px) / 2);
-  left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
-  width: 16px;
-  height: 16px;
-}
-
-// Icons SVG background images
+// Callout validation icons
 
 .form__validation-icon--success,
 .register-field-status-active {
-  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
-
-  // Icons are visible if container has error class.
-  // But they can be visible if form has validated status class and sibling
-  // input is invalid.
-  // #{$class-form-validated} input:invalid ~ &
-  #{$class-valid-item} > & {
-    display: block;
-  }
+  @include callout-icon();
 }
 
 .form__validation-icon--error,
 .register-field-status-error {
-  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
-
-  // Icons are visible if container has error class.
-  // But they can be visible if #{$class-form-validated} and sibling input is invalid.
-  // #{$class-form-validated} input:invalid ~ &
-  #{$class-invalid-item} > & {
-    display: block;
-  }
+  @include callout-icon($type: 'error');
 }
 
-// CUSTOM VALIDATION FEEDBACK
+// Custom validation feedback
 
 .form__feedback--error {
-  color: $input-invalid-feedback;
-  display: none;
-  flex: 1;
-  font-size: $font-size-small;
-  margin-left: $form-label-width;
-  padding-right: ($spacer * 3);
-  width: 100%;
-
-  #{$class-form-validated} .form__text-field:invalid ~ & {
-    display: block;
-  }
+  @extend %form-error-message;
 }
 
 // MODIFIERS
 
 .form__text-field--compact,
-.form__select--compact, {
-  flex: auto;
-
-  & + & {
-    margin-left: $spacer;
-  }
+.form__select--compact {
+  @extend %form-text-field-compact;
 }
 
 // Use .form__item--unlabeled as container for compact inputs
@@ -269,15 +81,7 @@
 
 // if type == 'select'
 .form__select {
-  @extend %form-input-cell;
-  @extend %form-control-base;
-
-  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
-  background-position: right 8px center;
-  background-repeat: no-repeat;
-  background-size: 10px 6px;
-  cursor: pointer;
-  padding-right: ($spacer * 3);
+  @include input($type: 'select');
 }
 
 

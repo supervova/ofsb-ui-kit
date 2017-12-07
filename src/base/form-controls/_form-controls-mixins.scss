@@ -21,6 +21,7 @@ $input-transition:                      border-color $transition-base, box-shado
 $form-label-color:                      $input-color;
 $form-label-width:                      33.333%;
 
+// Validation classes
 $class-form-validated:                  '.form--validated';
 $class-valid-item:                      '.form__item--success';
 $class-invalid-item:                    '.form__item--error';
@@ -60,10 +61,115 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // -----------------------------------------------------------------------------
 
 // Styling field label.
+// @param {Boolean} $rb-chk [false] - If set to true, label will be contain
+//   radio button or chekbox and align with text inputs not text inputs labels
 // @param {Boolean} $inline [false] - If set to true, label gets width
 //   and smaller paddings
 
-@mixin form-label($inline: false) {
+@mixin form-label($rb-chk: false, $inline: false) {
+
+  // For radio buttons and checkboxes
+  @if $rb-chk {
+    @extend %form-label-rb-chk;
+  }
+
+  // For text inputs, text areas, selects
+  @else {
+    @include form-label-textfield($inline);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// INPUT[TYPE='TEXT'] | TEXTAREA | SELECT | RADIO | CHECKBOX
+// -----------------------------------------------------------------------------
+
+// Styling different inputs
+// @param {String} $type [text] (text|callout|textarea|select|rb-chk) - Type of input
+// @param {Boolean} $compact [false] - If true, input width will be not equal
+// $input-width
+
+@mixin input($type: 'text', $compact: false) {
+
+  // Checkbox or radio button
+  @if ($type == 'rb-chk') {
+    @extend %form-rb-chk;
+  }
+
+  // Select
+  @else if ($type == 'select') {
+    @include form-control-flex($compact);
+    @extend %form-control-base;
+    @extend %form-select;
+  }
+
+  // Text inputs and textareas
+  @else {
+    @include form-control-flex($compact);
+    @extend %form-control-base;
+    @extend %form-placeholder;
+
+    @if ($type != 'callout') {
+      @extend %form-validation-default;
+    }
+
+    @if ($type == 'text') {
+      height: $input-height;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CALLOUT VALIDATION ICONS
+// -----------------------------------------------------------------------------
+
+// Success and error icons
+// @param {String} $type [text] (success|error) - Icon value
+
+@mixin callout-icon($type: 'success') {
+  @extend %callout-icon-base;
+
+  // Success icon
+  @if ($type == 'success') {
+    background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
+
+    // Icons are visible if container has success class.
+    // But they can be visible if form has validated status class and sibling
+    // input is invalid.
+    // #{$class-form-validated} input:valid ~ &
+    #{$class-valid-item} > & {
+      display: block;
+    }
+  }
+
+  // Error icon
+  @else {
+    background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
+
+    #{$class-invalid-item} > & {
+      display: block;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// PARTIALS
+// -----------------------------------------------------------------------------
+
+// CONTAINER BASE STYLING
+%form-item-base {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: $empty-line;
+  position: relative;
+}
+
+// OFFSET FOR UNLABELED ITEM IN BLOCK FORM W/ LEFT-ALIGNED LABELS
+%form-item-offset {
+  margin-left: $form-label-width;
+}
+
+@mixin form-label-textfield($inline: false) {
   // If reboot and _page.scss are not used, add font-smoothing,
   // touch-action: manipulation and box-sizing: border-box
 
@@ -85,98 +191,18 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   padding-right: $spacer;
 }
 
-
-// -----------------------------------------------------------------------------
-// INPUT AND TEXTAERA
-// -----------------------------------------------------------------------------
-
-// Creates inputs[type='text'] and textareas of different styles
-// @param {String} $type [text] (text|textarea|select|rb-chk) - Type of input
-
-@mixin input($type: 'text') {
-
-  // Checkbox or radio button
-  @if ($type == 'rb-chk') {
-    @extend %form-rb-chk;
-  }
-
-  // Select
-  @else if ($type == 'select') {
-    @extend %form-control-flex;
-    @extend %form-control-base;
-    @extend %form-validation;
-    @extend %form-select;
-  }
-
-  // Text inputs and textareas
-  @else {
-    @extend %form-control-flex;
-    @extend %form-control-base;
-    @extend %form-placeholder;
-    @extend %form-validation;
-
-    @if ($type == 'text') {
-      height: 40px;
-    }
-  }
-}
-
-
-
-// STAND-ALONE VALIDATION ICONS
-// They can be also created as pseudo elements ::after within form__item
-.form__validation-icon--error,
-.form__validation-icon--success,
-.register-field-status-error,
-.register-field-status-active {
-  display: none;
-  position: absolute;
-  top: (($input-height - 16px) / 2);
-  left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
-  width: 16px;
-  height: 16px;
-}
-
-// Icons SVG background images
-
-.form__validation-icon--success,
-.register-field-status-active {
-  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E') no-repeat;
-
-  // Icons are visible if container has error class.
-  // But they can be visible if form has validated status class and sibling
-  // input is invalid.
-  // #{$class-form-validated} input:invalid ~ &
-  #{$class-valid-item} > & {
-    display: block;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// PARTIALS
-// -----------------------------------------------------------------------------
-
-// Container base styling
-%form-item-base {
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: $empty-line;
+%form-label-rb-chk {
+  text-align: start;
+  cursor: pointer;
+  margin-bottom: ($input-btn-padding-y + 1px);
+  padding-right: ($spacer * 3);
+  padding-left: ($spacer * 3);
+  overflow: visible;
   position: relative;
 }
 
-// Offset for unlabeled item in block form w/ left-aligned labels
-%form-item-offset {
-  margin-left: $form-label-width;
-}
 
-// Flex behaviour for inputs
-%form-control-flex {
-  display: flex;
-  flex: 0 0 $input-width;
-  max-width: $input-width;
-}
-
-// Text fields and selects base styling
+// TEXT FIELDS AND SELECTS BASE STYLING
 %form-control-base {
   // If reboot and _page.scss are not used, add font-smoothing,
   // tap-highlight-color, box-sizing: border-box.
@@ -246,7 +272,28 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   }
 }
 
-// Placeholder
+// FLEX BEHAVIOUR FOR INPUTS
+// @param {Boolean} $compact [false] - By default input widths are equal
+//   $input-width but for compact inputs grouping in row widths set to auto
+@mixin form-control-flex($compact: false) {
+  @if $compact {
+    @extend %form-text-field-compact;
+  } @else {
+    display: flex;
+    flex: 0 0 $input-width;
+    max-width: $input-width;
+  }
+}
+
+%form-text-field-compact {
+  flex: auto;
+
+  & + & {
+    margin-left: $spacer;
+  }
+}
+
+// PLACEHOLDER
 %form-placeholder {
   &::placeholder {
     color: $input-placeholder-color;
@@ -254,8 +301,8 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   }
 }
 
-// Text Input Validation
-%form-validation {
+// TEXT INPUT VALIDATION USING BACKGROUND IMAGES FOR INPUTS TO CREATE ICONS
+%form-validation-default {
   // Common icons styles
   #{$class-form-validated} &:valid,
   #{$class-valid-item} > &,
@@ -280,7 +327,34 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   }
 }
 
-// Select
+// CUSTOM VALIDATION FEEDBACK
+
+%form-error-message {
+  color: $input-invalid-feedback;
+  display: none;
+  flex: 1;
+  font-size: $font-size-small;
+  margin-left: $form-label-width;
+  padding-right: ($spacer * 3);
+  width: 100%;
+
+  #{$class-form-validated} input:invalid ~ & {
+    display: block;
+  }
+}
+
+// CALLOUT ICONS BASE STYLING
+// They can be also created as pseudo elements ::after within form__item
+%callout-icon-base {
+  display: none;
+  position: absolute;
+  top: (($input-height - 16px) / 2);
+  left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
+  width: 16px;
+  height: 16px;
+}
+
+// SELECT
 %form-select {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
   background-position: right 8px center;
@@ -290,7 +364,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   padding-right: ($spacer * 3);
 }
 
-// Checkbox or radio button
+// CHECKBOX OR RADIO BUTTON
 %form-rb-chk {
   display: inline-block;
   padding: 0;
@@ -298,3 +372,19 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   top: 4px;
   left: 0;
 }
+
+// FIELDSET
+%fieldset {
+  margin-bottom: $empty-line;
+}
+
+%legend {
+  font-size: $font-size-base;
+  font-weight: bold;
+
+  // Override reboot margin
+  margin-bottom: 10px;
+}
+
+
+
