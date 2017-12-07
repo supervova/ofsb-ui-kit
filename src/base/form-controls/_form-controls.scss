@@ -11,7 +11,7 @@
 // Containers for input, label and messages
 .form__item,
 .form__item--callout {
-  @include form-item();
+  @include form-input-container();
 }
 
 // Nested container without label. E.g. for day/month/year selects row
@@ -25,12 +25,11 @@
   @extend %form-item-offset;
 }
 
-
 // -----------------------------------------------------------------------------
 // COMPONENTS
 // -----------------------------------------------------------------------------
 
-// Label
+// Label for text inputs, text areas and selects
 .form__label {
   @include form-label();
 }
@@ -40,10 +39,51 @@
   @include input();
 }
 
+// Input[type='text'], callout type
+.form__text-field--callout {
+  @include input(callout);
+}
+
 // Textarea
 .form__text-area {
   @include input($type: 'textarea');
 }
+
+// Select
+.form__select {
+  @include input($type: 'select');
+}
+
+// Inline select
+.form__select--compact {
+  @include input($type: 'select', $inline: true);
+}
+
+// Label for checkboxes and radio buttons
+.form__label--check,
+.form__label--radio {
+  @include form-label($rb-chk: true);
+}
+
+// Checkboxes and radio buttons
+.form__option {
+  @include input($type: 'rb-chk');
+}
+
+// Custom validation feedback
+.form__feedback--error {
+  @extend %form-error-message;
+}
+
+// Fieldset and legend
+fieldset {
+  @extend %fieldset;
+}
+
+legend {
+  @extend %legend;
+}
+
 
 // Callout validation icons
 
@@ -55,71 +95,4 @@
 .form__validation-icon--error,
 .register-field-status-error {
   @include callout-icon($type: 'error');
-}
-
-// Custom validation feedback
-
-.form__feedback--error {
-  @extend %form-error-message;
-}
-
-// MODIFIERS
-
-.form__text-field--compact,
-.form__select--compact {
-  @extend %form-text-field-compact;
-}
-
-// Use .form__item--unlabeled as container for compact inputs
-
-
-
-
-// -----------------------------------------------------------------------------
-// SELECT
-// -----------------------------------------------------------------------------
-
-// if type == 'select'
-.form__select {
-  @include input($type: 'select');
-}
-
-
-// -----------------------------------------------------------------------------
-// RADIO BUTTONS & CHECKBOXES
-// -----------------------------------------------------------------------------
-
-.form__label--check,
-.form__label--radio {
-  text-align: start;
-  cursor: pointer;
-  margin-bottom: ($input-btn-padding-y + 1px);
-  padding-right: ($spacer * 3);
-  padding-left: ($spacer * 3);
-  overflow: visible;
-  position: relative;
-}
-
-.form__option {
-  display: inline-block;
-  padding: 0;
-  position: absolute;
-  top: 4px;
-  left: 0;
-}
-
-// -----------------------------------------------------------------------------
-// FIELDSET
-// -----------------------------------------------------------------------------
-
-fieldset {
-  margin-bottom: $empty-line;
-}
-
-legend {
-  font-size: $font-size-base;
-  font-weight: bold;
-
-  // Override reboot margin
-  margin-bottom: 10px;
 }

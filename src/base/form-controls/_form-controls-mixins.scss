@@ -35,21 +35,22 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // -----------------------------------------------------------------------------
 
 // Styling div or fieldset containing input, label and messages.
-// @param {Boolean} $inline [false] - If set to true, form will be horizontal
-// @param {Boolean} $offset [false] - Set to true, if form layout is block,
-//   labels are left-aligned, but form element has not standard label. It can
-//   be radio buttons group, checkbox label using as container or form headings
+// @param {Boolean} $horizontal [false] - If set to true, form will be horizontal
+// @param {Boolean} $unlabeled [false] - Set to true, if form layout is block,
+//   labels are left-aligned, but form element does not have standard label.
+//   It can be radio buttons group, checkbox label using as container or form
+//   headings
 
-@mixin form-item($inline: false, $offset: false) {
+@mixin form-input-container($horizontal: false, $untitled: false) {
   @extend %form-item-base;
 
-  @if $inline {
+  @if $horizontal {
     display: inline-flex;
   } @else {
     display: flex;
     width: 100%;
 
-    @if $offset {
+    @if $untitled {
       @extend %form-item-offset;
     }
   }
@@ -89,7 +90,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // @param {Boolean} $compact [false] - If true, input width will be not equal
 // $input-width
 
-@mixin input($type: 'text', $compact: false) {
+@mixin input($type: 'text', $inline: false) {
 
   // Checkbox or radio button
   @if ($type == 'rb-chk') {
@@ -98,14 +99,14 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 
   // Select
   @else if ($type == 'select') {
-    @include form-control-flex($compact);
+    @include form-control-flex($inline);
     @extend %form-control-base;
     @extend %form-select;
   }
 
   // Text inputs and textareas
   @else {
-    @include form-control-flex($compact);
+    @include form-control-flex($inline);
     @extend %form-control-base;
     @extend %form-placeholder;
 
