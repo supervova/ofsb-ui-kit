@@ -48,10 +48,12 @@ $class-invalid-item-callout:            '.form__item--error-callout';
     display: inline-flex;
   } @else {
     display: flex;
-    width: 100%;
 
     @if $untitled {
       @extend %form-item-offset;
+      width: auto;
+    } else {
+      width: 100%;
     }
   }
 }
