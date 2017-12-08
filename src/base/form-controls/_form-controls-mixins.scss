@@ -67,16 +67,16 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // @param {Boolean} $inline [false] - If set to true, label gets width
 //   and smaller paddings
 
-@mixin form-label($rb-chk: false, $inline: false) {
+@mixin label($rb-chk: false, $inline: false) {
 
   // For radio buttons and checkboxes
   @if $rb-chk {
-    @extend %form-label-rb-chk;
+    @extend %label-rb-chk;
   }
 
   // For text inputs, text areas, selects
   @else {
-    @include form-label-textfield($inline);
+    @include label-textfield($inline);
   }
 }
 
@@ -87,8 +87,8 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 
 // Styling different inputs
 // @param {String} $type [text] (text|callout|textarea|select|rb-chk) - Type of input
-// @param {Boolean} $compact [false] - If true, input width will be not equal
-// $input-width
+// @param {Boolean} $inline [false] - If true, input width will be auto and not
+// equal $input-width
 
 @mixin input($type: 'text', $inline: false) {
 
@@ -170,7 +170,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   margin-left: $form-label-width;
 }
 
-@mixin form-label-textfield($inline: false) {
+@mixin label-textfield($inline: false) {
   // If reboot and _page.scss are not used, add font-smoothing,
   // touch-action: manipulation and box-sizing: border-box
 
@@ -192,7 +192,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   padding-right: $spacer;
 }
 
-%form-label-rb-chk {
+%label-rb-chk {
   text-align: start;
   cursor: pointer;
   margin-bottom: ($input-btn-padding-y + 1px);

@@ -1,6 +1,7 @@
 const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync  = require('browser-sync').create();
+const cleanCSS     = require('gulp-clean-css');
 const newer        = require('gulp-newer');
 const sass         = require('gulp-sass');
 const size         = require('gulp-size');
@@ -48,7 +49,7 @@ gulp.task('s', () => {
 gulp.task('sass', () => {
   gulp.src(config.css.src)
     .pipe(newer(config.css.dest))
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(sass({
       // outputStyle: 'nested', // libsass doesn't support expanded yet
       precision: 4,
@@ -58,13 +59,13 @@ gulp.task('sass', () => {
       browsers: ['> 1%', 'last 2 versions'],
       cascade: false
     }))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.css.dest))
     // Minify styles
-    // .pipe(cleanCSS ({
-    //   // aggressiveMerging: false,
-    //   keepSpecialComments: 0
-    // }))
+    .pipe(cleanCSS ({
+      // aggressiveMerging: false,
+      keepSpecialComments: 0
+    }))
     .pipe(size({title: 'styles'}))
     .pipe(gulp.dest(config.css.dest))
 });

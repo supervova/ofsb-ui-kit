@@ -31,7 +31,7 @@
 
 // Label for text inputs, text areas and selects
 .form__label {
-  @include form-label();
+  @include label();
 }
 
 // Input[type='text']
@@ -62,7 +62,7 @@
 // Label for checkboxes and radio buttons
 .form__label--check,
 .form__label--radio {
-  @include form-label($rb-chk: true);
+  @include label($rb-chk: true);
 }
 
 // Checkboxes and radio buttons
