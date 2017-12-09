@@ -4,16 +4,22 @@
 
 // Core
 @import 'vendor/reboot';
-@import 'base/core/page';
+@import 'base/page';
 
 // Content and base UI
-@import 'base/form-controls/form-controls';
+@import 'base/icons/icons';
+@import 'base/form-core/form';
 @import 'base/buttons/buttons';
 
 // Components
-@import 'components/tooltip/tooltip';
+@import 'components/tooltip';
 
 // Sections
 
 // Templates
+
+// Pages
+
+// Helpers
+@import 'global/helpers';
 

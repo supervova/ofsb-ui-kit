@@ -41,13 +41,17 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 //   It can be radio buttons group, checkbox label using as container or form
 //   headings
 
-@mixin form-input-container($horizontal: false, $untitled: false) {
+@mixin input-container($horizontal: false, $untitled: false) {
   @extend %form-item-base;
 
   @if $horizontal {
     display: inline-flex;
+    margin-right: $spacer;
+    margin-bottom: 0;
+    vertical-align: middle;
   } @else {
     display: flex;
+    margin-bottom: $empty-line;
 
     @if $untitled {
       @extend %form-item-offset;
@@ -64,16 +68,23 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // -----------------------------------------------------------------------------
 
 // Styling field label.
-// @param {Boolean} $rb-chk [false] - If set to true, label will be contain
-//   radio button or chekbox and align with text inputs not text inputs labels
+// @param {String} $rb-type [aligned] (aligned|rb-chk|icon) - 'Aligned' labels
+//   are right-aligned against the form inputs. 'Icon' labels use image
+//   replacement technique to hide text and signify the purpose of the inputs
+//   with an icons. 'Rb-chk' are labels for radio button and checkboxes
+//   containing their elements.
 // @param {Boolean} $inline [false] - If set to true, label gets width
 //   and smaller paddings
 
-@mixin label($rb-chk: false, $inline: false) {
+@mixin label($type: 'aligned', $inline: false) {
 
   // For radio buttons and checkboxes
-  @if $rb-chk {
+  @if ($type == 'rb-chk') {
     @extend %label-rb-chk;
+  }
+
+  @else if ($type == 'icon') {
+    @extend %label-icon;
   }
 
   // For text inputs, text areas, selects
@@ -88,7 +99,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // -----------------------------------------------------------------------------
 
 // Styling different inputs
-// @param {String} $type [text] (text|callout|textarea|select|rb-chk) - Type of input
+// @param {String} $type [text] (text|callout|textarea|has-left-icon|select|rb-chk) - Type of input
 // @param {Boolean} $inline [false] - If true, input width will be auto and not
 // equal $input-width
 
@@ -116,15 +127,38 @@ $class-invalid-item-callout:            '.form__item--error-callout';
       @extend %form-validation-default;
     }
 
+    @if ($type == 'has-left-icon') {
+      padding-left: $spacer * 4;
+    }
+
     @if ($type == 'text') {
       height: $input-height;
     }
   }
+
+  @if $inline {
+    max-width: 200px;
+  }
 }
 
 // -----------------------------------------------------------------------------
-// CALLOUT VALIDATION ICONS
+// INLINE FORM CONTAINER
 // -----------------------------------------------------------------------------
+
+%form-inline-container {
+  display: flex;
+
+  [type='submit'] {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ICONS
+// -----------------------------------------------------------------------------
+
+// CALLOUT VALIDATION ICONS
 
 // Success and error icons
 // @param {String} $type [text] (success|error) - Icon value
@@ -163,7 +197,6 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 %form-item-base {
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom: $empty-line;
   position: relative;
 }
 
@@ -202,6 +235,17 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   padding-left: ($spacer * 3);
   overflow: visible;
   position: relative;
+}
+
+%label-icon {
+  @extend %text-hide;
+
+  background-repeat: no-repeat;
+  position: absolute;
+  top: calc((#{$input-height} - 16px) / 2);
+  left: ($spacer + 2px);
+  width: 16px;
+  height: 16px;
 }
 
 
@@ -302,6 +346,11 @@ $class-invalid-item-callout:            '.form__item--error-callout';
     color: $input-placeholder-color;
     opacity: 1;
   }
+
+  &:focus::placeholder {
+    color: lighten($input-placeholder-color, ($tone * 3));
+    opacity: 1;
+  }
 }
 
 // TEXT INPUT VALIDATION USING BACKGROUND IMAGES FOR INPUTS TO CREATE ICONS
@@ -389,5 +438,27 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   margin-bottom: 10px;
 }
 
+// FORGOT PASSWORD LINK
+%form-link-inside-input {
+  border-left: 1px solid $input-border-color;
+  color: lighten($input-placeholder-color, ($tone * 2));
+  line-height: ($input-height - 8px);
+  margin-top: 4px;
+  padding-left: $spacer;
+  position: absolute;
+  top: 0;
+  right: $spacer;
+  transition: color $transition-base;
+
+  &:hover {
+    color: color('link');
+    text-decoration: none;
+  }
+}
+
+// Password input w/ forgot? link
+%form-input-has-link-inside {
+  padding-right: 10ch;
+}
 
 

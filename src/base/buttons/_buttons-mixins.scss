@@ -16,7 +16,7 @@ $button-hover-shadow: true;
 $button-font-weight: normal;
 $button-label-uppercase: false;
 $button-disabled-opacity: .44;
-$button-transition: box-shadow .2s ease-out, background-color .2s ease-out;
+$button-transition: box-shadow #{$transition-base}, background-color #{$transition-base};
 
 $button-sizes: (
   'small': (

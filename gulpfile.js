@@ -62,10 +62,10 @@ gulp.task('sass', () => {
     // .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.css.dest))
     // Minify styles
-    .pipe(cleanCSS ({
-      // aggressiveMerging: false,
-      keepSpecialComments: 0
-    }))
+    // .pipe(cleanCSS ({
+    //   // aggressiveMerging: false,
+    //   keepSpecialComments: 0
+    // }))
     .pipe(size({title: 'styles'}))
     .pipe(gulp.dest(config.css.dest))
 });

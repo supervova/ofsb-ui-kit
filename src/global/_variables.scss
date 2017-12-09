@@ -49,6 +49,7 @@ $colors: (
   background-main:        $grey-100,
   background-negative:    $grey-800,
   background-widget:      white,
+  link:                   $blue,
   success:                $green,
   info:                   $teal-blue,
   warning:                $yellow,
@@ -149,7 +150,7 @@ $transition-base:               .2s ease-out;
 // -----------------------------------------------------------------------------
 
 $shadow-z1:                     0 1px 5px 0 rgba(0, 0, 0, .06), 0 2px 2px 0 rgba(0, 0, 0, .06), 0 1px 1px 0 rgba(0, 0, 0, .08);
-$shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+$shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, .12), 0 2px 2px 0 rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .12);
 $shadow-z3:                     0 1px 2px rgba(0, 0, 0, .08), 0 10px 16px -4px rgba(0, 0, 0, .08);
 
 // Z-index

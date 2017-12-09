@@ -1,8 +1,8 @@
-@import 'form-controls-mixins';
+@import 'form-mixins';
+@import './src/base/buttons/buttons-mixins';
 
 // Variables values assigned in mixins because the first time they are used
 // there
-
 
 // -----------------------------------------------------------------------------
 // LAYOUT
@@ -11,7 +11,7 @@
 // Containers for input, label and messages
 .form__item,
 .form__item--callout {
-  @include form-input-container();
+  @include input-container();
 }
 
 // Nested container without label. E.g. for day/month/year selects row
@@ -62,7 +62,7 @@
 // Label for checkboxes and radio buttons
 .form__label--check,
 .form__label--radio {
-  @include label($rb-chk: true);
+  @include label($type: 'rb-chk');
 }
 
 // Checkboxes and radio buttons
@@ -95,4 +95,66 @@ legend {
 .form__validation-icon--error,
 .register-field-status-error {
   @include callout-icon($type: 'error');
+}
+
+// -----------------------------------------------------------------------------
+// LOGIN FORMS
+// -----------------------------------------------------------------------------
+
+// Form container
+.form.inline,
+.login_form dl {
+  @extend %form-inline-container;
+}
+
+// Inputs-container
+.inline > .form-field,
+.login_form dd {
+  @include input-container($horizontal: true);
+  vertical-align: middle;
+}
+
+// Labels
+.label-icon,
+.login_form label {
+  @include label($type: icon);
+}
+
+.label-icon.username,
+.username-wrapper > label {
+  @extend %icon-user;
+}
+
+.label-icon.password,
+.password-wrapper > label {
+  @extend %icon-password;
+}
+
+// Inputs
+.sign-in,
+.login_form {
+  input[type='text'],
+  input[type='password'] {
+    @include input($inline: true, $type: has-left-icon);
+  }
+}
+
+// Password input right padding
+.sign-in,
+.login_form {
+  input[type='password'] {
+    @extend %form-input-has-link-inside;
+  }
+}
+
+// Forgot password
+.form-forgot,
+#forgotten_password > a {
+  @extend %form-link-inside-input;
+}
+
+// Submit buttons
+.btn.primary,
+.login_form input[type='submit'] {
+  @include button($color: #fff);
 }
