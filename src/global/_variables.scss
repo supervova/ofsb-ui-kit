@@ -16,15 +16,25 @@ $grey-700:    rgb(94, 97, 101);
 $grey-800:    rgb(63, 66, 70);
 $grey-900:    rgb(30, 33, 37);
 
+// Forvetbet Spectrum
+$teal-blue:   rgb(36, 186, 255);
+$blue:        rgb(31, 122, 220);
+$purple:      rgb(31, 23, 163);
+$pink:        rgb(220, 31, 67);
+$red:         rgb(163, 23, 23);
+$orange:      rgb(220, 142, 31);
+$yellow:      rgb(220, 220, 31);
+$green:       rgb(23, 163, 74);
+
 // Spectrum
-$teal-blue:   rgb(92, 203, 255);
-$blue:        rgb(0, 122, 255);
-$purple:      rgb(80, 78, 217);
-$pink:        rgb(80, 78, 217);
-$red:         rgb(255, 59, 48);
-$orange:      rgb(255, 149, 0);
-$yellow:      rgb(255, 204, 0);
-$green:       rgb(78, 217, 101);
+$teal-blue:   rgb(92, 203, 255) !default;
+$blue:        rgb(0, 122, 255) !default;
+$purple:      rgb(80, 78, 217) !default;
+$pink:        rgb(80, 78, 255) !default;
+$red:         rgb(255, 59, 48) !default;
+$orange:      rgb(255, 149, 0) !default;
+$yellow:      rgb(255, 204, 0) !default;
+$green:       rgb(78, 217, 101) !default;
 
 
 // COLORS ROLES
@@ -43,6 +53,20 @@ $green:       rgb(78, 217, 101);
 // The success, info, warning and danger colors are used primarily
 // for the color-coded system feedback.
 
+// Forvetbet
+$colors: (
+  primary:                $green,
+  secondary:              $grey-600,
+  background-main:        $grey-100,
+  background-negative:    $grey-800,
+  background-widget:      white,
+  link:                   $blue,
+  success:                $green,
+  info:                   $teal-blue,
+  warning:                $yellow,
+  danger:                 $red
+);
+
 $colors: (
   primary:                $blue,
   secondary:              $grey-600,
@@ -54,7 +78,7 @@ $colors: (
   info:                   $teal-blue,
   warning:                $yellow,
   danger:                 $red
-);
+) !default;
 
 // Color tone interval to create consistent colors tints and shadows using
 // lighten() and darken() functions
@@ -114,17 +138,20 @@ $footer-bg:                     color('background-negative');
 // -----------------------------------------------------------------------------
 
 $font-family-sans-serif:        'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-$font-size-base:                1.4rem;
-$font-size-small:               1.2rem;
-$line-height-base:              decimal-round((20 / 14), 3);
-$empty-line:                    20px;
+$font-size-base:                14px; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
+$font-size-base-unitless:       14;
+$font-size-small:               12px; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
+$line-height-base-unitless:     20;
+$line-height-base:              decimal-round(($line-height-base-unitless / $font-size-base-unitless), 3);
+$empty-line:                    ($line-height-base-unitless * 1px); // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
 
 
 // -----------------------------------------------------------------------------
-// SPACING
+// LAYOUT
 // -----------------------------------------------------------------------------
 
 // Space scale for standard 8-point grid
+// Prefered unit is rem
 $spacer: 8px;
 
 
@@ -149,8 +176,10 @@ $transition-base:               .2s ease-out;
 // Z AXIS
 // -----------------------------------------------------------------------------
 
-$shadow-z1:                     0 1px 5px 0 rgba(0, 0, 0, .06), 0 2px 2px 0 rgba(0, 0, 0, .06), 0 1px 1px 0 rgba(0, 0, 0, .08);
-$shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, .12), 0 2px 2px 0 rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .12);
+$shadow-z1:                     0 1px 5px rgba(0, 0, 0, .06), 0 2px 2px rgba(0, 0, 0, .06), 0 1px 1px rgba(0, 0, 0, .08);
+// $shadow-z2:                     0 1px 3px -2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .12);
+// $shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, .14), 0px 1px 5px rgba(0, 0, 0, .12);
+$shadow-z2:                     0 2px 4px -1px rgba(0, 0, 0, .12), 0 4px 5px rgba(0, 0, 0, .12), 0 1px 10px -2px rgba(0, 0, 0, .12);
 $shadow-z3:                     0 1px 2px rgba(0, 0, 0, .08), 0 10px 16px -4px rgba(0, 0, 0, .08);
 
 // Z-index

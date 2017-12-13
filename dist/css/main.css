@@ -293,8 +293,200 @@ body {
   background-color: #f2f5f9;
   color: rgba(0, 0, 0, 0.87);
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1.429; }
+
+.container,
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  width: 100%; }
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1584px; } }
+
+.row {
+  display: block; }
+  @media (min-width: 1024px) {
+    .row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      list-style: none;
+      margin-right: -4px;
+      margin-left: -4px;
+      padding: 0; } }
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .no-gutters > .col,
+  .no-gutters > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0; }
+
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.row.top {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+
+.row.justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.col {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-right: 4px;
+  padding-left: 4px;
+  width: 100%; }
+
+.col.top {
+  -ms-flex-item-align: start;
+  align-self: flex-start; }
+
+.col.auto-size {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none; }
+
+.col-1 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 8.3333%;
+  flex: 0 0 8.3333%;
+  max-width: 8.3333%; }
+
+.col-2 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 16.6667%;
+  flex: 0 0 16.6667%;
+  max-width: 16.6667%; }
+
+.col-3 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%; }
+
+.col-4 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33.3333%;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%; }
+
+.col-5 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 41.6667%;
+  flex: 0 0 41.6667%;
+  max-width: 41.6667%; }
+
+.col-6 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+.col-7 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 58.3333%;
+  flex: 0 0 58.3333%;
+  max-width: 58.3333%; }
+
+.col-8 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 66.6667%;
+  flex: 0 0 66.6667%;
+  max-width: 66.6667%; }
+
+.col-9 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+  max-width: 75%; }
+
+.col-10 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 83.3333%;
+  flex: 0 0 83.3333%;
+  max-width: 83.3333%; }
+
+.col-11 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 91.6667%;
+  flex: 0 0 91.6667%;
+  max-width: 91.6667%; }
+
+.col-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%; }
+
+@media (min-width: 1024px) {
+  .layout.has-two-sidebars {
+    grid-template-columns: 246px auto 246px;
+    grid-template-rows: 128px auto auto;
+    grid-template-areas: 'header header header' 'sidebar-1 content sidebar-2' 'footer footer footer'; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .layout.has-two-sidebars {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; } }
+  .header {
+    grid-area: header;
+    margin-bottom: 24px; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .header {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: 128px; } }
+  .sidebar.left {
+    grid-area: sidebar-1; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .sidebar.left {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 246px;
+        flex: 0 0 246px;
+        max-width: 246px; } }
+  .content {
+    grid-area: content; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .content {
+        padding-right: 24px;
+        padding-left: 24px; } }
+  .sidebar.right {
+    grid-area: sidebar-2; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .sidebar.right {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 246px;
+        flex: 0 0 246px;
+        max-width: 246px; } }
+  .footer {
+    grid-area: footer; }
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      .footer {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: 128px; } } }
 
 .label-icon.username,
 .username-wrapper > label {
@@ -316,7 +508,8 @@ body {
 
 .form__item,
 .form__item--callout, .inline > .form-field,
-.login_form dd {
+.login_form dd, header#top #logged_out_bar dd,
+header#top #logged_out_bar .password-wrapper {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
@@ -337,19 +530,22 @@ body {
   overflow: visible;
   position: relative; }
 
-.label-icon,
-.login_form label {
+.label-icon, .login_form label,
+header#top #logged_out_bar .password-wrapper label {
+  background-position: center center;
   background-repeat: no-repeat;
   position: absolute;
-  top: calc((40px - 16px) / 2);
+  top: calc((40px - 20px) / 2);
   left: 10px;
-  width: 16px;
-  height: 16px; }
+  width: 20px;
+  height: 20px; }
 
 .form__text-field, .form__text-field--callout, .form__text-area, .form__select, .form__select--compact, .sign-in input[type='text'],
 .sign-in input[type='password'],
 .login_form input[type='text'],
-.login_form input[type='password'] {
+.login_form input[type='password'], header#top #logged_out_bar input[type='text'],
+header#top #logged_out_bar input[type='password'], body.register input[type='text'],
+body.register input[type="password"], body.register .select_menu {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -360,7 +556,7 @@ body {
   cursor: auto;
   display: inline-block;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1.429;
   margin: 0;
   padding: 9px 15px;
@@ -372,14 +568,18 @@ body {
   .form__text-field:focus, .form__text-field--callout:focus, .form__text-area:focus, .form__select:focus, .form__select--compact:focus, .sign-in input[type='text']:focus,
   .sign-in input[type='password']:focus,
   .login_form input[type='text']:focus,
-  .login_form input[type='password']:focus {
-    -webkit-box-shadow: rgba(0, 122, 255, 0.5) 0 0 0 3px;
-    box-shadow: rgba(0, 122, 255, 0.5) 0 0 0 3px;
-    border-color: #007aff; }
+  .login_form input[type='password']:focus, header#top #logged_out_bar input[type='text']:focus,
+  header#top #logged_out_bar input[type='password']:focus, body.register input[type='text']:focus,
+  body.register input[type="password"]:focus, body.register .select_menu:focus {
+    -webkit-box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
+    box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
+    border-color: #17a34a; }
   .form__text-field:disabled, .form__text-field--callout:disabled, .form__text-area:disabled, .form__select:disabled, .form__select--compact:disabled, .sign-in input[type='text']:disabled,
   .sign-in input[type='password']:disabled,
   .login_form input[type='text']:disabled,
-  .login_form input[type='password']:disabled {
+  .login_form input[type='password']:disabled, header#top #logged_out_bar input[type='text']:disabled,
+  header#top #logged_out_bar input[type='password']:disabled, body.register input[type='text']:disabled,
+  body.register input[type="password"]:disabled, body.register .select_menu:disabled {
     background-color: #f2f5f9; }
   .form--validated :not(.form__item--error) > .form__text-field:valid, .form--validated :not(.form__item--error) > .form__text-field--callout:valid, .form--validated :not(.form__item--error) > .form__text-area:valid, .form--validated :not(.form__item--error) > .form__select:valid, .form--validated :not(.form__item--error) > .form__select--compact:valid, .form--validated .sign-in :not(.form__item--error) > input[type='text']:valid, .sign-in .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
   .sign-in :not(.form__item--error) > input[type='password']:valid,
@@ -387,7 +587,11 @@ body {
   .login_form :not(.form__item--error) > input[type='text']:valid,
   .login_form .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
   .login_form :not(.form__item--error) > input[type='password']:valid,
-  .login_form .form--validated :not(.form__item--error) > input[type='password']:valid,
+  .login_form .form--validated :not(.form__item--error) > input[type='password']:valid, .form--validated header#top #logged_out_bar :not(.form__item--error) > input[type='text']:valid, header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
+  header#top #logged_out_bar :not(.form__item--error) > input[type='password']:valid,
+  header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='password']:valid, .form--validated body.register :not(.form__item--error) > input[type='text']:valid, body.register .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
+  body.register :not(.form__item--error) > input[type="password"]:valid,
+  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid, .form--validated body.register :not(.form__item--error) > .select_menu:valid, body.register .form--validated :not(.form__item--error) > .select_menu:valid,
   .form__item--success > .form__text-field:valid,
   .form__item--success > .form__text-field--callout:valid,
   .form__item--success > .form__text-area:valid,
@@ -399,7 +603,14 @@ body {
   .login_form
   .form__item--success > input[type='text']:valid,
   .login_form
-  .form__item--success > input[type='password']:valid,
+  .form__item--success > input[type='password']:valid, header#top #logged_out_bar
+  .form__item--success > input[type='text']:valid,
+  header#top #logged_out_bar
+  .form__item--success > input[type='password']:valid, body.register
+  .form__item--success > input[type='text']:valid,
+  body.register
+  .form__item--success > input[type="password"]:valid, body.register
+  .form__item--success > .select_menu:valid,
   .form__item--success-callout > .form__text-field:valid,
   .form__item--success-callout > .form__text-field--callout:valid,
   .form__item--success-callout > .form__text-area:valid,
@@ -411,15 +622,26 @@ body {
   .login_form
   .form__item--success-callout > input[type='text']:valid,
   .login_form
-  .form__item--success-callout > input[type='password']:valid {
-    border-color: #4ed965; }
+  .form__item--success-callout > input[type='password']:valid, header#top #logged_out_bar
+  .form__item--success-callout > input[type='text']:valid,
+  header#top #logged_out_bar
+  .form__item--success-callout > input[type='password']:valid, body.register
+  .form__item--success-callout > input[type='text']:valid,
+  body.register
+  .form__item--success-callout > input[type="password"]:valid, body.register
+  .form__item--success-callout > .select_menu:valid {
+    border-color: #17a34a; }
   .form--validated :not(.form__item--error) > .form__text-field:valid:focus, .form--validated :not(.form__item--error) > .form__text-field--callout:valid:focus, .form--validated :not(.form__item--error) > .form__text-area:valid:focus, .form--validated :not(.form__item--error) > .form__select:valid:focus, .form--validated :not(.form__item--error) > .form__select--compact:valid:focus, .form--validated .sign-in :not(.form__item--error) > input[type='text']:valid:focus, .sign-in .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
   .sign-in :not(.form__item--error) > input[type='password']:valid:focus,
   .sign-in .form--validated :not(.form__item--error) > input[type='password']:valid:focus, .form--validated
   .login_form :not(.form__item--error) > input[type='text']:valid:focus,
   .login_form .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
   .login_form :not(.form__item--error) > input[type='password']:valid:focus,
-  .login_form .form--validated :not(.form__item--error) > input[type='password']:valid:focus,
+  .login_form .form--validated :not(.form__item--error) > input[type='password']:valid:focus, .form--validated header#top #logged_out_bar :not(.form__item--error) > input[type='text']:valid:focus, header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
+  header#top #logged_out_bar :not(.form__item--error) > input[type='password']:valid:focus,
+  header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='password']:valid:focus, .form--validated body.register :not(.form__item--error) > input[type='text']:valid:focus, body.register .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
+  body.register :not(.form__item--error) > input[type="password"]:valid:focus,
+  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid:focus, .form--validated body.register :not(.form__item--error) > .select_menu:valid:focus, body.register .form--validated :not(.form__item--error) > .select_menu:valid:focus,
   .form__item--success > .form__text-field:valid:focus,
   .form__item--success > .form__text-field--callout:valid:focus,
   .form__item--success > .form__text-area:valid:focus,
@@ -431,7 +653,14 @@ body {
   .login_form
   .form__item--success > input[type='text']:valid:focus,
   .login_form
-  .form__item--success > input[type='password']:valid:focus,
+  .form__item--success > input[type='password']:valid:focus, header#top #logged_out_bar
+  .form__item--success > input[type='text']:valid:focus,
+  header#top #logged_out_bar
+  .form__item--success > input[type='password']:valid:focus, body.register
+  .form__item--success > input[type='text']:valid:focus,
+  body.register
+  .form__item--success > input[type="password"]:valid:focus, body.register
+  .form__item--success > .select_menu:valid:focus,
   .form__item--success-callout > .form__text-field:valid:focus,
   .form__item--success-callout > .form__text-field--callout:valid:focus,
   .form__item--success-callout > .form__text-area:valid:focus,
@@ -443,17 +672,28 @@ body {
   .login_form
   .form__item--success-callout > input[type='text']:valid:focus,
   .login_form
-  .form__item--success-callout > input[type='password']:valid:focus {
-    border-color: #4ed965;
-    -webkit-box-shadow: rgba(78, 217, 101, 0.5) 0 0 0 3px;
-    box-shadow: rgba(78, 217, 101, 0.5) 0 0 0 3px; }
+  .form__item--success-callout > input[type='password']:valid:focus, header#top #logged_out_bar
+  .form__item--success-callout > input[type='text']:valid:focus,
+  header#top #logged_out_bar
+  .form__item--success-callout > input[type='password']:valid:focus, body.register
+  .form__item--success-callout > input[type='text']:valid:focus,
+  body.register
+  .form__item--success-callout > input[type="password"]:valid:focus, body.register
+  .form__item--success-callout > .select_menu:valid:focus {
+    border-color: #17a34a;
+    -webkit-box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
+    box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px; }
   .form--validated :not(.form__item--success) > .form__text-field:invalid, .form--validated :not(.form__item--success) > .form__text-field--callout:invalid, .form--validated :not(.form__item--success) > .form__text-area:invalid, .form--validated :not(.form__item--success) > .form__select:invalid, .form--validated :not(.form__item--success) > .form__select--compact:invalid, .form--validated .sign-in :not(.form__item--success) > input[type='text']:invalid, .sign-in .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
   .sign-in :not(.form__item--success) > input[type='password']:invalid,
   .sign-in .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated
   .login_form :not(.form__item--success) > input[type='text']:invalid,
   .login_form .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
   .login_form :not(.form__item--success) > input[type='password']:invalid,
-  .login_form .form--validated :not(.form__item--success) > input[type='password']:invalid,
+  .login_form .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated header#top #logged_out_bar :not(.form__item--success) > input[type='text']:invalid, header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
+  header#top #logged_out_bar :not(.form__item--success) > input[type='password']:invalid,
+  header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated body.register :not(.form__item--success) > input[type='text']:invalid, body.register .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
+  body.register :not(.form__item--success) > input[type="password"]:invalid,
+  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid, .form--validated body.register :not(.form__item--success) > .select_menu:invalid, body.register .form--validated :not(.form__item--success) > .select_menu:invalid,
   .form__item--error > .form__text-field,
   .form__item--error > .form__text-field--callout,
   .form__item--error > .form__text-area,
@@ -465,7 +705,14 @@ body {
   .login_form
   .form__item--error > input[type='text'],
   .login_form
-  .form__item--error > input[type='password'],
+  .form__item--error > input[type='password'], header#top #logged_out_bar
+  .form__item--error > input[type='text'],
+  header#top #logged_out_bar
+  .form__item--error > input[type='password'], body.register
+  .form__item--error > input[type='text'],
+  body.register
+  .form__item--error > input[type="password"], body.register
+  .form__item--error > .select_menu,
   .form__item--error-callout > .form__text-field,
   .form__item--error-callout > .form__text-field--callout,
   .form__item--error-callout > .form__text-area,
@@ -477,15 +724,26 @@ body {
   .login_form
   .form__item--error-callout > input[type='text'],
   .login_form
-  .form__item--error-callout > input[type='password'] {
-    border-color: #ff3b30; }
+  .form__item--error-callout > input[type='password'], header#top #logged_out_bar
+  .form__item--error-callout > input[type='text'],
+  header#top #logged_out_bar
+  .form__item--error-callout > input[type='password'], body.register
+  .form__item--error-callout > input[type='text'],
+  body.register
+  .form__item--error-callout > input[type="password"], body.register
+  .form__item--error-callout > .select_menu {
+    border-color: #a31717; }
   .form--validated :not(.form__item--success) > .form__text-field:invalid:focus, .form--validated :not(.form__item--success) > .form__text-field--callout:invalid:focus, .form--validated :not(.form__item--success) > .form__text-area:invalid:focus, .form--validated :not(.form__item--success) > .form__select:invalid:focus, .form--validated :not(.form__item--success) > .form__select--compact:invalid:focus, .form--validated .sign-in :not(.form__item--success) > input[type='text']:invalid:focus, .sign-in .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
   .sign-in :not(.form__item--success) > input[type='password']:invalid:focus,
   .sign-in .form--validated :not(.form__item--success) > input[type='password']:invalid:focus, .form--validated
   .login_form :not(.form__item--success) > input[type='text']:invalid:focus,
   .login_form .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
   .login_form :not(.form__item--success) > input[type='password']:invalid:focus,
-  .login_form .form--validated :not(.form__item--success) > input[type='password']:invalid:focus,
+  .login_form .form--validated :not(.form__item--success) > input[type='password']:invalid:focus, .form--validated header#top #logged_out_bar :not(.form__item--success) > input[type='text']:invalid:focus, header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
+  header#top #logged_out_bar :not(.form__item--success) > input[type='password']:invalid:focus,
+  header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='password']:invalid:focus, .form--validated body.register :not(.form__item--success) > input[type='text']:invalid:focus, body.register .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
+  body.register :not(.form__item--success) > input[type="password"]:invalid:focus,
+  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid:focus, .form--validated body.register :not(.form__item--success) > .select_menu:invalid:focus, body.register .form--validated :not(.form__item--success) > .select_menu:invalid:focus,
   .form__item--error > .form__text-field:focus,
   .form__item--error > .form__text-field--callout:focus,
   .form__item--error > .form__text-area:focus,
@@ -497,7 +755,14 @@ body {
   .login_form
   .form__item--error > input[type='text']:focus,
   .login_form
-  .form__item--error > input[type='password']:focus,
+  .form__item--error > input[type='password']:focus, header#top #logged_out_bar
+  .form__item--error > input[type='text']:focus,
+  header#top #logged_out_bar
+  .form__item--error > input[type='password']:focus, body.register
+  .form__item--error > input[type='text']:focus,
+  body.register
+  .form__item--error > input[type="password"]:focus, body.register
+  .form__item--error > .select_menu:focus,
   .form__item--error-callout > .form__text-field:focus,
   .form__item--error-callout > .form__text-field--callout:focus,
   .form__item--error-callout > .form__text-area:focus,
@@ -509,65 +774,143 @@ body {
   .login_form
   .form__item--error-callout > input[type='text']:focus,
   .login_form
-  .form__item--error-callout > input[type='password']:focus {
-    -webkit-box-shadow: rgba(255, 59, 48, 0.5) 0 0 0 3px;
-    box-shadow: rgba(255, 59, 48, 0.5) 0 0 0 3px; }
+  .form__item--error-callout > input[type='password']:focus, header#top #logged_out_bar
+  .form__item--error-callout > input[type='text']:focus,
+  header#top #logged_out_bar
+  .form__item--error-callout > input[type='password']:focus, body.register
+  .form__item--error-callout > input[type='text']:focus,
+  body.register
+  .form__item--error-callout > input[type="password"]:focus, body.register
+  .form__item--error-callout > .select_menu:focus {
+    -webkit-box-shadow: rgba(163, 23, 23, 0.5) 0 0 0 3px;
+    box-shadow: rgba(163, 23, 23, 0.5) 0 0 0 3px; }
 
 .form__select--compact, .sign-in input[type='text'],
 .sign-in input[type='password'],
 .login_form input[type='text'],
-.login_form input[type='password'] {
+.login_form input[type='password'], header#top #logged_out_bar input[type='text'],
+header#top #logged_out_bar input[type='password'], body.register input[type='text'],
+body.register input[type="password"] {
   -webkit-box-flex: 1;
   -ms-flex: auto;
   flex: auto; }
   .form__select--compact + .form__select--compact, .sign-in input[type='text'] + .form__select--compact,
   .sign-in input[type='password'] + .form__select--compact,
   .login_form input[type='text'] + .form__select--compact,
-  .login_form input[type='password'] + .form__select--compact, .sign-in .form__select--compact + input[type='text'], .sign-in input[type='text'] + input[type='text'], .sign-in input[type='password'] + input[type='text'],
+  .login_form input[type='password'] + .form__select--compact, header#top #logged_out_bar input[type='text'] + .form__select--compact,
+  header#top #logged_out_bar input[type='password'] + .form__select--compact, body.register input[type='text'] + .form__select--compact,
+  body.register input[type="password"] + .form__select--compact, .sign-in .form__select--compact + input[type='text'], .sign-in input[type='text'] + input[type='text'], .sign-in input[type='password'] + input[type='text'],
+  body.register .sign-in input[type="password"] + input[type='text'],
   .sign-in .form__select--compact + input[type='password'], .sign-in input[type='text'] + input[type='password'], .sign-in input[type='password'] + input[type='password'],
+  .sign-in body.register input[type='text'] + input[type='password'],
+  body.register
+  .sign-in input[type="password"] + input[type='password'],
+  .sign-in
+  body.register input[type="password"] + input[type='password'],
   .login_form .form__select--compact + input[type='text'], .login_form input[type='text'] + input[type='text'], .login_form input[type='password'] + input[type='text'],
-  .login_form .form__select--compact + input[type='password'], .login_form input[type='text'] + input[type='password'], .login_form input[type='password'] + input[type='password'] {
+  body.register
+  .login_form input[type="password"] + input[type='text'],
+  .login_form .form__select--compact + input[type='password'], .login_form input[type='text'] + input[type='password'], .login_form input[type='password'] + input[type='password'],
+  .login_form body.register input[type='text'] + input[type='password'],
+  body.register
+  .login_form input[type="password"] + input[type='password'],
+  .login_form
+  body.register input[type="password"] + input[type='password'], header#top #logged_out_bar .form__select--compact + input[type='text'], header#top #logged_out_bar .sign-in input[type='text'] + input[type='text'], header#top #logged_out_bar
+  .sign-in input[type='password'] + input[type='text'], header#top #logged_out_bar
+  .login_form input[type='text'] + input[type='text'], header#top #logged_out_bar
+  .login_form input[type='password'] + input[type='text'], header#top #logged_out_bar input[type='text'] + input[type='text'], header#top #logged_out_bar input[type='password'] + input[type='text'],
+  body.register header#top #logged_out_bar input[type="password"] + input[type='text'], header#top #logged_out_bar
+  body.register input[type="password"] + input[type='text'],
+  header#top #logged_out_bar .form__select--compact + input[type='password'],
+  header#top #logged_out_bar .sign-in input[type='text'] + input[type='password'],
+  header#top #logged_out_bar
+  .sign-in input[type='password'] + input[type='password'],
+  header#top #logged_out_bar
+  .login_form input[type='text'] + input[type='password'],
+  header#top #logged_out_bar
+  .login_form input[type='password'] + input[type='password'], header#top #logged_out_bar input[type='text'] + input[type='password'], header#top #logged_out_bar input[type='password'] + input[type='password'],
+  header#top #logged_out_bar body.register input[type='text'] + input[type='password'],
+  body.register
+  header#top #logged_out_bar input[type="password"] + input[type='password'],
+  header#top #logged_out_bar
+  body.register input[type="password"] + input[type='password'], body.register .form__select--compact + input[type='text'],
+  .sign-in body.register input[type='password'] + input[type='text'],
+  .login_form body.register input[type='password'] + input[type='text'], header#top #logged_out_bar body.register input[type='text'] + input[type='text'],
+  header#top #logged_out_bar body.register input[type='password'] + input[type='text'], body.register input[type='text'] + input[type='text'], body.register input[type="password"] + input[type='text'],
+  body.register .form__select--compact + input[type="password"],
+  body.register .sign-in input[type='text'] + input[type="password"],
+  .sign-in
+  body.register input[type='password'] + input[type="password"],
+  body.register
+  .sign-in input[type='password'] + input[type="password"],
+  body.register
+  .login_form input[type='text'] + input[type="password"],
+  .login_form
+  body.register input[type='password'] + input[type="password"],
+  body.register
+  .login_form input[type='password'] + input[type="password"], header#top #logged_out_bar
+  body.register input[type='text'] + input[type="password"],
+  body.register header#top #logged_out_bar input[type='text'] + input[type="password"],
+  header#top #logged_out_bar
+  body.register input[type='password'] + input[type="password"],
+  body.register
+  header#top #logged_out_bar input[type='password'] + input[type="password"], body.register input[type='text'] + input[type="password"], body.register input[type="password"] + input[type="password"] {
     margin-left: 8px; }
 
 .form__text-field::-webkit-input-placeholder, .form__text-field--callout::-webkit-input-placeholder, .form__text-area::-webkit-input-placeholder, .sign-in input[type='text']::-webkit-input-placeholder,
 .sign-in input[type='password']::-webkit-input-placeholder,
 .login_form input[type='text']::-webkit-input-placeholder,
-.login_form input[type='password']::-webkit-input-placeholder {
+.login_form input[type='password']::-webkit-input-placeholder, header#top #logged_out_bar input[type='text']::-webkit-input-placeholder,
+header#top #logged_out_bar input[type='password']::-webkit-input-placeholder, body.register input[type='text']::-webkit-input-placeholder,
+body.register input[type="password"]::-webkit-input-placeholder {
   color: #727579;
+  text-align: left;
   opacity: 1; }
 
 .form__text-field:-ms-input-placeholder, .form__text-field--callout:-ms-input-placeholder, .form__text-area:-ms-input-placeholder, .sign-in input[type='text']:-ms-input-placeholder,
 .sign-in input[type='password']:-ms-input-placeholder,
 .login_form input[type='text']:-ms-input-placeholder,
-.login_form input[type='password']:-ms-input-placeholder {
+.login_form input[type='password']:-ms-input-placeholder, header#top #logged_out_bar input[type='text']:-ms-input-placeholder,
+header#top #logged_out_bar input[type='password']:-ms-input-placeholder, body.register input[type='text']:-ms-input-placeholder,
+body.register input[type="password"]:-ms-input-placeholder {
   color: #727579;
+  text-align: left;
   opacity: 1; }
 
 .form__text-field::placeholder, .form__text-field--callout::placeholder, .form__text-area::placeholder, .sign-in input[type='text']::placeholder,
 .sign-in input[type='password']::placeholder,
 .login_form input[type='text']::placeholder,
-.login_form input[type='password']::placeholder {
+.login_form input[type='password']::placeholder, header#top #logged_out_bar input[type='text']::placeholder,
+header#top #logged_out_bar input[type='password']::placeholder, body.register input[type='text']::placeholder,
+body.register input[type="password"]::placeholder {
   color: #727579;
+  text-align: left;
   opacity: 1; }
 
 .form__text-field:focus::-webkit-input-placeholder, .form__text-field--callout:focus::-webkit-input-placeholder, .form__text-area:focus::-webkit-input-placeholder, .sign-in input[type='text']:focus::-webkit-input-placeholder,
 .sign-in input[type='password']:focus::-webkit-input-placeholder,
 .login_form input[type='text']:focus::-webkit-input-placeholder,
-.login_form input[type='password']:focus::-webkit-input-placeholder {
+.login_form input[type='password']:focus::-webkit-input-placeholder, header#top #logged_out_bar input[type='text']:focus::-webkit-input-placeholder,
+header#top #logged_out_bar input[type='password']:focus::-webkit-input-placeholder, body.register input[type='text']:focus::-webkit-input-placeholder,
+body.register input[type="password"]:focus::-webkit-input-placeholder {
   color: #b0b2b5;
   opacity: 1; }
 
 .form__text-field:focus:-ms-input-placeholder, .form__text-field--callout:focus:-ms-input-placeholder, .form__text-area:focus:-ms-input-placeholder, .sign-in input[type='text']:focus:-ms-input-placeholder,
 .sign-in input[type='password']:focus:-ms-input-placeholder,
 .login_form input[type='text']:focus:-ms-input-placeholder,
-.login_form input[type='password']:focus:-ms-input-placeholder {
+.login_form input[type='password']:focus:-ms-input-placeholder, header#top #logged_out_bar input[type='text']:focus:-ms-input-placeholder,
+header#top #logged_out_bar input[type='password']:focus:-ms-input-placeholder, body.register input[type='text']:focus:-ms-input-placeholder,
+body.register input[type="password"]:focus:-ms-input-placeholder {
   color: #b0b2b5;
   opacity: 1; }
 
 .form__text-field:focus::placeholder, .form__text-field--callout:focus::placeholder, .form__text-area:focus::placeholder, .sign-in input[type='text']:focus::placeholder,
 .sign-in input[type='password']:focus::placeholder,
 .login_form input[type='text']:focus::placeholder,
-.login_form input[type='password']:focus::placeholder {
+.login_form input[type='password']:focus::placeholder, header#top #logged_out_bar input[type='text']:focus::placeholder,
+header#top #logged_out_bar input[type='password']:focus::placeholder, body.register input[type='text']:focus::placeholder,
+body.register input[type="password"]:focus::placeholder {
   color: #b0b2b5;
   opacity: 1; }
 
@@ -577,7 +920,11 @@ body {
 .login_form input[type='text']:valid,
 .login_form .form--validated input[type='text']:valid, .form--validated
 .login_form input[type='password']:valid,
-.login_form .form--validated input[type='password']:valid,
+.login_form .form--validated input[type='password']:valid, .form--validated header#top #logged_out_bar input[type='text']:valid, header#top #logged_out_bar .form--validated input[type='text']:valid, .form--validated
+header#top #logged_out_bar input[type='password']:valid,
+header#top #logged_out_bar .form--validated input[type='password']:valid, .form--validated body.register input[type='text']:valid, body.register .form--validated input[type='text']:valid, .form--validated
+body.register input[type="password"]:valid,
+body.register .form--validated input[type="password"]:valid,
 .form__item--success > .form__text-field,
 .form__item--success > .form__text-area, .sign-in
 .form__item--success > input[type='text'],
@@ -586,7 +933,13 @@ body {
 .login_form
 .form__item--success > input[type='text'],
 .login_form
-.form__item--success > input[type='password'],
+.form__item--success > input[type='password'], header#top #logged_out_bar
+.form__item--success > input[type='text'],
+header#top #logged_out_bar
+.form__item--success > input[type='password'], body.register
+.form__item--success > input[type='text'],
+body.register
+.form__item--success > input[type="password"],
 .form--validated .form__text-field:invalid,
 .form--validated .form__text-area:invalid,
 .form--validated .sign-in input[type='text']:invalid, .sign-in
@@ -603,6 +956,18 @@ body {
 .login_form input[type='password']:invalid,
 .login_form
 .form--validated input[type='password']:invalid,
+.form--validated header#top #logged_out_bar input[type='text']:invalid, header#top #logged_out_bar
+.form--validated input[type='text']:invalid,
+.form--validated
+header#top #logged_out_bar input[type='password']:invalid,
+header#top #logged_out_bar
+.form--validated input[type='password']:invalid,
+.form--validated body.register input[type='text']:invalid, body.register
+.form--validated input[type='text']:invalid,
+.form--validated
+body.register input[type="password"]:invalid,
+body.register
+.form--validated input[type="password"]:invalid,
 .form__item--error > .form__text-field,
 .form__item--error > .form__text-area, .sign-in
 .form__item--error > input[type='text'],
@@ -611,7 +976,13 @@ body {
 .login_form
 .form__item--error > input[type='text'],
 .login_form
-.form__item--error > input[type='password'] {
+.form__item--error > input[type='password'], header#top #logged_out_bar
+.form__item--error > input[type='text'],
+header#top #logged_out_bar
+.form__item--error > input[type='password'], body.register
+.form__item--error > input[type='text'],
+body.register
+.form__item--error > input[type="password"] {
   background-position: right 8px top calc((40px - 16px) / 2);
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -623,7 +994,11 @@ body {
 .login_form :not(.form__item--error) > input[type='text']:valid,
 .login_form .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
 .login_form :not(.form__item--error) > input[type='password']:valid,
-.login_form .form--validated :not(.form__item--error) > input[type='password']:valid,
+.login_form .form--validated :not(.form__item--error) > input[type='password']:valid, .form--validated header#top #logged_out_bar :not(.form__item--error) > input[type='text']:valid, header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
+header#top #logged_out_bar :not(.form__item--error) > input[type='password']:valid,
+header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='password']:valid, .form--validated body.register :not(.form__item--error) > input[type='text']:valid, body.register .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
+body.register :not(.form__item--error) > input[type="password"]:valid,
+body.register .form--validated :not(.form__item--error) > input[type="password"]:valid,
 .form__item--success > .form__text-field,
 .form__item--success > .form__text-area, .sign-in
 .form__item--success > input[type='text'],
@@ -632,7 +1007,13 @@ body {
 .login_form
 .form__item--success > input[type='text'],
 .login_form
-.form__item--success > input[type='password'] {
+.form__item--success > input[type='password'], header#top #logged_out_bar
+.form__item--success > input[type='text'],
+header#top #logged_out_bar
+.form__item--success > input[type='password'], body.register
+.form__item--success > input[type='text'],
+body.register
+.form__item--success > input[type="password"] {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%234ED965%22%20fill-rule%3D%22evenodd%22%20d%3D%22M14.3943246%2C3.1916754%20C12.934415%2C1.25329624%2010.613569%2C0%208%2C0%20C3.581722%2C0%200%2C3.581722%200%2C8%20C0%2C12.418278%203.581722%2C16%208%2C16%20C12.418278%2C16%2016%2C12.418278%2016%2C8%20C16%2C6.93788152%2015.7930184%2C5.92410617%2015.4171906%2C4.99680938%20L7.5%2C12.914%20L2.586%2C8%20L4%2C6.586%20L7.5%2C10.086%20L14.3943246%2C3.1916754%20L14.3943246%2C3.1916754%20Z%22%2F%3E%20%3C%2Fsvg%3E"); }
 
 .form--validated :not(.form__item--success) > .form__text-field:invalid, .form--validated :not(.form__item--success) > .form__text-area:invalid, .form--validated .sign-in :not(.form__item--success) > input[type='text']:invalid, .sign-in .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
@@ -641,7 +1022,11 @@ body {
 .login_form :not(.form__item--success) > input[type='text']:invalid,
 .login_form .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
 .login_form :not(.form__item--success) > input[type='password']:invalid,
-.login_form .form--validated :not(.form__item--success) > input[type='password']:invalid,
+.login_form .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated header#top #logged_out_bar :not(.form__item--success) > input[type='text']:invalid, header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
+header#top #logged_out_bar :not(.form__item--success) > input[type='password']:invalid,
+header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated body.register :not(.form__item--success) > input[type='text']:invalid, body.register .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
+body.register :not(.form__item--success) > input[type="password"]:invalid,
+body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid,
 .form__item--error > .form__text-field,
 .form__item--error > .form__text-area, .sign-in
 .form__item--error > input[type='text'],
@@ -650,16 +1035,22 @@ body {
 .login_form
 .form__item--error > input[type='text'],
 .login_form
-.form__item--error > input[type='password'] {
+.form__item--error > input[type='password'], header#top #logged_out_bar
+.form__item--error > input[type='text'],
+header#top #logged_out_bar
+.form__item--error > input[type='password'], body.register
+.form__item--error > input[type='text'],
+body.register
+.form__item--error > input[type="password"] {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E"); }
 
 .form__feedback--error {
-  color: #ff3b30;
+  color: #a31717;
   display: none;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  font-size: 1.2rem;
+  font-size: 12px;
   margin-left: 33.333%;
   padding-right: 24px;
   width: 100%; }
@@ -672,11 +1063,11 @@ body {
   display: none;
   position: absolute;
   top: 12px;
-  left: calc(50% + 33.333% + 8px);
-  width: 16px;
-  height: 16px; }
+  left: calc(250px + 33.333% + 8px);
+  width: 20px;
+  height: 20px; }
 
-.form__select, .form__select--compact {
+.form__select, .form__select--compact, body.register .select_menu {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E");
   background-position: right 8px center;
   background-repeat: no-repeat;
@@ -695,25 +1086,32 @@ fieldset {
   margin-bottom: 20px; }
 
 legend {
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: bold;
   margin-bottom: 10px; }
 
 .form-forgot,
-#forgotten_password > a {
+#forgotten_password > a, header#top #logged_out_bar span {
   border-left: 1px solid rgba(0, 0, 0, 0.12);
   color: #9b9ea1;
+  display: inline-block;
   line-height: 32px;
   margin-top: 4px;
   padding-left: 8px;
   position: absolute;
   top: 0;
   right: 8px;
+  left: auto;
   -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out; }
+  transition: color 0.2s ease-out;
+  width: auto; }
+  .form-forgot a,
+  #forgotten_password > a a, header#top #logged_out_bar span a {
+    color: #9b9ea1; }
   .form-forgot:hover,
-  #forgotten_password > a:hover {
-    color: #007aff;
+  #forgotten_password > a:hover, header#top #logged_out_bar span:hover, .form-forgot:hover a,
+  #forgotten_password > a:hover a, header#top #logged_out_bar span:hover a {
+    color: #1f7adc;
     text-decoration: none; }
 
 .sign-in input[type='password'],
@@ -721,7 +1119,7 @@ legend {
   padding-right: 10ch; }
 
 .btn.primary,
-.login_form input[type='submit'], #some-really > .custom-selector, .btn, .btn--primary, .btn--2-point-5d, .btn--ghost {
+.login_form input[type='submit'], #some-really > .custom-selector, .btn, .btn--primary, .btn--2-point-5d, .btn--ghost, header#top #user_menu input[type='submit'], header#top #user_menu li#register_button a, body.register .register-submit a {
   border-radius: 5px;
   border: 0;
   display: inline-block;
@@ -748,21 +1146,21 @@ legend {
   transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out;
   transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out, -webkit-box-shadow 0.2s ease-out; }
   
-  .login_form input[type='submit']:active, #some-really > .custom-selector:active, .btn:active, .btn--primary:active, .btn--2-point-5d:active, .btn--ghost:active,
-  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus {
+  .login_form input[type='submit']:active, #some-really > .custom-selector:active, .btn:active, .btn--primary:active, .btn--2-point-5d:active, .btn--ghost:active, header#top #user_menu input[type='submit']:active, header#top #user_menu li#register_button a:active, body.register .register-submit a:active,
+  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus, header#top #user_menu input[type='submit']:focus, header#top #user_menu li#register_button a:focus, body.register .register-submit a:focus {
     outline: 0; }
   
-  .login_form input[type='submit']:hover:not(:disabled), #some-really > .custom-selector:hover:not(:disabled), .btn:hover:not(:disabled), .btn--primary:hover:not(:disabled), .btn--2-point-5d:hover:not(:disabled), .btn--ghost:hover:not(:disabled) {
+  .login_form input[type='submit']:hover:not(:disabled), #some-really > .custom-selector:hover:not(:disabled), .btn:hover:not(:disabled), .btn--primary:hover:not(:disabled), .btn--2-point-5d:hover:not(:disabled), .btn--ghost:hover:not(:disabled), header#top #user_menu input[type='submit']:hover:not(:disabled), header#top #user_menu li#register_button a:hover:not(:disabled), body.register .register-submit a:hover:not(:disabled) {
     cursor: pointer; }
   
-  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus,
-  .login_form input[type='submit']:hover, #some-really > .custom-selector:hover, .btn:hover, .btn--primary:hover, .btn--2-point-5d:hover, .btn--ghost:hover {
+  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus, header#top #user_menu input[type='submit']:focus, header#top #user_menu li#register_button a:focus, body.register .register-submit a:focus,
+  .login_form input[type='submit']:hover, #some-really > .custom-selector:hover, .btn:hover, .btn--primary:hover, .btn--2-point-5d:hover, .btn--ghost:hover, header#top #user_menu input[type='submit']:hover, header#top #user_menu li#register_button a:hover, body.register .register-submit a:hover {
     text-decoration: none; }
   .btn.primary::-moz-focus-inner,
-  .login_form input[type='submit']::-moz-focus-inner, #some-really > .custom-selector::-moz-focus-inner, .btn::-moz-focus-inner, .btn--primary::-moz-focus-inner, .btn--2-point-5d::-moz-focus-inner, .btn--ghost::-moz-focus-inner {
+  .login_form input[type='submit']::-moz-focus-inner, #some-really > .custom-selector::-moz-focus-inner, .btn::-moz-focus-inner, .btn--primary::-moz-focus-inner, .btn--2-point-5d::-moz-focus-inner, .btn--ghost::-moz-focus-inner, header#top #user_menu input[type='submit']::-moz-focus-inner, header#top #user_menu li#register_button a::-moz-focus-inner, body.register .register-submit a::-moz-focus-inner {
     padding: 0; }
   
-  .login_form input[type='submit']:disabled, #some-really > .custom-selector:disabled, .btn:disabled, .btn--primary:disabled, .btn--2-point-5d:disabled, .btn--ghost:disabled {
+  .login_form input[type='submit']:disabled, #some-really > .custom-selector:disabled, .btn:disabled, .btn--primary:disabled, .btn--2-point-5d:disabled, .btn--ghost:disabled, header#top #user_menu input[type='submit']:disabled, header#top #user_menu li#register_button a:disabled, body.register .register-submit a:disabled {
     cursor: default;
     opacity: 0.44;
     pointer-events: none; }
@@ -782,9 +1180,9 @@ legend {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%; }
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px; }
 
 .form__label {
   -webkit-box-flex: 0;
@@ -804,9 +1202,9 @@ legend {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px;
   height: 40px; }
 
 .form__text-field--callout {
@@ -814,29 +1212,30 @@ legend {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%; }
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px; }
 
 .form__text-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%; }
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px; }
 
 .form__select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%; }
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px; }
 
 .form__select--compact {
+  width: auto;
   max-width: 200px; }
 
 .form__validation-icon--success,
@@ -860,6 +1259,8 @@ legend {
   display: inline-flex;
   margin-right: 8px;
   margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
   vertical-align: middle;
   vertical-align: middle; }
 
@@ -868,37 +1269,40 @@ legend {
 .login_form input[type='text'],
 .login_form input[type='password'] {
   padding-left: 32px;
+  height: 40px;
+  width: auto;
   max-width: 200px; }
 
 .btn.primary,
 .login_form input[type='submit'] {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #007aff;
+  background-color: #17a34a;
   border: 0;
   color: rgba(255, 255, 255, 0.7);
   color: #fff; }
   .btn.primary:hover,
   .login_form input[type='submit']:hover {
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+    background-color: #1cc75a;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
   .btn.primary:focus,
   .login_form input[type='submit']:focus {
-    -webkit-box-shadow: 0 0 0 2px #0066d6;
-    box-shadow: 0 0 0 2px #0066d6; }
+    -webkit-box-shadow: 0 0 0 2px #127f3a;
+    box-shadow: 0 0 0 2px #127f3a; }
   .btn.primary:active,
   .login_form input[type='submit']:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
-    background-color: #0066d6; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    background-color: #127f3a; }
 
 .btn.primary,
-.login_form input[type='submit'], #some-really > .custom-selector, .btn, .btn--primary, .btn--2-point-5d, .btn--ghost {
+.login_form input[type='submit'], #some-really > .custom-selector, .btn, .btn--primary, .btn--2-point-5d, .btn--ghost, header#top #user_menu input[type='submit'], header#top #user_menu li#register_button a, body.register .register-submit a {
   border-radius: 5px;
   border: 0;
   display: inline-block;
@@ -925,21 +1329,21 @@ legend {
   transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out;
   transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out, -webkit-box-shadow 0.2s ease-out; }
   
-  .login_form input[type='submit']:active, #some-really > .custom-selector:active, .btn:active, .btn--primary:active, .btn--2-point-5d:active, .btn--ghost:active,
-  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus {
+  .login_form input[type='submit']:active, #some-really > .custom-selector:active, .btn:active, .btn--primary:active, .btn--2-point-5d:active, .btn--ghost:active, header#top #user_menu input[type='submit']:active, header#top #user_menu li#register_button a:active, body.register .register-submit a:active,
+  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus, header#top #user_menu input[type='submit']:focus, header#top #user_menu li#register_button a:focus, body.register .register-submit a:focus {
     outline: 0; }
   
-  .login_form input[type='submit']:hover:not(:disabled), #some-really > .custom-selector:hover:not(:disabled), .btn:hover:not(:disabled), .btn--primary:hover:not(:disabled), .btn--2-point-5d:hover:not(:disabled), .btn--ghost:hover:not(:disabled) {
+  .login_form input[type='submit']:hover:not(:disabled), #some-really > .custom-selector:hover:not(:disabled), .btn:hover:not(:disabled), .btn--primary:hover:not(:disabled), .btn--2-point-5d:hover:not(:disabled), .btn--ghost:hover:not(:disabled), header#top #user_menu input[type='submit']:hover:not(:disabled), header#top #user_menu li#register_button a:hover:not(:disabled), body.register .register-submit a:hover:not(:disabled) {
     cursor: pointer; }
   
-  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus,
-  .login_form input[type='submit']:hover, #some-really > .custom-selector:hover, .btn:hover, .btn--primary:hover, .btn--2-point-5d:hover, .btn--ghost:hover {
+  .login_form input[type='submit']:focus, #some-really > .custom-selector:focus, .btn:focus, .btn--primary:focus, .btn--2-point-5d:focus, .btn--ghost:focus, header#top #user_menu input[type='submit']:focus, header#top #user_menu li#register_button a:focus, body.register .register-submit a:focus,
+  .login_form input[type='submit']:hover, #some-really > .custom-selector:hover, .btn:hover, .btn--primary:hover, .btn--2-point-5d:hover, .btn--ghost:hover, header#top #user_menu input[type='submit']:hover, header#top #user_menu li#register_button a:hover, body.register .register-submit a:hover {
     text-decoration: none; }
   .btn.primary::-moz-focus-inner,
-  .login_form input[type='submit']::-moz-focus-inner, #some-really > .custom-selector::-moz-focus-inner, .btn::-moz-focus-inner, .btn--primary::-moz-focus-inner, .btn--2-point-5d::-moz-focus-inner, .btn--ghost::-moz-focus-inner {
+  .login_form input[type='submit']::-moz-focus-inner, #some-really > .custom-selector::-moz-focus-inner, .btn::-moz-focus-inner, .btn--primary::-moz-focus-inner, .btn--2-point-5d::-moz-focus-inner, .btn--ghost::-moz-focus-inner, header#top #user_menu input[type='submit']::-moz-focus-inner, header#top #user_menu li#register_button a::-moz-focus-inner, body.register .register-submit a::-moz-focus-inner {
     padding: 0; }
   
-  .login_form input[type='submit']:disabled, #some-really > .custom-selector:disabled, .btn:disabled, .btn--primary:disabled, .btn--2-point-5d:disabled, .btn--ghost:disabled {
+  .login_form input[type='submit']:disabled, #some-really > .custom-selector:disabled, .btn:disabled, .btn--primary:disabled, .btn--2-point-5d:disabled, .btn--ghost:disabled, header#top #user_menu input[type='submit']:disabled, header#top #user_menu li#register_button a:disabled, body.register .register-submit a:disabled {
     cursor: default;
     opacity: 0.44;
     pointer-events: none; }
@@ -947,66 +1351,68 @@ legend {
 #some-really > .custom-selector {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #007aff;
+  background-color: #17a34a;
   border: 0;
   color: rgba(255, 255, 255, 0.7); }
   #some-really > .custom-selector:hover {
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+    background-color: #1cc75a;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
   #some-really > .custom-selector:focus {
-    -webkit-box-shadow: 0 0 0 2px #0066d6;
-    box-shadow: 0 0 0 2px #0066d6; }
+    -webkit-box-shadow: 0 0 0 2px #127f3a;
+    box-shadow: 0 0 0 2px #127f3a; }
   #some-really > .custom-selector:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
-    background-color: #0066d6; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    background-color: #127f3a; }
 
 .btn {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #a3cfff;
+  background-color: #72eb9e;
   border: 0;
   color: rgba(0, 0, 0, 0.54); }
   .btn:hover {
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+    background-color: #96f0b7;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
   .btn:focus {
-    -webkit-box-shadow: 0 0 0 2px #7abaff;
-    box-shadow: 0 0 0 2px #7abaff; }
+    -webkit-box-shadow: 0 0 0 2px #4ee686;
+    box-shadow: 0 0 0 2px #4ee686; }
   .btn:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #52a5ff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #52a5ff;
-    background-color: #7abaff; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #2be16d;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #2be16d;
+    background-color: #4ee686; }
 
 .btn--primary {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #007aff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#298fff), to(#0066d6));
-  background-image: linear-gradient(#298fff, #0066d6);
+  background-color: #17a34a;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
+  background-image: linear-gradient(#1dd05f, #13893e);
   -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   color: white;
   z-index: 1; }
   .btn--primary::before {
-    background-color: #298fff;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#52a5ff), to(#007aff));
-    background-image: linear-gradient(#52a5ff, #007aff);
+    background-color: #1cc75a;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3ee47a), to(#17a34a));
+    background-image: linear-gradient(#3ee47a, #17a34a);
     border-radius: 5px;
     -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
@@ -1021,23 +1427,23 @@ legend {
     transition: opacity .2s ease-out;
     z-index: -1; }
   .btn--primary:hover {
-    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
     .btn--primary:hover::before {
       opacity: 1; }
   .btn--primary:focus {
-    -webkit-box-shadow: 0 0 0 2px #0066d6;
-    box-shadow: 0 0 0 2px #0066d6; }
+    -webkit-box-shadow: 0 0 0 2px #127f3a;
+    box-shadow: 0 0 0 2px #127f3a; }
   .btn--primary:active, .btn--primary:active:focus {
-    background-color: #0066d6;
+    background-color: #127f3a;
     background-image: none;
-    -webkit-box-shadow: 0 0 0 2px #0053ad, inset 0 2px 4px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 0 0 2px #0053ad, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
+    -webkit-box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
     .btn--primary:active::before, .btn--primary:active:focus::before {
       opacity: 0; }
 
 .btn--lg {
-  font-size: 1.8667rem;
+  font-size: 18.6667px;
   line-height: 1;
   padding: 0 24px;
   height: 48px;
@@ -1046,16 +1452,16 @@ legend {
 .btn--2-point-5d {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #007aff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#298fff), to(#0066d6));
-  background-image: linear-gradient(#298fff, #0066d6);
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: #17a34a;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
+  background-image: linear-gradient(#1dd05f, #13893e);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
   color: white;
   padding-bottom: 4px;
   -webkit-transition: -webkit-box-shadow .1s ease-out;
@@ -1063,41 +1469,42 @@ legend {
   transition: box-shadow .1s ease-out;
   transition: box-shadow .1s ease-out, -webkit-box-shadow .1s ease-out; }
   .btn--2-point-5d:hover {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24); }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24); }
   .btn--2-point-5d:focus {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6; }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a; }
   .btn--2-point-5d:focus:hover {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.24);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.24); }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.24); }
   .btn--2-point-5d:active, .btn--2-point-5d:active:focus {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.16);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.16);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.16);
     padding-top: 3px;
     padding-bottom: 1px; }
 
 .btn--ghost {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1;
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
   background-color: transparent;
-  border: 1px solid #007aff;
-  color: rgba(0, 0, 0, 0.54); }
+  border: 1px solid #17a34a;
+  color: #127f3a; }
   .btn--ghost:hover {
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+    background-color: #baf5cf;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
   .btn--ghost:focus {
-    -webkit-box-shadow: 0 0 0 1px #007aff;
-    box-shadow: 0 0 0 1px #007aff; }
+    -webkit-box-shadow: 0 0 0 1px #17a34a;
+    box-shadow: 0 0 0 1px #17a34a; }
   .btn--ghost:active {
     -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
-    background-color: #a3cfff; }
+    background-color: #72eb9e; }
 
 .tooltip {
   background-color: #f8f9fa;
@@ -1108,7 +1515,7 @@ legend {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
   -webkit-box-shadow: 0 10px 16px -4px rgba(0, 0, 0, 0.08);
   box-shadow: 0 10px 16px -4px rgba(0, 0, 0, 0.08);
-  font-size: 1.4rem;
+  font-size: 14px;
   line-height: 1.429;
   padding: 8px 16px;
   opacity: 0;
@@ -1146,8 +1553,148 @@ legend {
     transform: translateY(0);
     z-index: 1070; }
 
-.label-icon,
-.login_form label {
+header#top #logged_out_bar dd,
+header#top #logged_out_bar .password-wrapper {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 8px;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  vertical-align: middle; }
+
+header#top #logged_out_bar input[type='text'],
+header#top #logged_out_bar input[type='password'] {
+  padding-left: 32px;
+  height: 40px;
+  width: auto;
+  max-width: 200px; }
+
+header#top #user_menu input[type='submit'] {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 16px;
+  height: 36px;
+  min-width: 36px;
+  background-color: #17a34a;
+  border: 0;
+  color: rgba(255, 255, 255, 0.7);
+  color: #fff; }
+  header#top #user_menu input[type='submit']:hover {
+    background-color: #1cc75a;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+  header#top #user_menu input[type='submit']:focus {
+    -webkit-box-shadow: 0 0 0 2px #127f3a;
+    box-shadow: 0 0 0 2px #127f3a; }
+  header#top #user_menu input[type='submit']:active {
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
+    background-color: #127f3a; }
+
+header#top #user_menu li#register_button a {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 16px;
+  height: 36px;
+  min-width: 36px;
+  background-color: transparent;
+  border: 1px solid #17a34a;
+  color: #127f3a;
+  top: -2px; }
+  header#top #user_menu li#register_button a:hover {
+    background-color: #baf5cf;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+  header#top #user_menu li#register_button a:focus {
+    -webkit-box-shadow: 0 0 0 1px #17a34a;
+    box-shadow: 0 0 0 1px #17a34a; }
+  header#top #user_menu li#register_button a:active {
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
+    background-color: #72eb9e; }
+
+body.register table label {
+  padding-left: 16px;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  text-align: end;
+  padding-top: 10px;
+  padding-right: 8px; }
+
+body.register input[type='text'],
+body.register input[type="password"] {
+  height: 40px;
+  width: auto;
+  max-width: 200px;
+  width: 250px;
+  max-width: 250px; }
+
+body.register .select_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+  max-width: 250px; }
+
+body.register .register-submit a {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 16px;
+  height: 36px;
+  min-width: 36px;
+  background-color: #17a34a;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
+  background-image: linear-gradient(#1dd05f, #13893e);
+  -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  color: white;
+  z-index: 1; }
+  body.register .register-submit a::before {
+    background-color: #1cc75a;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3ee47a), to(#17a34a));
+    background-image: linear-gradient(#3ee47a, #17a34a);
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+    z-index: -1; }
+  body.register .register-submit a:hover {
+    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    body.register .register-submit a:hover::before {
+      opacity: 1; }
+  body.register .register-submit a:focus {
+    -webkit-box-shadow: 0 0 0 2px #127f3a;
+    box-shadow: 0 0 0 2px #127f3a; }
+  body.register .register-submit a:active, body.register .register-submit a:active:focus {
+    background-color: #127f3a;
+    background-image: none;
+    -webkit-box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
+    body.register .register-submit a:active::before, body.register .register-submit a:active:focus::before {
+      opacity: 0; }
+
+.label-icon, .login_form label,
+header#top #logged_out_bar .password-wrapper label {
   background-color: transparent;
   border: 0;
   color: transparent;

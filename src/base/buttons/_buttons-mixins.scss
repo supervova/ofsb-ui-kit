@@ -166,14 +166,15 @@ $button-sizes: (
   color: color-ink($background-base, 'muted');
 
   &:hover {
-    @if $button-hover-shadow {
-      box-shadow: $shadow-z2;
-    }
-    @else if $background-hover {
+    @if $background-hover {
       background-color: $background-hover;
     }
     @else {
       background-color: lighten($background-base, $tone);
+    }
+
+    @if $button-hover-shadow {
+      box-shadow: $shadow-z2;
     }
   }
 
@@ -274,17 +275,17 @@ $button-sizes: (
 // It's used for tertiary actions
 // @param {Color} $border-color [$button-bg-base] - Border color
 // @param {Color} $color [color-ink(color(background-main), 'muted')] - Button label color
-@mixin button-ghost($border-color: $button-bg-base, $color: color-ink(color(background-main), 'muted')) {
+//
+
+@mixin button-ghost($border-color: $button-bg-base, $color: darken($border-color, $tone)) {
   background-color: transparent;
   border: 1px solid $border-color;
   color: $color;
 
   &:hover {
+    background-color: lighten($border-color, ($tone * 6));
     @if $button-hover-shadow {
       box-shadow: $shadow-z2;
-    }
-    @else {
-      background-color: lighten($border-color, ($tone * 5));
     }
   }
 

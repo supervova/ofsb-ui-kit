@@ -11,8 +11,9 @@ $input-valid-border-color:              color('success');
 $input-invalid-border-color:            color('danger');
 $input-invalid-feedback:                color('danger');
 
-$input-width:                           50%;
+$input-width:                           250px;
 $input-height:                          40px;
+$input-inline-width:                    200px;
 
 $input-btn-padding-x:                   ($spacer * 2 - 1px);
 $input-btn-padding-y:                   9px; // In fact, it should be ($line-height-base / 2 - .1rem
@@ -44,15 +45,22 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 @mixin input-container($horizontal: false, $untitled: false) {
   @extend %form-item-base;
 
+  // All inputs and button are in one row
   @if $horizontal {
     display: inline-flex;
     margin-right: $spacer;
     margin-bottom: 0;
+    margin-left: 0;
+    padding: 0;
     vertical-align: middle;
-  } @else {
+  }
+
+  // Stacked form
+  @else {
     display: flex;
     margin-bottom: $empty-line;
 
+    // Container has not label but aligned to the left of the inputs column
     @if $untitled {
       @extend %form-item-offset;
       width: auto;
@@ -68,11 +76,11 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // -----------------------------------------------------------------------------
 
 // Styling field label.
-// @param {String} $rb-type [aligned] (aligned|rb-chk|icon) - 'Aligned' labels
-//   are right-aligned against the form inputs. 'Icon' labels use image
-//   replacement technique to hide text and signify the purpose of the inputs
-//   with an icons. 'Rb-chk' are labels for radio button and checkboxes
-//   containing their elements.
+// @param {String} $rb-type [aligned] (aligned|rb-chk|icon) -
+//   'Aligned' labels are right-aligned against the form inputs. 'Icon' labels
+//   use image replacement technique to hide text and signify the purpose
+//   of the inputs with an icons. 'Rb-chk' are labels for radio button
+//   and checkboxes containing their elements.
 // @param {Boolean} $inline [false] - If set to true, label gets width
 //   and smaller paddings
 
@@ -88,6 +96,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   }
 
   // For text inputs, text areas, selects
+  // If 'inline', the width is not assigned to the labels.
   @else {
     @include label-textfield($inline);
   }
@@ -101,9 +110,10 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 // Styling different inputs
 // @param {String} $type [text] (text|callout|textarea|has-left-icon|select|rb-chk) - Type of input
 // @param {Boolean} $inline [false] - If true, input width will be auto and not
-// equal $input-width
+//   equal $input-width
+// @param {Boolean|Number} $width [$input-inline-width] - Explicit width
 
-@mixin input($type: 'text', $inline: false) {
+@mixin input($type: 'text', $inline: false, $width: false) {
 
   // Checkbox or radio button
   @if ($type == 'rb-chk') {
@@ -131,13 +141,19 @@ $class-invalid-item-callout:            '.form__item--error-callout';
       padding-left: $spacer * 4;
     }
 
-    @if ($type == 'text') {
+    @if ($type == 'text' or $inline) {
       height: $input-height;
     }
   }
 
   @if $inline {
-    max-width: 200px;
+    width: auto;
+    max-width: $input-inline-width;
+  }
+
+  @if $width {
+    width: $width;
+    max-width: $width;
   }
 }
 
@@ -240,12 +256,13 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 %label-icon {
   @extend %text-hide;
 
+  background-position: center center;
   background-repeat: no-repeat;
   position: absolute;
-  top: calc((#{$input-height} - 16px) / 2);
-  left: ($spacer + 2px);
-  width: 16px;
-  height: 16px;
+  top: calc((#{$input-height} - 20px) / 2);
+  left: $spacer + 2px;
+  width: 20px;
+  height: 20px;
 }
 
 
@@ -344,6 +361,7 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 %form-placeholder {
   &::placeholder {
     color: $input-placeholder-color;
+    text-align: left;
     opacity: 1;
   }
 
@@ -402,8 +420,8 @@ $class-invalid-item-callout:            '.form__item--error-callout';
   position: absolute;
   top: (($input-height - 16px) / 2);
   left: calc(#{$input-width} + #{$form-label-width} + #{$spacer});
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 // SELECT
@@ -442,15 +460,23 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 %form-link-inside-input {
   border-left: 1px solid $input-border-color;
   color: lighten($input-placeholder-color, ($tone * 2));
+  display: inline-block;
   line-height: ($input-height - 8px);
   margin-top: 4px;
   padding-left: $spacer;
   position: absolute;
   top: 0;
   right: $spacer;
+  left: auto;
   transition: color $transition-base;
+  width: auto;
 
-  &:hover {
+  a {
+    color: lighten($input-placeholder-color, ($tone * 2));
+  }
+
+  &:hover,
+  &:hover a {
     color: color('link');
     text-decoration: none;
   }

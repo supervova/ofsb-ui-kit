@@ -1,0 +1,71 @@
+$gutter:            $spacer * 3;
+$header-height:     128px;
+$sidebar-1-width:   246px;
+$sidebar-2-width:   $sidebar-1-width;
+
+
+@media (min-width: #{breakpoints('lg')}) {
+  // stylelint-disable indentation
+  .layout.has-two-sidebars {
+    // grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: $sidebar-1-width auto $sidebar-2-width;
+    grid-template-rows: $header-height auto auto;
+    grid-template-areas:  'header header header'
+                          'sidebar-1 content sidebar-2'
+                          'footer footer footer';
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  // stylelint-enable indentation
+
+  .header {
+    grid-area: header;
+    margin-bottom: $gutter;
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      height: $header-height;
+    }
+  }
+
+  .sidebar.left {
+    grid-area: sidebar-1;
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      flex: 0 0 $sidebar-1-width;
+      max-width: $sidebar-1-width;
+    }
+  }
+
+  .content {
+    grid-area: content;
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      padding-right: $gutter;
+      padding-left: $gutter;
+    }
+  }
+
+  .sidebar.right {
+    grid-area: sidebar-2;
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      flex: 0 0 $sidebar-2-width;
+      max-width: $sidebar-2-width;
+    }
+  }
+
+  .footer {
+    grid-area: footer;
+
+    @supports not ((display: grid) or (display: -ms-grid)) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      height: $header-height;
+    }
+  }
+}

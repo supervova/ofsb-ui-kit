@@ -1,0 +1,86 @@
+// -----------------------------------------------------------------------------
+// Sign In
+// -----------------------------------------------------------------------------
+
+// Form container
+.login_form dl {
+  @extend %form-inline-container;
+}
+
+// Inputs-container
+header#top #logged_out_bar dd,
+header#top #logged_out_bar .password-wrapper {
+  @include input-container($horizontal: true);
+}
+
+// Labels
+.login_form label,
+header#top #logged_out_bar .password-wrapper label {
+  @include label($type: icon);
+}
+
+.label-icon.username,
+.username-wrapper > label {
+  @extend %icon-user;
+}
+
+.label-icon.password,
+.password-wrapper > label {
+  @extend %icon-password;
+}
+
+// Inputs
+header#top #logged_out_bar {
+  input[type='text'],
+  input[type='password'] {
+    @include input($inline: true, $type: has-left-icon);
+  }
+}
+
+// Password input right padding
+.sign-in,
+.login_form {
+  input[type='password'] {
+    @extend %form-input-has-link-inside;
+  }
+}
+
+// Forgot password
+header#top #logged_out_bar span {
+  @extend %form-link-inside-input;
+}
+
+// Buttons
+header#top #user_menu input[type='submit'] {
+  @include button($color: #fff);
+}
+
+header#top #user_menu li#register_button a {
+  @include button($style: 'ghost');
+  top: -2px;
+}
+
+// -----------------------------------------------------------------------------
+// Sign Up
+// -----------------------------------------------------------------------------
+
+// Label
+body.register table label {
+  @include label($type: aligned, $inline: true);
+}
+
+// Inputs
+body.register input[type='text'],
+body.register input[type="password"] {
+  @include input($inline: true, $width: 250px);
+}
+
+// Selects
+body.register .select_menu {
+  @include input($type: select);
+}
+
+// Button
+body.register .register-submit a {
+  @include button($style: 'gradient');
+}

@@ -59,6 +59,35 @@
 
 
 // -----------------------------------------------------------------------------
+// LAYOUT FUNCTIONS
+// -----------------------------------------------------------------------------
+
+// Replace map-get($grid-breakpoints, ...) w/ simple function call
+// @example
+//     @media (min-width: #{breakpoints('lg')}) {…}
+@function breakpoints($key) {
+  @if map-has-key($grid-breakpoints, $key) {
+    @return map-get($grid-breakpoints, $key);
+  }
+
+  @warn 'Unknown `#{$key}` in $grid-breakpoints.';
+  @return null;
+}
+
+// Replace map-get() for container max-width map
+// @example
+//     max-width: max-width('lg');
+@function container-max-width($key) {
+  @if map-has-key($container-max-widths, $key) {
+    @return map-get($container-max-widths, $key);
+  }
+
+  @warn 'Unknown `#{$key}` in $container-max-widths.';
+  @return null;
+}
+
+
+// -----------------------------------------------------------------------------
 // MATH FUNCTIONS
 // -----------------------------------------------------------------------------
 

@@ -115,8 +115,7 @@ legend {
 }
 
 // Labels
-.label-icon,
-.login_form label {
+.label-icon {
   @include label($type: icon);
 }
 

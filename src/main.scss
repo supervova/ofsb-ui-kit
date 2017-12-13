@@ -2,11 +2,11 @@
 @import 'global/functions';
 @import 'global/variables';
 
-// Core
+// Base
 @import 'vendor/reboot';
 @import 'base/page';
-
-// Content and base UI
+@import 'base/layout/flex-grid';
+@import 'base/layout/has-two-sidebars';
 @import 'base/icons/icons';
 @import 'base/form-core/form';
 @import 'base/buttons/buttons';
@@ -19,6 +19,7 @@
 // Templates
 
 // Pages
+@import 'pages/sign-up/sign-up';
 
 // Helpers
 @import 'global/helpers';

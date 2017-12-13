@@ -1,0 +1,132 @@
+// FLEX GRID
+// It is used as fallback for CSS grid layouts
+
+$grid-columns:          12;
+
+$grid-breakpoints: (
+  lg: 1024px,
+  xl: 1600px
+);
+
+// Grid containers
+// Define the maximum width of .container for different screen sizes.
+$container-max-widths: (
+  lg: (1024px - 16px),
+  xl: (1600px - 16px)
+);
+
+// -----------------------------------------------------------------------------
+// Container
+// -----------------------------------------------------------------------------
+
+.container,
+.container-fluid,
+%container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacer / 2;
+  padding-right: $spacer / 2;
+  width: 100%;
+}
+
+.container,
+%container-max-widths {
+  @media (min-width: #{breakpoints('lg')}) {
+    max-width: container-max-width('xl');
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Row
+// -----------------------------------------------------------------------------
+
+.row,
+%flex-row {
+  // Stack, a mobile-first approach
+  display: block;
+
+  @media (min-width: #{breakpoints('lg')}) {
+    // Multi columns layouts
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 0 -($spacer / 2);
+    margin-left: 0 -($spacer / 2);
+    padding: 0;
+  }
+}
+
+.no-gutters,
+%no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Flex utility for creating nested grid
+.d-flex,
+%d-flex {
+  display: flex;
+}
+
+// Alignment per row
+.row.top,
+%flex-row-top {
+  align-items: flex-start; // (flex-end | center)
+}
+
+.row.justify-center,
+%flex-row-hor-center {
+  justify-content: center;
+}
+
+// -----------------------------------------------------------------------------
+// Columns
+// -----------------------------------------------------------------------------
+
+.col,
+%flex-col {
+  // By default, cells widths are equal
+  flex: 1;
+  padding-right: ($spacer / 2);
+  padding-left: ($spacer / 2);
+  width: 100%;
+}
+
+// Alignment per cell
+.col.top,
+%flex-col-top {
+  align-self: flex-start; // (flex-end | center)
+}
+
+// Cells expanded to fill all free space
+.col.auto-size,
+%flex-col-auto-size {
+  flex: none;
+}
+
+// Width utility to use in media queries
+// @example
+//     @media (min-width: #{breakpoints('lg')}) {
+//       .some-component > .col {
+//         @include flex-col-width();
+//       }
+//     }
+@mixin flex-col-width($i: $grid-columns) {
+  $w: ($i / $grid-columns) * 100%;
+  flex: 0 0 $w;
+  max-width: $w;
+}
+
+// Create classes and silent selectors assigned widths for grid columns spans
+@for $i from 1 through $grid-columns {
+  .col-#{$i},
+  %col-#{$i} {
+    @include flex-col-width($i);
+  }
+}
