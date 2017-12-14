@@ -1,3 +1,7 @@
+
+$button-bg-base:        rgb(23, 163, 74);
+$input-border-color:    color-ink(color('background-main'), 'muted-most');
+
 // -----------------------------------------------------------------------------
 // Sign In
 // -----------------------------------------------------------------------------
@@ -64,7 +68,7 @@ header#top #user_menu li#register_button a {
 // Sign Up
 // -----------------------------------------------------------------------------
 
-// Label
+// Labels
 body.register table label {
   @include label($type: aligned, $inline: true);
 }
@@ -75,12 +79,54 @@ body.register input[type="password"] {
   @include input($inline: true, $width: 250px);
 }
 
-// Selects
-body.register .select_menu {
-  @include input($type: select);
-}
-
 // Button
 body.register .register-submit a {
-  @include button($style: 'gradient');
+  @include button($style: 'gradient', $size: 'large');
 }
+
+// CUSTOM SELECTS
+// They are custom component on Forvetbet. Therefore, there are custom styles
+// here
+body.register .select_menu {
+  // @include input($type: select);
+  border-color: $input-border-color;
+  border-radius: $border-radius;
+  height: $input-height;
+}
+
+.select_menu .menu_selected {
+  padding: 0 $spacer;
+  line-height: $input-height;
+  height: $input-height;
+}
+
+// Caret
+.select_menu .select_menu_arrow {
+  @extend %form-select-caret;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+}
+
+body.register [data-select-id="user_country"] .menu_select {
+  width: 240px;
+}
+
+.select_menu .menu_select {
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
+}
+
+.select_menu .menu_option:hover {
+  background: $grey-100;
+}
+
+.select_menu [data-option-selected="true"] {
+  background: $grey-200;
+}
+
+

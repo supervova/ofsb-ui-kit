@@ -426,12 +426,17 @@ $class-invalid-item-callout:            '.form__item--error-callout';
 
 // SELECT
 %form-select {
-  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
+  @extend %form-select-caret;
+
   background-position: right 8px center;
   background-repeat: no-repeat;
   background-size: 10px 6px;
   cursor: pointer;
   padding-right: ($spacer * 3);
+}
+
+%form-select-caret {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E');
 }
 
 // CHECKBOX OR RADIO BUTTON

@@ -545,7 +545,7 @@ header#top #logged_out_bar .password-wrapper label {
 .login_form input[type='text'],
 .login_form input[type='password'], header#top #logged_out_bar input[type='text'],
 header#top #logged_out_bar input[type='password'], body.register input[type='text'],
-body.register input[type="password"], body.register .select_menu {
+body.register input[type="password"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -570,16 +570,16 @@ body.register input[type="password"], body.register .select_menu {
   .login_form input[type='text']:focus,
   .login_form input[type='password']:focus, header#top #logged_out_bar input[type='text']:focus,
   header#top #logged_out_bar input[type='password']:focus, body.register input[type='text']:focus,
-  body.register input[type="password"]:focus, body.register .select_menu:focus {
-    -webkit-box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
-    box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
-    border-color: #17a34a; }
+  body.register input[type="password"]:focus {
+    -webkit-box-shadow: rgba(0, 122, 255, 0.5) 0 0 0 3px;
+    box-shadow: rgba(0, 122, 255, 0.5) 0 0 0 3px;
+    border-color: #007aff; }
   .form__text-field:disabled, .form__text-field--callout:disabled, .form__text-area:disabled, .form__select:disabled, .form__select--compact:disabled, .sign-in input[type='text']:disabled,
   .sign-in input[type='password']:disabled,
   .login_form input[type='text']:disabled,
   .login_form input[type='password']:disabled, header#top #logged_out_bar input[type='text']:disabled,
   header#top #logged_out_bar input[type='password']:disabled, body.register input[type='text']:disabled,
-  body.register input[type="password"]:disabled, body.register .select_menu:disabled {
+  body.register input[type="password"]:disabled {
     background-color: #f2f5f9; }
   .form--validated :not(.form__item--error) > .form__text-field:valid, .form--validated :not(.form__item--error) > .form__text-field--callout:valid, .form--validated :not(.form__item--error) > .form__text-area:valid, .form--validated :not(.form__item--error) > .form__select:valid, .form--validated :not(.form__item--error) > .form__select--compact:valid, .form--validated .sign-in :not(.form__item--error) > input[type='text']:valid, .sign-in .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
   .sign-in :not(.form__item--error) > input[type='password']:valid,
@@ -591,7 +591,7 @@ body.register input[type="password"], body.register .select_menu {
   header#top #logged_out_bar :not(.form__item--error) > input[type='password']:valid,
   header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='password']:valid, .form--validated body.register :not(.form__item--error) > input[type='text']:valid, body.register .form--validated :not(.form__item--error) > input[type='text']:valid, .form--validated
   body.register :not(.form__item--error) > input[type="password"]:valid,
-  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid, .form--validated body.register :not(.form__item--error) > .select_menu:valid, body.register .form--validated :not(.form__item--error) > .select_menu:valid,
+  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid,
   .form__item--success > .form__text-field:valid,
   .form__item--success > .form__text-field--callout:valid,
   .form__item--success > .form__text-area:valid,
@@ -609,8 +609,7 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--success > input[type='password']:valid, body.register
   .form__item--success > input[type='text']:valid,
   body.register
-  .form__item--success > input[type="password"]:valid, body.register
-  .form__item--success > .select_menu:valid,
+  .form__item--success > input[type="password"]:valid,
   .form__item--success-callout > .form__text-field:valid,
   .form__item--success-callout > .form__text-field--callout:valid,
   .form__item--success-callout > .form__text-area:valid,
@@ -628,9 +627,8 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--success-callout > input[type='password']:valid, body.register
   .form__item--success-callout > input[type='text']:valid,
   body.register
-  .form__item--success-callout > input[type="password"]:valid, body.register
-  .form__item--success-callout > .select_menu:valid {
-    border-color: #17a34a; }
+  .form__item--success-callout > input[type="password"]:valid {
+    border-color: #4ed965; }
   .form--validated :not(.form__item--error) > .form__text-field:valid:focus, .form--validated :not(.form__item--error) > .form__text-field--callout:valid:focus, .form--validated :not(.form__item--error) > .form__text-area:valid:focus, .form--validated :not(.form__item--error) > .form__select:valid:focus, .form--validated :not(.form__item--error) > .form__select--compact:valid:focus, .form--validated .sign-in :not(.form__item--error) > input[type='text']:valid:focus, .sign-in .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
   .sign-in :not(.form__item--error) > input[type='password']:valid:focus,
   .sign-in .form--validated :not(.form__item--error) > input[type='password']:valid:focus, .form--validated
@@ -641,7 +639,7 @@ body.register input[type="password"], body.register .select_menu {
   header#top #logged_out_bar :not(.form__item--error) > input[type='password']:valid:focus,
   header#top #logged_out_bar .form--validated :not(.form__item--error) > input[type='password']:valid:focus, .form--validated body.register :not(.form__item--error) > input[type='text']:valid:focus, body.register .form--validated :not(.form__item--error) > input[type='text']:valid:focus, .form--validated
   body.register :not(.form__item--error) > input[type="password"]:valid:focus,
-  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid:focus, .form--validated body.register :not(.form__item--error) > .select_menu:valid:focus, body.register .form--validated :not(.form__item--error) > .select_menu:valid:focus,
+  body.register .form--validated :not(.form__item--error) > input[type="password"]:valid:focus,
   .form__item--success > .form__text-field:valid:focus,
   .form__item--success > .form__text-field--callout:valid:focus,
   .form__item--success > .form__text-area:valid:focus,
@@ -659,8 +657,7 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--success > input[type='password']:valid:focus, body.register
   .form__item--success > input[type='text']:valid:focus,
   body.register
-  .form__item--success > input[type="password"]:valid:focus, body.register
-  .form__item--success > .select_menu:valid:focus,
+  .form__item--success > input[type="password"]:valid:focus,
   .form__item--success-callout > .form__text-field:valid:focus,
   .form__item--success-callout > .form__text-field--callout:valid:focus,
   .form__item--success-callout > .form__text-area:valid:focus,
@@ -678,11 +675,10 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--success-callout > input[type='password']:valid:focus, body.register
   .form__item--success-callout > input[type='text']:valid:focus,
   body.register
-  .form__item--success-callout > input[type="password"]:valid:focus, body.register
-  .form__item--success-callout > .select_menu:valid:focus {
-    border-color: #17a34a;
-    -webkit-box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px;
-    box-shadow: rgba(23, 163, 74, 0.5) 0 0 0 3px; }
+  .form__item--success-callout > input[type="password"]:valid:focus {
+    border-color: #4ed965;
+    -webkit-box-shadow: rgba(78, 217, 101, 0.5) 0 0 0 3px;
+    box-shadow: rgba(78, 217, 101, 0.5) 0 0 0 3px; }
   .form--validated :not(.form__item--success) > .form__text-field:invalid, .form--validated :not(.form__item--success) > .form__text-field--callout:invalid, .form--validated :not(.form__item--success) > .form__text-area:invalid, .form--validated :not(.form__item--success) > .form__select:invalid, .form--validated :not(.form__item--success) > .form__select--compact:invalid, .form--validated .sign-in :not(.form__item--success) > input[type='text']:invalid, .sign-in .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
   .sign-in :not(.form__item--success) > input[type='password']:invalid,
   .sign-in .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated
@@ -693,7 +689,7 @@ body.register input[type="password"], body.register .select_menu {
   header#top #logged_out_bar :not(.form__item--success) > input[type='password']:invalid,
   header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='password']:invalid, .form--validated body.register :not(.form__item--success) > input[type='text']:invalid, body.register .form--validated :not(.form__item--success) > input[type='text']:invalid, .form--validated
   body.register :not(.form__item--success) > input[type="password"]:invalid,
-  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid, .form--validated body.register :not(.form__item--success) > .select_menu:invalid, body.register .form--validated :not(.form__item--success) > .select_menu:invalid,
+  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid,
   .form__item--error > .form__text-field,
   .form__item--error > .form__text-field--callout,
   .form__item--error > .form__text-area,
@@ -711,8 +707,7 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--error > input[type='password'], body.register
   .form__item--error > input[type='text'],
   body.register
-  .form__item--error > input[type="password"], body.register
-  .form__item--error > .select_menu,
+  .form__item--error > input[type="password"],
   .form__item--error-callout > .form__text-field,
   .form__item--error-callout > .form__text-field--callout,
   .form__item--error-callout > .form__text-area,
@@ -730,9 +725,8 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--error-callout > input[type='password'], body.register
   .form__item--error-callout > input[type='text'],
   body.register
-  .form__item--error-callout > input[type="password"], body.register
-  .form__item--error-callout > .select_menu {
-    border-color: #a31717; }
+  .form__item--error-callout > input[type="password"] {
+    border-color: #ff3b30; }
   .form--validated :not(.form__item--success) > .form__text-field:invalid:focus, .form--validated :not(.form__item--success) > .form__text-field--callout:invalid:focus, .form--validated :not(.form__item--success) > .form__text-area:invalid:focus, .form--validated :not(.form__item--success) > .form__select:invalid:focus, .form--validated :not(.form__item--success) > .form__select--compact:invalid:focus, .form--validated .sign-in :not(.form__item--success) > input[type='text']:invalid:focus, .sign-in .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
   .sign-in :not(.form__item--success) > input[type='password']:invalid:focus,
   .sign-in .form--validated :not(.form__item--success) > input[type='password']:invalid:focus, .form--validated
@@ -743,7 +737,7 @@ body.register input[type="password"], body.register .select_menu {
   header#top #logged_out_bar :not(.form__item--success) > input[type='password']:invalid:focus,
   header#top #logged_out_bar .form--validated :not(.form__item--success) > input[type='password']:invalid:focus, .form--validated body.register :not(.form__item--success) > input[type='text']:invalid:focus, body.register .form--validated :not(.form__item--success) > input[type='text']:invalid:focus, .form--validated
   body.register :not(.form__item--success) > input[type="password"]:invalid:focus,
-  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid:focus, .form--validated body.register :not(.form__item--success) > .select_menu:invalid:focus, body.register .form--validated :not(.form__item--success) > .select_menu:invalid:focus,
+  body.register .form--validated :not(.form__item--success) > input[type="password"]:invalid:focus,
   .form__item--error > .form__text-field:focus,
   .form__item--error > .form__text-field--callout:focus,
   .form__item--error > .form__text-area:focus,
@@ -761,8 +755,7 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--error > input[type='password']:focus, body.register
   .form__item--error > input[type='text']:focus,
   body.register
-  .form__item--error > input[type="password"]:focus, body.register
-  .form__item--error > .select_menu:focus,
+  .form__item--error > input[type="password"]:focus,
   .form__item--error-callout > .form__text-field:focus,
   .form__item--error-callout > .form__text-field--callout:focus,
   .form__item--error-callout > .form__text-area:focus,
@@ -780,10 +773,9 @@ body.register input[type="password"], body.register .select_menu {
   .form__item--error-callout > input[type='password']:focus, body.register
   .form__item--error-callout > input[type='text']:focus,
   body.register
-  .form__item--error-callout > input[type="password"]:focus, body.register
-  .form__item--error-callout > .select_menu:focus {
-    -webkit-box-shadow: rgba(163, 23, 23, 0.5) 0 0 0 3px;
-    box-shadow: rgba(163, 23, 23, 0.5) 0 0 0 3px; }
+  .form__item--error-callout > input[type="password"]:focus {
+    -webkit-box-shadow: rgba(255, 59, 48, 0.5) 0 0 0 3px;
+    box-shadow: rgba(255, 59, 48, 0.5) 0 0 0 3px; }
 
 .form__select--compact, .sign-in input[type='text'],
 .sign-in input[type='password'],
@@ -1045,7 +1037,7 @@ body.register
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%20%3Cpath%20fill%3D%22%23FF3B30%22%20fill-rule%3D%22evenodd%22%20d%3D%22M38%2C0%20C42.418278%2C0%2046%2C3.581722%2046%2C8%20C46%2C12.418278%2042.418278%2C16%2038%2C16%20C33.581722%2C16%2030%2C12.418278%2030%2C8%20C30%2C3.581722%2033.581722%2C0%2038%2C0%20Z%20M37%2C13%20L39%2C13%20L39%2C11%20L37%2C11%20L37%2C13%20Z%20M37%2C9%20L39%2C9%20L39%2C3%20L37%2C3%20L37%2C9%20Z%22%20transform%3D%22translate%28-30%29%22%2F%3E%20%3C%2Fsvg%3E"); }
 
 .form__feedback--error {
-  color: #a31717;
+  color: #ff3b30;
   display: none;
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -1067,13 +1059,15 @@ body.register
   width: 20px;
   height: 20px; }
 
-.form__select, .form__select--compact, body.register .select_menu {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E");
+.form__select, .form__select--compact {
   background-position: right 8px center;
   background-repeat: no-repeat;
   background-size: 10px 6px;
   cursor: pointer;
   padding-right: 24px; }
+
+.form__select, .form__select--compact, .select_menu .select_menu_arrow {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228%22%20height%3D%226%22%20viewBox%3D%220%200%208%206%22%3E%20%3Cdefs%3E%20%3Cpolygon%20id%3D%2201-a%22%20points%3D%228%201.5%204%205.5%200%201.5%201%20.5%204%203.5%207%20.5%208%201.5%22%2F%3E%20%3C%2Fdefs%3E%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%3Cuse%20fill%3D%22%23000%22%20fill-opacity%3D%22.38%22%20xlink%3Ahref%3D%22%2301-a%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E"); }
 
 .form__option {
   display: inline-block;
@@ -1111,7 +1105,7 @@ legend {
   .form-forgot:hover,
   #forgotten_password > a:hover, header#top #logged_out_bar span:hover, .form-forgot:hover a,
   #forgotten_password > a:hover a, header#top #logged_out_bar span:hover a {
-    color: #1f7adc;
+    color: #007aff;
     text-decoration: none; }
 
 .sign-in input[type='password'],
@@ -1282,24 +1276,26 @@ legend {
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #17a34a;
+  background-color: #007aff;
   border: 0;
   color: rgba(255, 255, 255, 0.7);
   color: #fff; }
   .btn.primary:hover,
   .login_form input[type='submit']:hover {
-    background-color: #1cc75a;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #298fff;
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   .btn.primary:focus,
   .login_form input[type='submit']:focus {
-    -webkit-box-shadow: 0 0 0 2px #127f3a;
-    box-shadow: 0 0 0 2px #127f3a; }
+    -webkit-box-shadow: 0 0 0 2px #0066d6;
+    box-shadow: 0 0 0 2px #0066d6; }
   .btn.primary:active,
   .login_form input[type='submit']:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
-    background-color: #127f3a; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
+    background-color: #0066d6; }
 
 .btn.primary,
 .login_form input[type='submit'], #some-really > .custom-selector, .btn, .btn--primary, .btn--2-point-5d, .btn--ghost, header#top #user_menu input[type='submit'], header#top #user_menu li#register_button a, body.register .register-submit a {
@@ -1356,20 +1352,22 @@ legend {
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #17a34a;
+  background-color: #007aff;
   border: 0;
   color: rgba(255, 255, 255, 0.7); }
   #some-really > .custom-selector:hover {
-    background-color: #1cc75a;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #298fff;
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   #some-really > .custom-selector:focus {
-    -webkit-box-shadow: 0 0 0 2px #127f3a;
-    box-shadow: 0 0 0 2px #127f3a; }
+    -webkit-box-shadow: 0 0 0 2px #0066d6;
+    box-shadow: 0 0 0 2px #0066d6; }
   #some-really > .custom-selector:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0d5b2a;
-    background-color: #127f3a; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #0053ad;
+    background-color: #0066d6; }
 
 .btn {
   font-family: inherit;
@@ -1379,20 +1377,22 @@ legend {
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #72eb9e;
+  background-color: #a3cfff;
   border: 0;
   color: rgba(0, 0, 0, 0.54); }
   .btn:hover {
-    background-color: #96f0b7;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #cce4ff;
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   .btn:focus {
-    -webkit-box-shadow: 0 0 0 2px #4ee686;
-    box-shadow: 0 0 0 2px #4ee686; }
+    -webkit-box-shadow: 0 0 0 2px #7abaff;
+    box-shadow: 0 0 0 2px #7abaff; }
   .btn:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #2be16d;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #2be16d;
-    background-color: #4ee686; }
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #52a5ff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 2px #52a5ff;
+    background-color: #7abaff; }
 
 .btn--primary {
   font-family: inherit;
@@ -1402,17 +1402,17 @@ legend {
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #17a34a;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
-  background-image: linear-gradient(#1dd05f, #13893e);
+  background-color: #007aff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#298fff), to(#0066d6));
+  background-image: linear-gradient(#298fff, #0066d6);
   -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   color: white;
   z-index: 1; }
   .btn--primary::before {
-    background-color: #1cc75a;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3ee47a), to(#17a34a));
-    background-image: linear-gradient(#3ee47a, #17a34a);
+    background-color: #298fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#52a5ff), to(#007aff));
+    background-image: linear-gradient(#52a5ff, #007aff);
     border-radius: 5px;
     -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
@@ -1423,22 +1423,23 @@ legend {
     bottom: 0;
     left: 0;
     opacity: 0;
-    -webkit-transition: opacity .2s ease-out;
-    transition: opacity .2s ease-out;
     z-index: -1; }
   .btn--primary:hover {
-    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #298fff;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
     .btn--primary:hover::before {
       opacity: 1; }
   .btn--primary:focus {
-    -webkit-box-shadow: 0 0 0 2px #127f3a;
-    box-shadow: 0 0 0 2px #127f3a; }
+    -webkit-box-shadow: 0 0 0 2px #0066d6;
+    box-shadow: 0 0 0 2px #0066d6; }
   .btn--primary:active, .btn--primary:active:focus {
-    background-color: #127f3a;
+    background-color: #0066d6;
     background-image: none;
-    -webkit-box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
+    -webkit-box-shadow: 0 0 0 2px #0053ad, inset 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 2px #0053ad, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
     .btn--primary:active::before, .btn--primary:active:focus::before {
       opacity: 0; }
 
@@ -1457,11 +1458,11 @@ legend {
   padding: 0 16px;
   height: 36px;
   min-width: 36px;
-  background-color: #17a34a;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
-  background-image: linear-gradient(#1dd05f, #13893e);
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+  background-color: #007aff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#298fff), to(#0066d6));
+  background-image: linear-gradient(#298fff, #0066d6);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
   color: white;
   padding-bottom: 4px;
   -webkit-transition: -webkit-box-shadow .1s ease-out;
@@ -1469,17 +1470,17 @@ legend {
   transition: box-shadow .1s ease-out;
   transition: box-shadow .1s ease-out, -webkit-box-shadow .1s ease-out; }
   .btn--2-point-5d:hover {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), inset 0 36px 36px rgba(255, 255, 255, 0.24); }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 36px 36px rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 36px 36px rgba(255, 255, 255, 0.24); }
   .btn--2-point-5d:focus {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a; }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6; }
   .btn--2-point-5d:focus:hover {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.24);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.24); }
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.24); }
   .btn--2-point-5d:active, .btn--2-point-5d:active:focus {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.16);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12), 0 0 0 2px #127f3a, inset 0 36px 36px rgba(255, 255, 255, 0.16);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.16), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px #0066d6, inset 0 36px 36px rgba(255, 255, 255, 0.16);
     padding-top: 3px;
     padding-bottom: 1px; }
 
@@ -1492,19 +1493,21 @@ legend {
   height: 36px;
   min-width: 36px;
   background-color: transparent;
-  border: 1px solid #17a34a;
-  color: #127f3a; }
+  border: 1px solid #007aff;
+  color: #0066d6; }
   .btn--ghost:hover {
-    background-color: #baf5cf;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #f5faff;
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   .btn--ghost:focus {
-    -webkit-box-shadow: 0 0 0 1px #17a34a;
-    box-shadow: 0 0 0 1px #17a34a; }
+    -webkit-box-shadow: 0 0 0 1px #007aff;
+    box-shadow: 0 0 0 1px #007aff; }
   .btn--ghost:active {
     -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
-    background-color: #72eb9e; }
+    background-color: #a3cfff; }
 
 .tooltip {
   background-color: #f8f9fa;
@@ -1585,8 +1588,10 @@ header#top #user_menu input[type='submit'] {
   color: #fff; }
   header#top #user_menu input[type='submit']:hover {
     background-color: #1cc75a;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   header#top #user_menu input[type='submit']:focus {
     -webkit-box-shadow: 0 0 0 2px #127f3a;
     box-shadow: 0 0 0 2px #127f3a; }
@@ -1609,8 +1614,10 @@ header#top #user_menu li#register_button a {
   top: -2px; }
   header#top #user_menu li#register_button a:hover {
     background-color: #baf5cf;
-    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
   header#top #user_menu li#register_button a:focus {
     -webkit-box-shadow: 0 0 0 1px #17a34a;
     box-shadow: 0 0 0 1px #17a34a; }
@@ -1636,23 +1643,14 @@ body.register input[type="password"] {
   width: 250px;
   max-width: 250px; }
 
-body.register .select_menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 250px;
-  flex: 0 0 250px;
-  max-width: 250px; }
-
 body.register .register-submit a {
   font-family: inherit;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 18.6667px;
   line-height: 1;
-  padding: 0 16px;
-  height: 36px;
-  min-width: 36px;
+  padding: 0 24px;
+  height: 48px;
+  min-width: 48px;
   background-color: #17a34a;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1dd05f), to(#13893e));
   background-image: linear-gradient(#1dd05f, #13893e);
@@ -1674,12 +1672,13 @@ body.register .register-submit a {
     bottom: 0;
     left: 0;
     opacity: 0;
-    -webkit-transition: opacity .2s ease-out;
-    transition: opacity .2s ease-out;
     z-index: -1; }
   body.register .register-submit a:hover {
-    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12);
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.12), 0 4px 5px rgba(0, 0, 0, 0.12), 0 1px 10px -2px rgba(0, 0, 0, 0.12); }
+    background-color: #1cc75a;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
     body.register .register-submit a:hover::before {
       opacity: 1; }
   body.register .register-submit a:focus {
@@ -1692,6 +1691,37 @@ body.register .register-submit a {
     box-shadow: 0 0 0 2px #0d5b2a, inset 0 2px 4px rgba(0, 0, 0, 0.12); }
     body.register .register-submit a:active::before, body.register .register-submit a:active:focus::before {
       opacity: 0; }
+
+body.register .select_menu {
+  border-color: rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  height: 40px; }
+
+.select_menu .menu_selected {
+  padding: 0 8px;
+  line-height: 40px;
+  height: 40px; }
+
+.select_menu .select_menu_arrow {
+  background-position: center center;
+  background-repeat: no-repeat;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px; }
+
+body.register [data-select-id="user_country"] .menu_select {
+  width: 240px; }
+
+.select_menu .menu_select {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px; }
+
+.select_menu .menu_option:hover {
+  background: #f2f5f9; }
+
+.select_menu [data-option-selected="true"] {
+  background: #ebeef2; }
 
 .label-icon, .login_form label,
 header#top #logged_out_bar .password-wrapper label {
