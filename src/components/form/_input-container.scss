@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// CONTAINER FOR ONE FIELD ITEMS
+// -----------------------------------------------------------------------------
+
+// Styling div or fieldset containing input, label and messages.
+// @param {Boolean} $horizontal [false] - If set to true, form will be horizontal
+// @param {Boolean} $unlabeled [false] - Set to true, if form layout is block,
+//   labels are left-aligned, but form element does not have standard label.
+//   It can be radio buttons group, checkbox label using as container or form
+//   headings
+
+@mixin input-container($horizontal: false, $untitled: false) {
+  @extend %form-item;
+
+  // All inputs and button are in one row
+  @if $horizontal {
+    // It's flex container itself...
+    display: inline-flex;
+
+    // ...At the same time, flex item
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+  }
+
+  // Stacked form
+  @else {
+    display: flex;
+    margin-bottom: $empty-line;
+
+    // Container has not label but aligned to the left of the inputs column
+    @if $untitled {
+      @extend %form-item-offset;
+      width: auto;
+    } @else {
+      width: 100%;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Partials
+// -----------------------------------------------------------------------------
+
+// Container base styling
+%form-item,
+.form-item {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+// Offset for unlabeled item in block form w/ left-aligned labels
+%form-item-offset,
+.form__item--offset {
+  margin-left: $label-width;
+}

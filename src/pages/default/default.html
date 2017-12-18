@@ -6,7 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Offsidebet UI Kit Playground</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../../../dist/css/pages/default/default.css">
   <style>
     html {
       text-align: center;
@@ -37,11 +37,6 @@
       line-height: 4rem;
     }
 
-    h2:not([class]) {
-      margin-top: 4rem;
-      margin-bottom: 2rem;
-    }
-
     h3:not([class]) {
       font-size: 100%;
       line-height: 2rem;
@@ -51,7 +46,7 @@
       margin-bottom: 4rem;
     }
 
-    .btn:not([type='submit']) {
+    [class^="btn"]:not([type='submit']) {
       margin: .4rem;
     }
 
@@ -69,12 +64,12 @@
 </div>
 
 <h2>Buttons</h2>
-<button class="btn btn--primary btn--lg" type="button">Large</button>
-<button class="btn btn--primary" type="button">Primary</button>
-<button class="btn btn--2-point-5d" type="button">2.5D</button>
+<button class="btn--primary btn--lg" type="button">Large</button>
+<button class="btn--primary" type="button">Primary</button>
+<button class="btn--2-point-5d" type="button">2.5D</button>
 <button class="btn" type="button">Secondary</button>
 <button class="btn" type="button" disabled>Disabled</button>
-<button class="btn btn--ghost" type="button">Ghost</button>
+<button class="btn--ghost" type="button">Ghost</button>
 <button class="btn btn--sm" type="button">Compact</button>
 <span id="some-really"><a class="custom-selector" href="#">Custom Selector / Link</a></span>
 

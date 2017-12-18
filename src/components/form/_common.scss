@@ -1,0 +1,114 @@
+$input-bg:                    #fff !default;
+$input-disabled-bg:           $grey-100 !default;
+$input-color:                 color-ink(color('background-main'), 'normal') !default;
+$input-placeholder-color:     $grey-600 !default;
+
+$input-width:                  250px !default;
+$input-height:                 40px !default;
+
+$input-border-color:          color-ink(color('background-main'), 'muted-most') !default;
+$input-focus-border-color:    color('primary') !default;
+$input-valid-border-color:    color('success') !default;
+$input-invalid-border-color:  color('danger') !default;
+
+$input-radius:                $border-radius-sm !default;
+
+$input-padding-x:             ($spacer * 2 - 1px) !default;
+$input-padding-y:             9px !default; // In fact, it should be ($line-height-base / 2 - .1rem
+
+$input-transition:            border-color $transition-base, box-shadow $transition-base !default;
+
+$label-font-size:             14px !default;
+$label-width:                 33.333% !default;
+
+// Validation classes
+$class-form-validated:        '.form--validated' !default;
+$class-valid-item:            '.form__item--success' !default;
+$class-invalid-item:          '.form__item--error' !default;
+$class-valid-item-callout:    '.form__item--success-callout' !default;
+$class-invalid-item-callout:  '.form__item--error-callout' !default;
+
+
+// -----------------------------------------------------------------------------
+// PARTIALS
+// -----------------------------------------------------------------------------
+
+// TEXT FIELDS AND SELECTS BASE STYLING
+%form-control,
+.form__control {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // tap-highlight-color, box-sizing: border-box.
+  // And speical for textarea add overflow: auto and resize: vertical
+
+  // Reboot does not reset appearance
+  appearance: none;
+  background-color: $input-bg;
+  border-radius: $input-radius;
+  border: 1px solid $input-border-color;
+  color: $input-color;
+  cursor: auto;
+  display: inline-block;
+  font-family: inherit;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  margin: 0;
+  padding: $input-padding-y $input-padding-x;
+  outline: 0;
+  transition: $input-transition;
+
+  &:focus {
+    box-shadow: transparentize($input-focus-border-color, .5) 0 0 0 3px;
+    border-color: $input-focus-border-color;
+  }
+
+  &:disabled {
+    background-color: $input-disabled-bg;
+  }
+
+  // Valid input
+  // 1) The form got validated status class after an failed attempt to submit,
+  // but the input is valid.
+  // 2) Input container got success class.
+  // 3) #{$class-valid-item-callout} is class for stand-alone icon option.
+  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid, // 1
+  #{$class-valid-item} > &:valid, // 2
+  #{$class-valid-item-callout} > &:valid { // 3
+    border-color: $input-valid-border-color;
+  }
+
+  // Add some extra outer glow on focus
+  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid:focus,
+  #{$class-valid-item} > &:valid:focus,
+  #{$class-valid-item-callout} > &:valid:focus {
+    border-color: $input-valid-border-color;
+    box-shadow: transparentize($input-valid-border-color, .5) 0 0 0 3px;
+  }
+
+  // Invalid input
+  // 1) The form got validated status class after an failed attempt to submit,
+  // the input is not valid.
+  // 2) The input container got error class.
+  // 3) It is class for stand-alone icon option.
+  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid, // 1
+  #{$class-invalid-item} > &, // 2
+  #{$class-invalid-item-callout} > & { // 3
+    border-color: $input-invalid-border-color;
+  }
+
+  // Add some extra outer glow on focus
+  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid:focus,
+  #{$class-invalid-item} > &:focus,
+  #{$class-invalid-item-callout} > &:focus {
+    box-shadow: transparentize($input-invalid-border-color, .5) 0 0 0 3px;
+  }
+}
+
+// FLEX BEHAVIOUR FOR INPUTS AND LABELS
+// @param {Boolean} $flex [false] - By default input widths are equal
+//   $input-width but for compact inputs grouping in row widths set to auto
+@mixin form-item-layout($flex: false, $width: auto) {
+  @if $flex {
+    flex: 1 1 $width;
+  }
+  width: $width;
+}

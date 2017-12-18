@@ -1,0 +1,58 @@
+@import 'common';
+
+// Add border-width of input to top padding in order to align w/ input text
+$label-padding: ($input-padding-y + 1px) $spacer 0 $spacer * 2 !default;
+$label-color:   $input-color !default;
+
+// -----------------------------------------------------------------------------
+// TEXTFIELD LABEL
+// -----------------------------------------------------------------------------
+
+// Labels for textareas and text inputs (type=[text|email|password|etc])
+// @param {Boolean} $flex - If set to true label gets flex behaviour
+// @param {Number} $width - An explicit width
+// @param {String} $padding - Label padding
+
+@mixin label-textfield($flex: false, $width: $label-width, $padding: $label-padding) {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // touch-action: manipulation and box-sizing: border-box
+
+  @include form-item-layout($flex, $width);
+
+  display: inline-block;
+  font-size: $label-font-size;
+  color: $label-color;
+  cursor: pointer;
+  text-align: end;
+  padding: $padding;
+}
+
+
+// -----------------------------------------------------------------------------
+// CHECKBOX AND RADIO BUTTON LABEL
+// -----------------------------------------------------------------------------
+
+@mixin label-rb-chk() {
+  text-align: start;
+  cursor: pointer;
+  margin-bottom: $empty-line;
+  padding-left: ($spacer * 3);
+  position: relative;
+}
+
+
+// -----------------------------------------------------------------------------
+// LABEL AS ICON
+// -----------------------------------------------------------------------------
+
+@mixin label-icon() {
+  @extend %text-hide;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: calc((#{$input-height} - 20px) / 2);
+  left: $spacer;
+  width: 20px;
+  height: 20px;
+}

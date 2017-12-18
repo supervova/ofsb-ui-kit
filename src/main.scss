@@ -1,17 +1,17 @@
-// Global tools
-@import 'global/functions';
-@import 'global/variables';
+// Common tools and settings
+@import 'common/variables';
+@import 'common/functions';
 
-// Base
+// Base components
 @import 'vendor/reboot';
 @import 'base/page';
-@import 'base/layout/flex-grid';
-@import 'base/layout/has-two-sidebars';
-@import 'base/icons/icons';
-@import 'base/form-core/form';
-@import 'base/buttons/buttons';
+// @import 'base/layout/flex-grid';
+// @import 'base/layout/has-two-sidebars';
+@import 'components/icons/icons';
+@import 'components/form/all';
+@import 'components/buttons/buttons';
 
-// Components
+// Secondary components
 @import 'components/tooltip';
 
 // Sections
@@ -19,8 +19,7 @@
 // Templates
 
 // Pages
-@import 'pages/sign-up/sign-up';
 
 // Helpers
-@import 'global/helpers';
+@import 'common/helpers';
 

@@ -1,0 +1,21 @@
+// FIELDSET
+%fieldset,
+fieldset {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // tap-highlight-color, box-sizing: border-box, border: 0, min-width: 0,
+  // padding: 0
+
+  margin-bottom: $empty-line;
+}
+
+%legend,
+legend {
+  // If reboot and _page.scss are not used, add font-smoothing,
+  // tap-highlight-color, box-sizing: border-box, display: block, color,
+  // line-height, padding: 0, white-space: normal, width: 100%
+  font-size: $font-size-base;
+  font-weight: bold;
+
+  // Override reboot margin
+  margin-bottom: ($empty-line / 2);
+}

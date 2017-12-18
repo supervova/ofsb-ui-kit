@@ -1,0 +1,20 @@
+// Checkbox and radio buttons styling
+// @param {Boolean} $pos-a - Set to true to make hanging radio within special
+//   label. @see {mixin} label-rb-chk
+// input[type="radio"],
+// input[type="checkbox"],
+@mixin rb-chk($pos-a: false) {
+  @if $pos-a {
+    position: absolute;
+    top: 4px;
+    left: 0;
+  } @else {
+    margin-right: $spacer;
+    position: relative;
+    bottom: 1px;
+    vertical-align: middle;
+  }
+
+  display: inline-block;
+  padding: 0;
+}

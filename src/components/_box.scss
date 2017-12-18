@@ -1,0 +1,43 @@
+// Valid options are false, $border-radius, numeral.
+$box-radius:      $border-radius;
+$box-background:  color('background-main');
+$box-border:      1px solid darken($box-background, 12%);
+
+$box-margin-bottom: $empty-line;
+$box-padding: ($spacer * 3);
+$box-padding-x: ($spacer * 2);
+
+// Creates boxes for alert messages, islands, sidebar boxes etc.
+// @param {Color} $color [color('background-main')] - Background color
+// @param {Boolean|String} $border [false] (false|$box-border|String) - If not
+//   false, the mixin gets the width, style, and color of the border.
+// @param {Boolean|String} $icon [false] (false|error|success) - If not false,
+//   the mixin gets the specified icon and enough paddings for it.
+@mixin box($background: color('background-main'), $border: false, $icon: false) {
+  @if $border {
+    border: $box-border;
+  }
+
+  @if $icon {
+    padding: $box-padding-y $box-padding-x $box-padding-y $spacer * 4;
+  } @else {
+    padding: $box-padding-y $box-padding-x;
+  }
+
+  @if $icon == 'error' {
+    &::before {
+      @extend %icon-error;
+
+      display: block;
+      content: '';
+      position: absolute;
+      top: $spacer * 2;
+      left: $spacer;
+    }
+  }
+
+  background-color: $background;
+  color: color-ink($background);
+  margin-bottom: $box-margin-bottom;
+  position: relative;
+}

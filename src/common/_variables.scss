@@ -5,16 +5,16 @@
 // COLORS NAMES
 
 // Neutrals
-$grey-50:     rgb(248, 249, 250);
-$grey-100:    rgb(242, 245, 249);
-$grey-200:    rgb(235, 238, 242);
-$grey-300:    rgb(221, 224, 228);
-$grey-400:    rgb(186, 189, 193);
-$grey-500:    rgb(155, 158, 162);
-$grey-600:    rgb(114, 117, 121);
-$grey-700:    rgb(94, 97, 101);
-$grey-800:    rgb(63, 66, 70);
-$grey-900:    rgb(30, 33, 37);
+$grey-50:     rgb(248, 249, 250) !default;
+$grey-100:    rgb(242, 245, 249) !default;
+$grey-200:    rgb(235, 238, 242) !default;
+$grey-300:    rgb(221, 224, 228) !default;
+$grey-400:    rgb(186, 189, 193) !default;
+$grey-500:    rgb(155, 158, 162) !default;
+$grey-600:    rgb(114, 117, 121) !default;
+$grey-700:    rgb(94, 97, 101) !default;
+$grey-800:    rgb(63, 66, 70) !default;
+$grey-900:    rgb(30, 33, 37) !default;
 
 // Forvetbet Spectrum
 // $teal-blue:   rgb(36, 186, 255);
@@ -69,7 +69,7 @@ $colors: (
 
 // Color tone interval to create consistent colors tints and shadows using
 // lighten() and darken() functions
-$tone: 8%;
+$tone: 8% !default;
 
 // Foreground (ink) colors
 // @example
@@ -94,43 +94,43 @@ $ink-colors: (
     muted-more:   rgba(white, .5), // hint, disabled text, default icons
     muted-most:   rgba(white, .12) // dividers
   )
-);
+) !default;
 // stylelint-enable indentation
 
 // COLOR RECOMMENDATIONS
 
 // Primary color filled areas and elements
-$header-bg:                     color('primary');
-$hero-bg:                       color('primary');
-$promo-primary-bg:              color('primary');
-$icon-selected-section-fill:    color('primary');
-$tab-selected-underline-color:  color('primary');
-$emphasis-color:                color('primary');
-$progress-bar-fill:             color('primary');
+$header-bg:                     color('primary') !default;
+$hero-bg:                       color('primary') !default;
+$promo-primary-bg:              color('primary') !default;
+$icon-selected-section-fill:    color('primary') !default;
+$tab-selected-underline-color:  color('primary') !default;
+$emphasis-color:                color('primary') !default;
+$progress-bar-fill:             color('primary') !default;
 
 // Secondary color tones filled areas and elements
-// $primary-button-bg:             color('secondary');
-$promo-secondary-bg:            color('secondary');
-$featured-bg:                   color('secondary');
-$drawer-header-bg:              color('secondary');
+// $primary-button-bg:             color('secondary') !default;
+$promo-secondary-bg:            color('secondary') !default;
+$featured-bg:                   color('secondary') !default;
+$drawer-header-bg:              color('secondary') !default;
 
 // Backgrounds tones filled areas and elements
-$secondary-nav-bg:              color('background-widget');
-$betslip-bg:                    color('background-widget');
-$footer-bg:                     color('background-negative');
+$secondary-nav-bg:              color('background-widget') !default;
+$betslip-bg:                    color('background-widget') !default;
+$footer-bg:                     color('background-negative') !default;
 
 
 // -----------------------------------------------------------------------------
 // TYPOGRAPHY
 // -----------------------------------------------------------------------------
 
-$font-family-sans-serif:        'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-$font-size-base:                14px; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
-$font-size-base-unitless:       14;
-$font-size-small:               12px; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
-$line-height-base-unitless:     20;
-$line-height-base:              decimal-round(($line-height-base-unitless / $font-size-base-unitless), 3);
-$empty-line:                    ($line-height-base-unitless * 1px); // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
+$font-family-sans-serif:        'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-size-base-unitless:       14 !default;
+$font-size-base:                ($font-size-base-unitless * 1px) !default; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
+$font-size-small:               12px !default; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
+$line-height-base-unitless:     20 !default;
+$line-height-base:              decimal-round(($line-height-base-unitless / $font-size-base-unitless), 3) !default;
+$empty-line:                    ($line-height-base-unitless * 1px) !default; // Prefered unit is rem w/ <html> font-size: 62.5% (10px);
 
 
 // -----------------------------------------------------------------------------
@@ -139,44 +139,43 @@ $empty-line:                    ($line-height-base-unitless * 1px); // Prefered 
 
 // Space scale for standard 8-point grid
 // Prefered unit is rem
-$spacer: 8px;
+$spacer: 8px !default;
 
 
 // -----------------------------------------------------------------------------
 // SHAPES
 // -----------------------------------------------------------------------------
 
-$border-radius-sm:              3px;
-$border-radius:                 5px;
-$border-radius-lg:              8px;
-$border-radius-xl:              13px;
+$border-radius-sm:              3px !default;
+$border-radius:                 5px !default;
+$border-radius-lg:              8px !default;
+$border-radius-xl:              13px !default;
 
 
 // -----------------------------------------------------------------------------
 // ANIMATION
 // -----------------------------------------------------------------------------
 
-$transition-base:               .2s ease-out;
+$transition-base:               .2s ease-out !default;
 
 
 // -----------------------------------------------------------------------------
 // Z AXIS
 // -----------------------------------------------------------------------------
 
-$shadow-z1:                     0 1px 5px rgba(0, 0, 0, .06), 0 2px 2px rgba(0, 0, 0, .06), 0 1px 1px rgba(0, 0, 0, .08);
-// $shadow-z2:                     0 1px 3px -2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .12);
-// $shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, .14), 0px 1px 5px rgba(0, 0, 0, .12);
-// $shadow-z2:                     0 2px 4px -1px rgba(0, 0, 0, .12), 0 4px 5px rgba(0, 0, 0, .12), 0 1px 10px -2px rgba(0, 0, 0, .12);
-$shadow-z2:                     0 2px 4px -2px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .1);
-$shadow-z3:                     0 1px 2px rgba(0, 0, 0, .08), 0 10px 16px -4px rgba(0, 0, 0, .08);
-
+$shadow-z1:                     0 1px 5px rgba(0, 0, 0, .06), 0 2px 2px rgba(0, 0, 0, .06), 0 1px 1px rgba(0, 0, 0, .08) !default;
+// $shadow-z2:                     0 1px 3px -2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .12) !default;
+// $shadow-z2:                     0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, .14), 0px 1px 5px rgba(0, 0, 0, .12) !default
+// $shadow-z2:                     0 2px 4px -1px rgba(0, 0, 0, .12), 0 4px 5px rgba(0, 0, 0, .12), 0 1px 10px -2px rgba(0, 0, 0, .12) !default;
+$shadow-z2:                     0 2px 4px -2px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .1) !default;
+$shadow-z3:                     0 1px 2px rgba(0, 0, 0, .08), 0 10px 16px -4px rgba(0, 0, 0, .08) !default;
 
 
 // Z-index
-$zindex-dropdown:               1000;
-$zindex-sticky:                 1020;
-$zindex-fixed:                  1030;
-$zindex-modal-backdrop:         1040;
-$zindex-modal:                  1050;
-$zindex-popover:                1060;
-$zindex-tooltip:                1070;
+$zindex-dropdown:               1000 !default;
+$zindex-sticky:                 1020 !default;
+$zindex-fixed:                  1030 !default;
+$zindex-modal-backdrop:         1040 !default;
+$zindex-modal:                  1050 !default;
+$zindex-popover:                1060 !default;
+$zindex-tooltip:                1070 !default;

@@ -7,7 +7,8 @@ $tooltip-width:                     240px;
 $tooltip-arrow-width:               8px;
 
 
-.tooltip {
+.tooltip,
+%tooltip {
   background-color: $tooltip-bg;
   border-radius: $border-radius;
   border: 1px solid $tooltip-border-color;

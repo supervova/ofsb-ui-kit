@@ -1,6 +1,38 @@
+// Custom variables
+$button-bg-base:      rgb(23, 163, 74);
+$button-radius:       4px;
+$button-hover-shadow: false;
+$button-font-size:    16px;
+$button-height:       38px;
 
-$button-bg-base:        rgb(23, 163, 74);
-$input-border-color:    color-ink(color('background-main'), 'muted-most');
+$input-border-color:  rgb(17, 17, 17);
+$input-radius:        0;
+
+$label-color:         rgb(25, 25, 26);
+$label-font-size:     16px;
+$label-padding:       8px 0 0 32px;
+
+$captcha-img-width:   100px;
+
+@import '../../common/variables';
+@import '../../common/functions';
+
+$label-width:         calc(100% - (#{$spacer} * 2));
+$label-td-width:      33.333%;
+
+// Base components
+@import '../../vendor/reboot';
+@import '../../base/page';
+@import '../../components/icons/icons';
+@import '../../components/form/all';
+@import '../../components/buttons/common';
+
+// Secondary components
+@import '../../components/tooltip';
+
+// Helpers
+@import '../../common/helpers';
+
 
 // -----------------------------------------------------------------------------
 // Sign In
@@ -8,19 +40,20 @@ $input-border-color:    color-ink(color('background-main'), 'muted-most');
 
 // Form container
 .login_form dl {
-  @extend %form-inline-container;
+  @extend %form-inline;
 }
 
 // Inputs-container
 header#top #logged_out_bar dd,
 header#top #logged_out_bar .password-wrapper {
   @include input-container($horizontal: true);
+  margin-right: $spacer;
 }
 
 // Labels
 .login_form label,
 header#top #logged_out_bar .password-wrapper label {
-  @include label($type: icon);
+  @include label-icon();
 }
 
 .label-icon.username,
@@ -37,7 +70,7 @@ header#top #logged_out_bar .password-wrapper label {
 header#top #logged_out_bar {
   input[type='text'],
   input[type='password'] {
-    @include input($inline: true, $type: has-left-icon);
+    @include input($style: has-left-icon, $width: 200px);
   }
 }
 
@@ -45,7 +78,7 @@ header#top #logged_out_bar {
 .sign-in,
 .login_form {
   input[type='password'] {
-    @extend %form-input-has-link-inside;
+    @extend %form-control-has-link-inside;
   }
 }
 
@@ -69,19 +102,25 @@ header#top #user_menu li#register_button a {
 // -----------------------------------------------------------------------------
 
 // Labels
-body.register table label {
-  @include label($type: aligned, $inline: true);
+
+td.label {
+  width: 33.33%;
+}
+
+#registerForm label {
+  // Defaults: $flex: false, $width: $label-width, $padding: $label-padding
+  @include label-textfield();
 }
 
 // Inputs
 body.register input[type='text'],
 body.register input[type="password"] {
-  @include input($inline: true, $width: 250px);
+  @include input();
 }
 
 // Button
-body.register .register-submit a {
-  @include button($style: 'gradient', $size: 'large');
+.register-submit a {
+  @include button($bg: rgb(0, 74, 28), $color: #fff);
 }
 
 // CUSTOM SELECTS
@@ -102,7 +141,7 @@ body.register .select_menu {
 
 // Caret
 .select_menu .select_menu_arrow {
-  @extend %form-select-caret;
+  @extend %select-double-arrow;
 
   background-position: center center;
   background-repeat: no-repeat;
@@ -130,3 +169,59 @@ body.register [data-select-id="user_country"] .menu_select {
 }
 
 
+
+// CUSTOM CAPTCHA
+// They are custom component on Forvetbet. Therefore, there are custom styles
+// here
+
+.simple_captcha {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.simple_captcha_field {
+  order: 1;
+  margin-right: $spacer;
+}
+
+.register .simple_captcha_field input[type='text'] {
+  width: auto;
+  max-width: $input-width - $captcha-img-width - $spacer;
+}
+
+body.register table .simple_captcha_image {
+  order: 2;
+  margin-bottom: 0;
+  height: $input-height;
+
+  img {
+    width: $captcha-img-width;
+    height: $input-height;
+  }
+}
+
+.simple_captcha_label {
+  @extend %form-helper;
+
+  order: 3;
+}
+
+// TABLE
+
+#registerForm td {
+  vertical-align: top;
+  padding-bottom: 16px;
+}
+
+.register td.label {
+  width: $label-td-width;
+}
+
+.register td[colspan='3'] {
+  padding-left: $label-td-width;
+}
+
+// Temporary
+.error-message {
+  display: none;
+}

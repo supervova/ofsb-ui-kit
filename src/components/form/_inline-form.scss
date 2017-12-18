@@ -1,0 +1,9 @@
+%form-inline,
+.form--inline {
+  display: flex;
+
+  input[type='submit'] {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

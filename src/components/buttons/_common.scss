@@ -1,40 +1,44 @@
 // Set up base properties
 
 // Valid options are 'ghost', 'flat', 'gradient', 'pseudo-3d'
-$button-style: 'flat';
+$button-style: 'flat' !default;
 
 // Assign the tones of $colors to $button-bg-base using color() function.
 // Or assign the shades or tints of $colors to it using color(), lighten()
 // and darken() functions. You can also use color in standard web formats
 // @example
-//  $button-bg-base:          darken(color('primary'), ($tone * 4));
-//  $button-bg-base:          rgba(255, 102, 0, .8);
-//  $button-bg-base:          #ccf;
-$button-bg-base: color('primary');
-$button-radius: $border-radius;
-$button-hover-shadow: true;
-$button-font-weight: normal;
-$button-label-uppercase: false;
-$button-disabled-opacity: .44;
-$button-transition: box-shadow #{$transition-base}, background-color #{$transition-base};
+//  $button-bg-base:          darken(color('primary'), ($tone * 4)) !default;
+//  $button-bg-base:          rgba(255, 102, 0, .8) !default;
+//  $button-bg-base:          #ccf !default;
+$button-bg-base:          color('primary') !default;
+$button-radius:           $border-radius !default;
+$button-hover-shadow:     true !default;
+$button-height:           36px !default;
+
+$button-font-size:        $font-size-base !default;
+$button-font-weight:      normal !default;
+$button-label-uppercase:  false !default;
+
+$button-disabled-opacity: .44 !default;
+$button-transition:       box-shadow #{$transition-base}, background-color #{$transition-base} !default;
 
 $button-sizes: (
   'small': (
-    'font-size': $font-size-base,
+    'font-size': $button-font-size,
     'padding': 0 $spacer,
-    'height': 32px
+    'height': $button-height - 4px
   ),
   'default': (
-    'font-size': $font-size-base,
+    'font-size': $button-font-size,
     'padding': 0 ($spacer * 2),
-    'height': 36px
+    'height': $button-height
   ),
   'large': (
-    'font-size': ($font-size-base / 3 * 4),
+    'font-size': ($button-font-size / 3 * 4),
     'padding': 0 ($spacer * 3),
-    'height': 48px
+    'height': $button-height + 12px
   )
-);
+) !default;
 
 // Hard-coded
 // $button-font-family
@@ -57,7 +61,7 @@ $button-sizes: (
 // @param {Boolean} $block [false] - Turn on full width behavior
 
 @mixin button($bg: $button-bg-base, $size: 'default', $style: $button-style, $color: false, $block: false) {
-  @extend %button-base;
+  @extend %btn;
 
   @include button-font();
 
@@ -89,7 +93,8 @@ $button-sizes: (
 // BASE BUTTON STYLES: UNDECORATED BOX
 // -----------------------------------------------------------------------------
 
-%button-base {
+%btn,
+.btn {
   // If reboot is not used, add font-smoothing, tap-highlight-color,
   // box-sizing: border-box, and -webkit-appearance: none | button
 

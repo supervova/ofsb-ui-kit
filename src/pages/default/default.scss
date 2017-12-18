@@ -1,12 +1,65 @@
-@import 'form-mixins';
-@import './src/base/buttons/buttons-mixins';
+// Common tools and settings
+@import '../../common/variables';
+@import '../../common/functions';
+
+// Base components
+@import '../../vendor/reboot';
+@import '../../base/page';
+@import '../../components/icons/icons';
+@import '../../components/form/all';
+@import '../../components/buttons/common';
+
+// Secondary components
+@import '../../components/tooltip';
+
+// Helpers
+@import '../../common/helpers';
+
+
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
 
 // Variables values assigned in mixins because the first time they are used
 // there
 
+#some-really > .custom-selector {
+  @include button();
+}
+
+// Use color argument to change background of default flat button
+.btn {
+  @include button($bg: lighten(color('primary'), ($tone * 4)));
+}
+
+// Use argument 'gradient' for primary action button
+.btn--primary {
+  @include button($style: 'gradient');
+}
+
+// The specialized mixins nested in button() can be used separately
+.btn--lg {
+  @include button-size('large');
+}
+
+// 2.5D (or 3/4 perspective and pseudo-3D) style
+.btn--2-point-5d {
+  // The same effect can be achieved by using @include button-2-point-5d();
+  @include button($style: 'pseudo-3d');
+}
+
+// Outlined button style
+.btn--ghost {
+  // The same effect can be achieved by using @include button-ghost($bg: $button-bg-base);
+  @include button($style: 'ghost');
+}
+
+
 // -----------------------------------------------------------------------------
+// FORM
+// -----------------------------------------------------------------------------
+
 // LAYOUT
-// -----------------------------------------------------------------------------
 
 // Containers for input, label and messages
 .form__item,
@@ -16,22 +69,14 @@
 
 // Nested container without label. E.g. for day/month/year selects row
 .form__item--unlabeled {
-  @include form-control-flex();
+  @include input-container($horizontal: true);
 }
 
-// Modifier for form items without left-align labels. E.g. headlines or submit
-// button
-.form__item--offset {
-  @extend %form-item-offset;
-}
-
-// -----------------------------------------------------------------------------
 // COMPONENTS
-// -----------------------------------------------------------------------------
 
 // Label for text inputs, text areas and selects
 .form__label {
-  @include label();
+  @include label-textfield();
 }
 
 // Input[type='text']
@@ -46,42 +91,28 @@
 
 // Textarea
 .form__text-area {
-  @include input($type: 'textarea');
+  @include input($style: 'textarea');
 }
 
 // Select
 .form__select {
-  @include input($type: 'select');
+  @include select();
 }
 
 // Inline select
 .form__select--compact {
-  @include input($type: 'select', $inline: true);
+  @include select($flex: true);
 }
 
 // Label for checkboxes and radio buttons
 .form__label--check,
 .form__label--radio {
-  @include label($type: 'rb-chk');
+  @include label-rb-chk();
 }
 
 // Checkboxes and radio buttons
 .form__option {
-  @include input($type: 'rb-chk');
-}
-
-// Custom validation feedback
-.form__feedback--error {
-  @extend %form-error-message;
-}
-
-// Fieldset and legend
-fieldset {
-  @extend %fieldset;
-}
-
-legend {
-  @extend %legend;
+  @include rb-chk($pos-a: true);
 }
 
 
@@ -97,14 +128,13 @@ legend {
   @include callout-icon($type: 'error');
 }
 
-// -----------------------------------------------------------------------------
-// LOGIN FORMS
-// -----------------------------------------------------------------------------
+
+// LOGIN FORM
 
 // Form container
 .form.inline,
 .login_form dl {
-  @extend %form-inline-container;
+  @extend %form-inline;
 }
 
 // Inputs-container
@@ -116,7 +146,7 @@ legend {
 
 // Labels
 .label-icon {
-  @include label($type: icon);
+  @include label-icon();
 }
 
 .label-icon.username,
@@ -134,7 +164,7 @@ legend {
 .login_form {
   input[type='text'],
   input[type='password'] {
-    @include input($inline: true, $type: has-left-icon);
+    @include input($width: 200px, $style: 'has-left-icon');
   }
 }
 
@@ -142,7 +172,7 @@ legend {
 .sign-in,
 .login_form {
   input[type='password'] {
-    @extend %form-input-has-link-inside;
+    @extend %form-control-has-link-inside;
   }
 }
 

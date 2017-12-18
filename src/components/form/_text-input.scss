@@ -1,0 +1,75 @@
+@import 'common';
+
+// -----------------------------------------------------------------------------
+// INPUT[TYPE='TEXT|PASSWORD|ETC'] | TEXTAREA
+// -----------------------------------------------------------------------------
+
+// @param {Boolean} $flex - Set to true to assign a flex behavior to the field
+// @param {Number|String} $width [$input-inline-width] - Explicit width
+// @param {String} $style ['default'] (default|textarea|callout|has-left-icon) -
+//   By default, no additional properties will be assigned to the field.
+//   Set to 'textarea' to not assign a height to the field.
+//   Set to 'callout' to show validation icons beyond outside of the field.
+//   Set to 'has-left-icon' to add addiotinal padding for icon.
+
+@mixin input($flex: false, $width: $input-width, $style: 'default') {
+
+  @include form-item-layout($flex, $width);
+
+  @extend %form-control;
+  @extend %form-control-has-placeholder;
+
+  @if ($style != 'callout') {
+    @extend %form-control-validation;
+  }
+
+  @if ($style == 'has-left-icon') {
+    padding-left: $spacer * 4;
+  }
+
+  @if ($style != 'text-area') {
+    height: $input-height;
+  }
+}
+
+// TEXT INPUT VALIDATION USING BACKGROUND IMAGES FOR INPUTS TO CREATE ICONS
+%form-control-validation,
+.form__control-validation {
+  // Common icons styles
+  #{$class-form-validated} &:valid,
+  #{$class-valid-item} > &,
+  #{$class-form-validated} &:invalid,
+  #{$class-invalid-item} > & {
+    background-position: right $spacer top calc((#{$input-height} - 16px) / 2);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    padding-right: $spacer * 4;
+  }
+
+  // Success icon
+  #{$class-form-validated} :not(#{$class-invalid-item}) > &:valid,
+  #{$class-valid-item} > & {
+    @extend %icon-success;
+  }
+
+  // Error icon
+  #{$class-form-validated} :not(#{$class-valid-item}) > &:invalid,
+  #{$class-invalid-item} > & {
+    @extend %icon-error;
+  }
+}
+
+// PLACEHOLDER
+%form-control-has-placeholder,
+.form__control--has-placeholder {
+  &::placeholder {
+    color: $input-placeholder-color;
+    text-align: left;
+    opacity: 1;
+  }
+
+  &:focus::placeholder {
+    color: lighten($input-placeholder-color, ($tone * 3));
+    opacity: 1;
+  }
+}

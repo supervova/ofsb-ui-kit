@@ -8,8 +8,8 @@
   <link rel="canonical" href="https://www.forvetbet222.com/tr-TR/account/register">
   <link rel="alternate" href="https://www.forvetbet222.com/tr-TR/account/register" hreflang="tr" />
   <link href="https://www.forvetbet222.com/iealert/style.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="https://www.forvetbet222.com/assets/application-a000c03701b38c366ba62af2ef67640a.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="../../../dist/css/main.css" rel="stylesheet">
+  <link href="application.css" rel="stylesheet">
+  <link href="../../../dist/css/pages/sign-up/sign-up.css" rel="stylesheet">
 
   <script type="text/javascript">
   window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"8786b615e6","applicationID":"1858243","transactionName":"e1kLFRRaX1kBQBdRU0xEBAgKRhxUB1FXRlhMGRcEAVxAQQFA","queueTime":0,"applicationTime":377,"agent":""}</script>
@@ -99,11 +99,11 @@
       display: none !important;
     }
   </style>
-  <script src="../../base/form-core/form.js" async></script>
-
+  <script src="../../components/form/form.js" async></script>
 </head>
 
 <body class="register  account account" data-controller="register" data-action="register">
+<!-- Form prefix -->
   <div id="container">
 
     <header id="top">
@@ -296,6 +296,26 @@
             <h1>Kayıt</h1>
           </header>
           <div id="register_container">
+
+<!-- / form prefix -->
+
+<!--           <div class="registration_errors">
+            <p class="error_message">Resimdeki doğrulama kodunu yanlış girdiniz</p>
+            <p class="error_message">Lütfen adres bilgilerinizi giriniz.</p>
+            <p class="error_message">Lütfen şehir adı giriniz.</p>
+            <p class="error_message">Lüften ilçe adı giriniz.</p>
+            <p class="error_message">Posta kodu 4 ile 20 karakter uzunlunluğunda olmalıdır.</p>
+            <p class="error_message">Cep Telefon Numarası Zorunlu</p>
+            <p class="error_message">Lütfen telefon numaranızı giriniz.</p>
+            <p class="error_message">Geçerli bir email adresi giriniz</p>
+            <p class="error_message">Kurallar ve Uygulamalar Kabul Edilmek Zorundadır.</p>
+            <p class="error_message">Lütfen adınızı giriniz.</p>
+            <p class="error_message">Lüften soyadınızı giriniz.</p>
+            <p class="error_message">18 yaşının üzerinde olunmalıdır.</p>
+            <p class="error_message">Lütfen kullanıcı adı giriniz.</p>
+            <p class="error_message">Şifre girmelisiniz.</p>
+          </div> -->
+
             <form accept-charset="UTF-8" action="https://www.forvetbet222.com/tr-TR/account/register" data-role="registration_form" id="registerForm" method="post" name="registerForm">
               <div style="margin:0;padding:0;display:inline">
                 <input name="utf8" type="hidden" value="&#x2713;" />
@@ -821,7 +841,7 @@
                         <td>
                           <div class='simple_captcha'>
                             <div class='simple_captcha_image'>
-                              <img alt="captcha" src="https://www.forvetbet222.com/simple_captcha?code=0ba73be6a1bce60b39ad0f7d36a2773dafdc3d87&amp;time=1513015803" />
+                              <img alt="captcha" src="http://via.placeholder.com/100x32" />
                               <input id="captcha_key" name="captcha_key" type="hidden" value="0ba73be6a1bce60b39ad0f7d36a2773dafdc3d87" />
                             </div>
                             <div class='simple_captcha_field'>
@@ -875,11 +895,12 @@
                           <div class="register-submit">
                             <a href="#" onclick="document.registerForm.submit(); return false;">Kayıt</a>
                           </div>
+
                           <div id="error-block">
                             <div class="icon"></div>
-                            <p class="error-message">
-                            </p>
+                            <p class="error-message">Failed Captcha</p>
                           </div>
+
                           <input id="user_price_format" name="user[price_format]" type="hidden" value="3" />
                         </td>
                       </tr>
@@ -894,6 +915,7 @@
       </div>
     </div>
 
+<!-- Form suffix -->
     <footer id="page_footer">
       <div class="footer_menu">
         <section id="footer_menu">
@@ -1378,6 +1400,6 @@
         </iframe>
       </div>
     </div>
-
+<!-- / form suffix -->
 </body>
 </html>

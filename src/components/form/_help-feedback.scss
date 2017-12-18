@@ -1,0 +1,65 @@
+@import 'common';
+
+$input-invalid-feedback: color('danger') !default;
+
+// HELPER TEXT
+%form-helper,
+.form__helper {
+  color: $input-placeholder-color;
+  font-size: $font-size-small;
+  width: 100%;
+}
+
+
+// CUSTOM VALIDATION FEEDBACK
+%form-feedback-error,
+.form__feedback--error {
+  color: $input-invalid-feedback;
+  display: none;
+  flex: none;
+  font-size: $font-size-small;
+  margin-left: $label-width;
+  padding-right: ($spacer * 3);
+  width: 100%;
+
+  #{$class-form-validated} input:invalid ~ & {
+    display: block;
+  }
+}
+
+// CALLOUT VALIDATION ICONS
+
+// Success and error icons
+// @param {String} $type [text] (success|error) - Icon value
+
+@mixin callout-icon($type: 'success') {
+  background-repeat: no-repeat;
+  display: none;
+  position: absolute;
+  top: (($input-height - 16px) / 2);
+  left: calc(#{$input-width} + #{$label-width} + #{$spacer});
+  width: 20px;
+  height: 20px;
+
+  // Success icon
+  @if ($type == 'success') {
+    @extend %icon-success;
+
+    // Icons are visible if container has success class.
+    // But they can be visible if form has validated status class and sibling
+    // input is invalid.
+    // #{$class-form-validated} input:valid ~ &
+    #{$class-valid-item} > & {
+      display: block;
+    }
+  }
+
+  // Error icon
+  @else {
+    @extend %icon-error;
+
+    #{$class-invalid-item} > & {
+      display: block;
+    }
+  }
+}
